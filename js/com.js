@@ -97,13 +97,19 @@ function getCodefun(obj,phone,time){
     return me;
 }
 /*获取验证码 2,button*/
-var getCode = function(btn,time,fn){
+var getCode = function(btn,time,fn,specialTimeObj){
     var me = {};
     me.btn = btn;
     me.wait= time;
     me.callBack = fn;
-    me.show = function(obj) {
+    me.specialTimeObj = specialTimeObj;
+    me.show = function() {
         $(me.btn).attr("disabled","disabled");//设置button不可用
+
+        if(me.specialTimeObj&&me.wait==me.specialTimeObj.specialTime){
+            me.specialTimeObj.fn();
+        }
+        
         me.wait--;
         $(me.btn).val(me.wait+"秒").css('color','#999');
         if(me.wait == -1){
@@ -117,7 +123,7 @@ var getCode = function(btn,time,fn){
             return ;
         }else if(me.wait>0){
             setTimeout(function(){
-                me.show(me.btn);
+                me.show();
             }, 1000);
         }
     };
