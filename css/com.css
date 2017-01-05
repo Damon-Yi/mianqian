@@ -1,0 +1,43 @@
+/*body scroll*/
+#body_wrapper{position: absolute;z-index: 1;top: 0;bottom:0;left: 0;width: 100%;overflow: hidden;}
+#body_wrapper>div{position: absolute;z-index: 1;-webkit-tap-highlight-color: rgba(0,0,0,0);width: 100%;-webkit-transform: translateZ(0);-moz-transform: translateZ(0);-ms-transform: translateZ(0);-o-transform: translateZ(0);transform: translateZ(0);-webkit-touch-callout: none;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;-webkit-text-size-adjust: none;-moz-text-size-adjust: none;-ms-text-size-adjust: none;-o-text-size-adjust: none;text-size-adjust: none;}
+#article_wrapper{position: absolute;z-index: 1;top: 0;bottom:0.84rem;left: 0;width: 100%;overflow: hidden;}
+#article_wrapper>div{position: absolute;z-index: 1;-webkit-tap-highlight-color: rgba(0,0,0,0);width: 100%;-webkit-transform: translateZ(0);-moz-transform: translateZ(0);-ms-transform: translateZ(0);-o-transform: translateZ(0);transform: translateZ(0);-webkit-touch-callout: none;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;-webkit-text-size-adjust: none;-moz-text-size-adjust: none;-ms-text-size-adjust: none;-o-text-size-adjust: none;text-size-adjust: none;}
+
+/*头部*/
+.header{height: 0.72rem;line-height:0.72rem;position: relative;color: #333;font-size:0.3rem;text-align: center;background-color: #fff;}
+.header:after{content:'';display:block;height: 1px;width: 100%;position: absolute;left: 0;bottom: 0;transform: scaleY(0.5);-webkit-transform: scaleY(0.5);background-color: #ddd;}
+.header .back_btn{font-size: 0.26rem;position: absolute;padding-left: 0.43rem;}
+.header .back_btn:before{content:'';display:block;width: 10px;height: 10px;transform: rotate(45deg);-webkit-transform: rotate(45deg);position: absolute;left:0.26rem;top: 50%;margin-top: -5px;border-width: 0 0 1px 1px;border-color: #333;border-style: solid;}
+/*.header .back_btn:before{content:'';display:block;width: 13px;height: 13px;transform: rotate(45deg);-webkit-transform: rotate(45deg);position: absolute;left:0.3rem;top: 50%;margin-top: -7px;border-width:2px;border-color:transparent transparent #333 #333;border-style: solid;border-radius: 3px;}*/
+
+/*color*/
+.impor_red{color: #ff6700;}
+.impor_dark{color: #333;}
+.com_dark{color: #808080;}
+.com_grey{color: #999;}
+.com_silver{color: #e1e1e1;}
+.soft_grey{color:#f6f6f6;}
+
+/*font-size*/
+.big_font{font-size: 18px;}
+.sub_big_font{font-size: 15px;}
+.mid_font{font-size: 14px;}
+.sub_mid_font{font-size: 13px;}
+.sm_font{font-size: 12px;}
+.sub_sm_font{font-size: 10px;}
+
+/*button*/
+.big_btn{display: block;width: 6rem;height:0.86rem;line-height: 0.86rem;text-align: center;font-size:0.3rem;border-radius: 3px;margin:0.2rem auto;box-sizing: border-box;box-sizing: border-box;background-color: #f6f6f6;color: #333;}
+.mid_btn{display: inline-block;width: 1.48rem;height: 0.5rem;line-height: 0.5rem;text-align: center;font-size:0.3rem;border-radius: 3px;margin: 0.1rem auto;box-sizing: border-box;box-sizing: border-box;background-color: #f6f6f6;color: #333;}
+
+.default_btn{color: #333;background-color: #fff;border:1px solid #e1e1e1;}
+.default_btn:active{background-color: #e1e1e1;}
+
+.impor_fill_btn{color: #fff;background-color: #ff6700;border:1px solid #e75712;}
+.impor_fill_btn:active{background-color: #e75712;}
+
+.impor_blank_btn{color: #ff6700;background-color: #fff;border:1px solid #ff6700;}
+.impor_blank_btn:active{color:#fff;background-color: #ff6700;}
+
+.disabled_btn{color: #c5c5c5;background-color: #e4e4e4;border:1px solid #e4e4e4;}
