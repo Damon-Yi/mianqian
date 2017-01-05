@@ -12,3 +12,9 @@ new function (){
 	_self.changePage();
 	window.addEventListener("resize",function(){_self.changePage();},false);
 };
+
+/*******/
+Config = {
+	url:'http://10.80.2.144:8095/',
+	testJsonpUrl:'http://10.80.2.144:8082/js/test.js'
+}

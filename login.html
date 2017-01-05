@@ -39,7 +39,7 @@
     <article id="body_wrapper">
         <div>
             <div class="user_icon_wrap">
-                <img src="images/defaul@140.png" alt="">
+                <img src="/images/defaul@140.png" alt="">
             </div>
             <div class="input_wrap">
                 <div><input class="user_acc" type="text" placeholder="请输入账号"></div>
@@ -84,7 +84,7 @@
                     /*跨域请求*/
                     $.ajax({
                         type:"get",
-                        url:"http://10.80.2.144:8082/js/test.js",
+                        url:Config.testJsonpUrl,
                         dataType:"jsonp",
                         jsonp:'',
                         jsonpCallback:'fun',
@@ -107,7 +107,6 @@
                     });
                 }
             }
-            
         });
     </script>
 </body>
