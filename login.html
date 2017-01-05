@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=0">
+    <meta name="format-detection" content="telephone=no" />
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/com.css" rel="stylesheet" type="text/css">
+    <script src="js/public.js"></script>
+    <script type="text/javascript" src="plugin/iscroll/iscroll.js"></script>
+    <script type="text/javascript">
+        var mainScroll;
+        function loaded () {
+            mainScroll = new IScroll('#body_wrapper',{
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true,
+                click: true 
+            });
+        }
+        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+    <style>
+        .user_icon_wrap{width: 1.4rem;height: 1.4rem;margin: 0.9rem auto 0.6rem;}
+        .user_icon_wrap>img{width:100%;height: 100%;border-radius: 100%;}
+        .input_wrap{background-color: #fff;position: relative;padding:0 0.2rem;margin-bottom:0.4rem; }
+        .input_wrap:before{content: " ";position: absolute;left: 0;top: 0;width: 100%;height: 1px;border-top: 1px solid #D9D9D9;color: #D9D9D9;-webkit-transform-origin: 0 0;transform-origin: 0 0;-webkit-transform: scaleY(0.5);transform: scaleY(0.5);}
+        .input_wrap:after{content: " ";position: absolute;left: 0;bottom: 0;width: 100%;height: 1px;border-bottom: 1px solid #D9D9D9;color: #D9D9D9;-webkit-transform-origin: 0 100%;transform-origin: 0 100%;-webkit-transform: scaleY(0.5);transform: scaleY(0.5);}
+        .input_wrap>div{height: 0.8rem;position: relative;font-size: 0.24rem;}
+        .input_wrap>div:after{content: " ";position: absolute;left: 0;bottom: 0;width: 100%;height: 1px;border-bottom: 1px solid #D9D9D9;color: #D9D9D9;-webkit-transform-origin: 0 100%;transform-origin: 0 100%;-webkit-transform: scaleY(0.5);transform: scaleY(0.5);}
+        .input_wrap>div:last-child:after{display: none;}
+        .input_wrap input{height: 0.5rem;padding-left:0.1rem;width: 100%;border:none;margin-top: 0.15rem;font-size: 0.24rem;}
+    </style>
+</head>
+<body onload="loaded()">
+    <article id="body_wrapper">
+        <div>
+            <div class="user_icon_wrap">
+                <img src="images/defaul@140.png" alt="">
+            </div>
+            <div class="input_wrap">
+                <div><input class="user_acc" type="text" placeholder="请输入账号"></div>
+                <div><input class="user_psd" type="password" placeholder="请输入密码"></div>
+            </div>
+            <a class="big_btn disabled_btn login" href="javascript:;">登录</a>
+        </div>
+    </article>
+    <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
+    <script type="text/javascript" src="plugin/zepto/touch.js"></script>
+    <script src="js/com.js"></script>
+    <!-- <script src="plugin/jquery/jquery-1.11.0.js"></script> -->
+    <script>
+        /*加载动画*/
+        var loader = new loading({'container':document.body,'hasBg':false});
+
+        /*账户、密码输入*/
+        $('.user_acc,.user_psd').on('input',function(){
+            var $user_acc = $('.user_acc'),
+                $user_psd = $('.user_psd');
+            if($user_acc.val()!=''&&$user_psd.val()!=''){
+                $('.login').removeClass('disabled_btn').addClass('impor_fill_btn');
+            }else{
+                $('.login').removeClass('impor_fill_btn').addClass('disabled_btn');
+            }
+        });
+        /*登录*/
+        $('.login').on('tap',function(){
+            if(!$(this).hasClass('disabled')){
+                var _that = this;
+                if($(this).hasClass('impor_fill_btn')){
+                    var $user_acc = $('.user_acc'),
+                        $user_psd = $('.user_psd');
+                    if($user_acc.val()==''){
+                        tips('请填写账号','tips_center',1000);
+                        return false;
+                    }
+                    if($user_psd.val()==''){
+                        tips('请填写密码','tips_center',1000);
+                        return false;
+                    }
+                    /*跨域请求*/
+                    $.ajax({
+                        type:"get",
+                        url:"http://10.80.2.144:8082/js/test.js",
+                        dataType:"jsonp",
+                        jsonp:'',
+                        jsonpCallback:'fun',
+                        data:'',
+                        beforeSend:function(xhr, settings){
+                            loader.show();
+                            $(_that).addClass('disabled');
+                        },
+                        success:function(data, status, xhr){
+                            console.log(data);
+                        },
+                        error:function(xhr, errorType, error){
+                        },
+                        complete:function(xhr, status){
+                            setTimeout(function(){
+                                loader.hide();
+                                $(_that).removeClass('disabled');
+                            },500);
+                        }
+                    });
+                }
+            }
+            
+        });
+    </script>
+</body>
+</html>

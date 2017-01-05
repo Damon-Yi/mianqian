@@ -51,6 +51,7 @@ var myLayer = function(params){
 //tips('数据错误','tips_center',1500);
 //tips('数据错误','tips_left',1500);
 function tips(msg,className,time){
+    $('.tips').remove();
     var tipsDiv = $('<div class="tips '+className+'"></div>');
     $('body').append(tipsDiv);
     tipsDiv.html(msg).addClass('tips_show');
@@ -289,6 +290,7 @@ function getBase64Image(src) {
 } 
 
 /*loading*/
+//var loader = new loading({'container':document.body,'hasBg':false});
 var loading = function(param){
     me = {}
     me.param = param?param:{
@@ -309,7 +311,8 @@ var loading = function(param){
             span_wrap.appendChild(span);   
         }
         if(me.param.hasBg){
-           me.loader.appendChild(loader_bg); 
+           me.loader.appendChild(loader_bg);
+           span_wrap.style.background ='rgba(0,0,0,0)'; 
         }
         me.loader.appendChild(span_wrap); 
         me.param.container.appendChild(me.loader);
