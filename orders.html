@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>订单</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no" />
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/com.css" rel="stylesheet" type="text/css">
+    <link href="plugin/swiper/swiper.3.1.7.min.css" rel="stylesheet" type="text/css">
+    <script src="js/public.js"></script>
+    <script type="text/javascript" src="plugin/swiper/swiper.3.1.7.min.js"></script>
+    <script type="text/javascript" src="plugin/iscroll/iscroll.js"></script>
+    <script type="text/javascript">
+        var mainScroll;
+        function loaded () {
+            mainScroll = new IScroll('#body_wrapper',{
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true,
+                click: true 
+            });
+        }
+        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+    <style>
+        .top_tab{font-size:0.28rem;color: #333;position: relative;background-color: #fff;}
+        .top_tab:after{content: " ";position: absolute;left: 0;bottom: 0;width: 100%;height: 1px;border-bottom: 1px solid #e1e1e1;color: #e1e1e1;-webkit-transform-origin: 0 100%;transform-origin: 0 100%;-webkit-transform: scaleY(0.5);transform: scaleY(0.5);}
+        .top_tab .swiper-slide{width: 20%;text-align: center;height: 0.8rem;}
+        .top_tab .top_tab_a{line-height: 0.8rem;color: #333;position:relative;}
+        .top_tab .top_tab_a .badge{background-color: #fff;position: absolute;display: block;height: 0.3rem;min-width: 0.3rem;border:1px solid #f31000;color: #f31000;line-height: 0.28rem;padding: 0 0.06rem;text-align: center;border-radius: 0.15rem;font-size: 0.2rem;font-style: normal;top: -0.12rem;right:0;transform: translateX(50%);-webkit-transform: translateX(50%);}
+        .top_tab .action_line{width:20%;height: 3px;position: absolute;bottom: 0;background-color: #ff6700;left:0;transition: left .4s ease;-webkit-transition: left .4s ease;}
+        .top_tab .top_tab_item{}
+        .top_tab .top_tab_item.on .top_tab_a{color: #ff6700;}
+
+        .cont_box{position: absolute;top:0.8rem;bottom: 0;left: 0;width: 100%;overflow: hidden;}
+        .cont_box .c_panel{position: absolute;width: 100%;top: 0;left:100%;bottom: 0;background-color: #f6f6f6;transition: left .4s ease;-webkit-transition: left .4s ease;}
+        .cont_box .c_panel.active{left:0;}
+    </style>
+</head>
+<body>
+    <div class="top_tab">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="top_tab_item on"><a class="top_tab_a" href="javascript:;">全部<i class="badge">99+</i></a></div>
+            </div>
+            <div class="swiper-slide">
+                <div class="top_tab_item"><a class="top_tab_a" href="javascript:;">待接单<i class="badge">1</i></a></div>
+            </div>
+            <div class="swiper-slide">
+                <div class="top_tab_item"><a class="top_tab_a" href="javascript:;">待预约<i class="badge">55</i></a></div>
+            </div>
+            <div class="swiper-slide">
+                <div class="top_tab_item"><a class="top_tab_a" href="javascript:;">待替单</a></div>
+            </div>
+            <div class="swiper-slide">
+                <div class="top_tab_item"><a class="top_tab_a" href="javascript:;">已完成</a></div>
+            </div>
+            <div class="action_line"></div>
+        </div>
+    </div>
+    <div class="cont_box">
+        <div class="c_panel active">
+            1
+        </div>
+        <div class="c_panel">
+            2
+        </div>
+        <div class="c_panel">
+            3
+        </div>
+        <div class="c_panel">
+            4
+        </div>
+        <div class="c_panel">
+            5
+        </div>
+    </div>
+    <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
+    <script type="text/javascript" src="plugin/zepto/touch.js"></script>
+    <script src="js/com.js"></script>
+    <script>
+        window.onload = function() {
+            /*头部导航*/
+            var topTabSwiper = new Swiper('.top_tab',{
+                freeMode : true,
+                slidesPerView : 'auto',
+                onTap: function(swiper){
+                    /*文字颜色*/
+                    $('.top_tab .top_tab_item').removeClass('on');
+                    var topTabItem = $(topTabSwiper.clickedSlide).find('.top_tab_item'); 
+                    topTabItem.addClass('on');   
+                    /**/
+                    var actionLine = $('.top_tab .action_line');
+                    actionLine.css('left',topTabSwiper.clickedIndex*20+'%');
+                    /**/
+                    //$('.cont_box .c_panel').removeClass('active');
+                    $('.cont_box .c_panel').eq(topTabSwiper.clickedIndex).addClass('active').siblings().removeClass('active');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
