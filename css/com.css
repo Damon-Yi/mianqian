@@ -28,8 +28,8 @@
 .sub_sm_font{font-size: 10px;}
 
 /*button*/
-.big_btn{display: block;width: 6rem;height:0.86rem;line-height: 0.86rem;text-align: center;font-size:0.3rem;border-radius: 3px;margin:0.2rem auto;box-sizing: border-box;box-sizing: border-box;background-color: #f6f6f6;color: #333;}
-.mid_btn{display: inline-block;width: 1.48rem;height: 0.5rem;line-height: 0.5rem;text-align: center;font-size:0.3rem;border-radius: 3px;margin: 0.1rem auto;box-sizing: border-box;box-sizing: border-box;background-color: #f6f6f6;color: #333;}
+.big_btn{display: block;width: 6rem;height:0.86rem;line-height: 0.86rem;text-align: center;font-size:0.28rem;border-radius: 3px;margin:0.2rem auto;box-sizing: border-box;box-sizing: border-box;background-color: #f6f6f6;color: #333;}
+.mid_btn{display: inline-block;width: 1.48rem;height: 0.5rem;line-height: 0.5rem;text-align: center;font-size:0.28rem;border-radius: 3px;margin: 0.1rem auto;box-sizing: border-box;box-sizing: border-box;background-color: #f6f6f6;color: #333;}
 
 .default_btn{color: #333;background-color: #fff;border:1px solid #e1e1e1;}
 .default_btn:active{background-color: #e1e1e1;}

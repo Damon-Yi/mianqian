@@ -47,6 +47,11 @@ var myLayer = function(params){
     return me;
 }
 
+/*确认弹框*/
+var confirmDialog = function(params){
+
+}
+
 /*提示，弹窗*/
 //tips('数据错误','tips_center',1500);
 //tips('数据错误','tips_left',1500);
