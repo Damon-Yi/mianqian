@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no" />
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="plugin/swiper/swiper.3.1.7.min.css" rel="stylesheet" type="text/css">
+    <link href="css/com.css" rel="stylesheet" type="text/css">
+    <link href="css/part1.css" rel="stylesheet" type="text/css">
+    <script src="js/public.js"></script>
+    <script type="text/javascript" src="plugin/iscroll/iscroll.js"></script>
+    <script type="text/javascript">
+        var mainScroll;
+        function loaded () {
+            mainScroll = new IScroll('#body_wrapper',{
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true,
+                click: true 
+            });
+        }
+        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+</head>
+<body onload="loaded()">
+    <article id="body_wrapper">
+        <div>
+            <div class="sub-nav bg_white">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">订单信息<i class="sub-line"></i></div>
+                        <div class="swiper-slide">个人信息<i class="sub-line"></i></div>
+                        <div class="swiper-slide">家庭信息<i class="sub-line"></i></div>
+                        <div class="swiper-slide">单位信息<i class="sub-line"></i></div>
+                        <div class="swiper-slide">联系方式<i class="sub-line"></i></div>
+                        <div class="swiper-slide">还款信息<i class="sub-line"></i></div>
+                        <div class="swiper-slide">其它信息<i class="sub-line"></i></div>
+                        <div class="swiper-slide">协审<i class="sub-line"></i></div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="pd20 err-txt red">申请被退回，[家庭信息]部分有错误！请及时更改！如已更改，请忽略此条信息！</div>
+            </div>
+            <!--商品信息-->
+            <div class="mt20 bg_white">
+                <div class="t1 pd-tb-20">商品信息</div>
+                <div class="mt20 pd20 bi">
+                    <div class="txt-left">渠道信息</div>
+                    <div class="txt-right com_grey">京东商城</div>
+                </div>
+                <div class="pd20 bi">
+                    <div class="txt-left">是否代购</div>
+                    <div class="txt-right com_grey">是</div>
+                </div>
+                <div class="pd20 bi">
+                    <div class="txt-left">商品描述</div>
+                    <div class="txt-right com_grey">Apple iPone 6s Plus(A1699) 64G 玫瑰金色 移动联通电信4G上门</div>
+                </div>
+                <div class="pd20 bi">
+                    <div class="txt-left">商口金额</div>
+                    <div class="txt-right com_grey">1800.00</div>
+                </div>
+                <div class="pd20 bi">
+                    <div class="txt-left">商品总额</div>
+                    <div class="txt-right com_grey">5000.00</div>
+                </div>
+                <div class="pd20 bi">
+                    <div class="txt-left">备注信息</div>
+                    <div class="txt-right com_grey">无</div>
+                </div>
+            </div>
+
+            <!--分期方案-->
+            <div class="mt20 bg_white">
+                <div class="t1 pd-tb-20">分期方案</div>
+                <div class="pd20 bi">
+                    <div class="txt-left">首付比例</div>
+                    <div class="txt-right com_grey">10%</div>
+                </div>
+                <div class="pd20 bi">
+                    <div class="txt-left">首付金额</div>
+                    <div class="txt-right com_grey">300.00</div>
+                </div>
+                <div class="pd20 bi">
+                    <div class="txt-left">分期金额</div>
+                    <div class="txt-right com_grey">300.00</div>
+                </div>
+                <div class="pd20 bi">
+                    <div class="txt-left">分期数</div>
+                    <div class="txt-right com_grey">6期</div>
+                </div>
+                <div class="pd20 bi">
+                    <div class="txt-left">还款信息</div>
+                    <div class="txt-right com_grey">238.00元/期<br><div class="font24">(含每期分期服务费23.00)</div></div>
+                </div>
+            </div>
+
+            <!--还款计划-->
+            <div class="mt20 bg_white">
+                <div class="t1 pd-tb-20">还款计划<div class="tit-ico"><img class="full-size vm" src="images/warn.png"></div></div>
+                <div class="pd20 bi">
+                    <div class="txt-left">&#12288;首期还款</div>
+                    <div class="txt-right com_grey ml3">300.00<br><div class="font24">(含服务费40元)</div></div>
+                    <div class="txt-right com_grey vm ml3">2016-08-20</div>
+                </div>
+                <div class="pd20 bi">
+                    <div class="txt-left">2至5期还款</div>
+                    <div class="txt-right com_grey ml3">300.00<br><div class="font24">(含服务费40元)</div></div>
+                    <div class="txt-right com_grey vm ml3">每月19日</div>
+                </div>
+                <div class="pd20 bi">
+                    <div class="txt-left">&#12288;尾期还款</div>
+                    <div class="txt-right com_grey ml3">300.00<br><div class="font24">(含服务费40元)</div></div>
+                    <div class="txt-right com_grey vm ml3">2017-08-19</div>
+                </div>
+            </div>
+
+            <!--收货信息-->
+            <div class="mt20 mb40 bg_white">
+                <div class="t1 pd-tb-20">收货信息</div>
+                <div class="pd20 bi">
+                    <div class="txt-left">客户姓名</div>
+                    <div class="txt-right com_grey">刘乐</div>
+                </div>
+                <div class="pd20 bi">
+                    <div class="txt-left">联系电话</div>
+                    <div class="txt-right com_grey">189XXXXXXXX</div>
+                </div>
+                <div class="pd20 bi">
+                    <div class="txt-left">收货地址</div>
+                    <div class="txt-right com_grey">广东省深圳市福田区梅林街道彩田路1889号新浩e都A9楼</div>
+                </div>
+                <div class="t2 pd-lr-20">补充订单</div>
+                <div class="pd20 bi one_px_border_b">
+                    <div class="txt-left">商品品类<span class="red">*</span></div>
+                    <div class="txt-right impor_dark limit">XXXXX</div>
+                    <div class="right-arrow"><img class="full-size" src="images/right_arrow.png"></div>
+                </div>
+                <div class="pd20 bi one_px_border_b">
+                    <div class="txt-left">商品类型<span class="red">*</span></div>
+                    <div class="txt-right impor_dark limit">XXXXX</div>
+                    <div class="right-arrow"><img class="full-size" src="images/right_arrow.png"></div>
+                </div>
+                <div class="pd-lr-20 bi one_px_border_b">
+                    <div class="txt-left h80 vm">商品品牌<span class="red">*</span></div>
+                    <div class="txt-right vm"><input class="input-box impor_dark" type="text" placeholder="请输入商品品牌"></div>
+                </div>
+                <div class="pd-lr-20 bi">
+                    <div class="txt-left h80 vm">商品型号<span class="red">*</span></div>
+                    <div class="txt-right vm"><input class="input-box impor_dark" type="text" placeholder="请输入商品型号"></div>
+                </div>
+                <div class="t2 pd-lr-20">增值服务</div>
+                <div class="pd-lr-20 bi">
+                    <div class="txt-left h80 com_dark vm">是否投保<span class="com_grey">*</span>&#12288;</div>
+                    <div class="txt-right vm">
+                        <div class="bi text-center">
+                            <div class="radio-s1 soft_grey on">是</div>
+                            <div class="radio-s1 com_dark">否</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pd-lr-20 bi">
+                    <div class="txt-left h80 com_dark vm">是否随心还<span class="com_grey">*</span></div>
+                    <div class="txt-right vm">
+                        <div class="bi text-center">
+                            <div class="radio-s1 soft_grey on">是</div>
+                            <div class="radio-s1 com_dark">否</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--保存-->
+            <div class="one_px_border_t pd-tb-1 bg_white">
+                <a class="big_btn impor_fill_btn" href="javascript:;">保存</a>
+            </div>
+
+        </div>
+    </article>
+    <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
+    <script type="text/javascript" src="plugin/zepto/touch.js"></script>
+    <script type="text/javascript" src="plugin/swiper/swiper.3.1.7.min.js"></script>
+    <script src="js/com.js"></script>
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            slidesPerView: 'auto',
+            slideToClickedSlide: true,
+
+        });
+    </script>
+</body>
+</html>
+
+
