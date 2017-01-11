@@ -52,8 +52,8 @@
 
 .bi{letter-spacing: -0.315em;line-height:0.4rem;}
 .bi>*{letter-spacing: normal;display: inline-block;}
-.txt-left{font-size:0.28rem;line-height: 0.4rem;vertical-align: top;}
-.txt-right{font-size:0.28rem;line-height: 0.4rem;vertical-align: top;max-width:4.4rem;margin-left:0.3rem;}
+.txt-left{font-size:0.24rem;line-height: 0.4rem;vertical-align: top;}
+.txt-right{font-size:0.24rem;line-height: 0.4rem;vertical-align: top;max-width:4.4rem;margin-left:0.3rem;}
 .txt-right.ml0{margin-left:0;}
 .txt-right.limit{white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 3.6rem;}
 .right-arrow{float: right;width:0.2rem;}
