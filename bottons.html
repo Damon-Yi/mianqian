@@ -9,20 +9,6 @@
     <link href="css/com.css" rel="stylesheet" type="text/css">
     <script src="js/public.js"></script>
     <script type="text/javascript" src="plugin/iscroll/iscroll.js"></script>
-    <script type="text/javascript">
-        var mainScroll;
-        function loaded () {
-            mainScroll = new IScroll('#body_wrapper',{
-                scrollbars: true,
-                mouseWheel: true,
-                interactiveScrollbars: true,
-                shrinkScrollbars: 'scale',
-                fadeScrollbars: true,
-                click: true 
-            });
-        }
-        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
-    </script>
 </head>
 <body onload="loaded()">
     <article id="body_wrapper">
@@ -44,7 +30,18 @@
     <script type="text/javascript" src="plugin/zepto/touch.js"></script>
     <script src="js/com.js"></script>
     <script>
-
+        var mainScroll;
+        window.onload = function() {
+            mainScroll = new IScroll('#body_wrapper',{
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true,
+                click: true 
+            });
+            document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+        }
     </script>
 </body>
 </html>

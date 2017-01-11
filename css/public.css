@@ -10,8 +10,8 @@ caption,th,td {font-weight: normal;text-align: center;vertical-align: middle;}
 a {text-decoration: none;}
 a:hover{text-decoration: none;}
 a img {border: medium none;}
-input:-webkit-autofill { -webkit-box-shadow: 0 0 0 1000px white inset; } 
-input{-webkit-appearance: none;outline: none;}
+input:-webkit-autofill,textarea:-webkit-autofill { -webkit-box-shadow: 0 0 0 1000px white inset; } 
+input,textarea{-webkit-appearance: none;outline: none;}
 input[type="button"]{padding:0;}
 .hide {display: none;}
 .show {display: block;}

@@ -11,20 +11,7 @@
     <script src="js/public.js"></script>
     <script type="text/javascript" src="plugin/swiper/swiper.3.1.7.min.js"></script>
     <script type="text/javascript" src="plugin/iscroll/iscroll.js"></script>
-    <script type="text/javascript">
-        var mainScroll;
-        function loaded () {
-            mainScroll = new IScroll('.c_panel_1',{
-                scrollbars: true,
-                mouseWheel: true,
-                interactiveScrollbars: true,
-                shrinkScrollbars: 'scale',
-                fadeScrollbars: true,
-                click: true 
-            });
-        }
-        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
-    </script>
+    
     <style>
         .order_details{font-size: 0.24rem;color: #999;word-break: break-all;text-justify : auto; text-align:justify;}
         .order_details .or_section{background-color: #fff;padding: 0 0.2rem;margin-bottom:0.2rem;}
@@ -41,107 +28,105 @@
 </head>
 <body>
     <div class="cont_box top_cont_box">
-        <div class="c_panel c_panel_1 active">
-            <div>
-                <div class="order_details">
-                    <div class="or_section">
-                        <div class="or_title">面签信息</div>
-                        <div class="or_info">
-                             <div class="or_tr">
-                                <div class="or_td_1">客户姓名</div>
-                                <div class="or_td_2">刘乐</div>
-                             </div>
-                             <div class="or_tr">
-                                <div class="or_td_1">联系电话</div>
-                                <div class="or_td_2">18681533089</div>
-                                <div class="or_td_3"><img src="images/tel.png" alt=""></div>
-                             </div>
-                             <div class="or_tr">
-                                <div class="or_td_1">面签地址</div>
-                                <div class="or_td_2">广东省深圳市XXXXXXXXXXXXXXXXXXXXXXXXXXX</div>
-                                <div class="or_td_3"><img src="images/position_2.png" alt=""></div>
-                             </div>
-                             <div class="or_tr">
-                                <div class="or_td_1">面签状态</div>
-                                <div class="or_td_2">待上门</div>
-                             </div>
+        <div>
+            <div class="order_details">
+                <div class="or_section">
+                    <div class="or_title">面签信息</div>
+                    <div class="or_info">
+                         <div class="or_tr">
+                            <div class="or_td_1">客户姓名</div>
+                            <div class="or_td_2">刘乐</div>
+                         </div>
+                         <div class="or_tr">
+                            <div class="or_td_1">联系电话</div>
+                            <div class="or_td_2">18681533089</div>
+                            <div class="or_td_3"><img src="images/tel.png" alt=""></div>
+                         </div>
+                         <div class="or_tr">
+                            <div class="or_td_1">面签地址</div>
+                            <div class="or_td_2">广东省深圳市XXXXXXXXXXXXXXXXXXXXXXXXXXX</div>
+                            <div class="or_td_3"><img src="images/position_2.png" alt=""></div>
+                         </div>
+                         <div class="or_tr">
+                            <div class="or_td_1">面签状态</div>
+                            <div class="or_td_2">待上门</div>
+                         </div>
+                    </div>
+                </div>
+                <div class="or_section">
+                    <div class="or_title">商品信息</div>
+                    <div class="or_info">
+                         <div class="or_tr">
+                            <div class="or_td_1">渠道信息</div>
+                            <div class="or_td_2">京东</div>
+                         </div>
+                         <div class="or_tr">
+                            <div class="or_td_1">是否代购</div>
+                            <div class="or_td_2">是</div>
+                         </div>
+                         <div class="or_tr">
+                            <div class="or_td_1">商品描述</div>
+                            <div class="or_td_2">Apple iPhone 6s Plus (A1699) 64G 玫瑰金色 移动联通电信4G待上门</div>
+                         </div>
+                         <div class="or_tr">
+                            <div class="or_td_1">商品金额</div>
+                            <div class="or_td_2">1800.00</div>
+                         </div>
+                         <div class="or_tr">
+                            <div class="or_td_1">商品总额</div>
+                            <div class="or_td_2">5000.00</div>
+                         </div>
+                         <div class="or_tr">
+                            <div class="or_td_1">备注信息</div>
+                            <div class="or_td_2">无</div>
+                         </div>
+                    </div>
+                </div>
+                <div class="or_section">
+                    <div class="or_title">分期方案</div>
+                    <div class="or_info">
+                        <div class="or_tr">
+                            <div class="or_td_1">首付比例</div>
+                            <div class="or_td_2">10%</div>
+                        </div>
+                        <div class="or_tr">
+                            <div class="or_td_1">首付金额</div>
+                            <div class="or_td_2">300.00</div>
+                        </div>
+                        <div class="or_tr">
+                            <div class="or_td_1">分期金额</div>
+                            <div class="or_td_2">300.00</div>
+                        </div>
+                        <div class="or_tr">
+                            <div class="or_td_1">分期数</div>
+                            <div class="or_td_2">6期</div>
+                        </div>
+                        <div class="or_tr">
+                            <div class="or_td_1">还款信息</div>
+                            <div class="or_td_2">238.00元/期<p class="or_mark">(含每期分期服务费23.00)</p></div>
+                        </div>
+                        <div class="or_tr">
+                            <div class="or_td_1">备注信息</div>
+                            <div class="or_td_2">无</div>
                         </div>
                     </div>
-                    <div class="or_section">
-                        <div class="or_title">商品信息</div>
-                        <div class="or_info">
-                             <div class="or_tr">
-                                <div class="or_td_1">渠道信息</div>
-                                <div class="or_td_2">京东</div>
-                             </div>
-                             <div class="or_tr">
-                                <div class="or_td_1">是否代购</div>
-                                <div class="or_td_2">是</div>
-                             </div>
-                             <div class="or_tr">
-                                <div class="or_td_1">商品描述</div>
-                                <div class="or_td_2">Apple iPhone 6s Plus (A1699) 64G 玫瑰金色 移动联通电信4G待上门</div>
-                             </div>
-                             <div class="or_tr">
-                                <div class="or_td_1">商品金额</div>
-                                <div class="or_td_2">1800.00</div>
-                             </div>
-                             <div class="or_tr">
-                                <div class="or_td_1">商品总额</div>
-                                <div class="or_td_2">5000.00</div>
-                             </div>
-                             <div class="or_tr">
-                                <div class="or_td_1">备注信息</div>
-                                <div class="or_td_2">无</div>
-                             </div>
+                </div>
+                <div class="or_section">
+                    <div class="or_title">收货信息</div>
+                    <div class="or_info">
+                        <div class="or_tr">
+                            <div class="or_td_1">客户姓名</div>
+                            <div class="or_td_2">刘乐</div>
                         </div>
-                    </div>
-                    <div class="or_section">
-                        <div class="or_title">分期方案</div>
-                        <div class="or_info">
-                            <div class="or_tr">
-                                <div class="or_td_1">首付比例</div>
-                                <div class="or_td_2">10%</div>
-                            </div>
-                            <div class="or_tr">
-                                <div class="or_td_1">首付金额</div>
-                                <div class="or_td_2">300.00</div>
-                            </div>
-                            <div class="or_tr">
-                                <div class="or_td_1">分期金额</div>
-                                <div class="or_td_2">300.00</div>
-                            </div>
-                            <div class="or_tr">
-                                <div class="or_td_1">分期数</div>
-                                <div class="or_td_2">6期</div>
-                            </div>
-                            <div class="or_tr">
-                                <div class="or_td_1">还款信息</div>
-                                <div class="or_td_2">238.00元/期<p class="or_mark">(含每期分期服务费23.00)</p></div>
-                            </div>
-                            <div class="or_tr">
-                                <div class="or_td_1">备注信息</div>
-                                <div class="or_td_2">无</div>
-                            </div>
+                        <div class="or_tr">
+                            <div class="or_td_1">联系电话</div>
+                            <div class="or_td_2">189XXXXXXXX</div>
+                            <div class="or_td_3"><img src="images/tel.png" alt=""></div>
                         </div>
-                    </div>
-                    <div class="or_section">
-                        <div class="or_title">收货信息</div>
-                        <div class="or_info">
-                            <div class="or_tr">
-                                <div class="or_td_1">客户姓名</div>
-                                <div class="or_td_2">刘乐</div>
-                            </div>
-                            <div class="or_tr">
-                                <div class="or_td_1">联系电话</div>
-                                <div class="or_td_2">189XXXXXXXX</div>
-                                <div class="or_td_3"><img src="images/tel.png" alt=""></div>
-                            </div>
-                            <div class="or_tr">
-                                <div class="or_td_1">收货地址</div>
-                                <div class="or_td_2">广东省深圳市福田区梅林街道彩田路1889号新浩e都A9楼</div>
-                                <div class="or_td_3"><img src="images/position_2.png" alt=""></div>
-                            </div>
+                        <div class="or_tr">
+                            <div class="or_td_1">收货地址</div>
+                            <div class="or_td_2">广东省深圳市福田区梅林街道彩田路1889号新浩e都A9楼</div>
+                            <div class="or_td_3"><img src="images/position_2.png" alt=""></div>
                         </div>
                     </div>
                 </div>
@@ -159,8 +144,17 @@
     <script type="text/javascript" src="plugin/zepto/touch.js"></script>
     <script src="js/com.js"></script>
     <script>
+        var mainScroll;
         window.onload = function() {
-            loaded();
+            mainScroll = new IScroll('.cont_box',{
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true,
+                click: true 
+            });
+            document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
         }
         /*拒单*/
         $('.reject_order').on('tap',function(){
