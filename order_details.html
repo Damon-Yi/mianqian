@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>订单详情</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no" />
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="css/com.css" rel="stylesheet" type="text/css">
+    <link href="plugin/swiper/swiper.3.1.7.min.css" rel="stylesheet" type="text/css">
+    <script src="js/public.js"></script>
+    <script type="text/javascript" src="plugin/swiper/swiper.3.1.7.min.js"></script>
+    <script type="text/javascript" src="plugin/iscroll/iscroll.js"></script>
+    <script type="text/javascript">
+        var mainScroll;
+        function loaded () {
+            mainScroll = new IScroll('.c_panel_1',{
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true,
+                click: true 
+            });
+        }
+        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+    <style>
+
+    </style>
+</head>
+<body>
+    <div class="cont_box top_cont_box">
+        <div class="c_panel c_panel_1 active">
+            <div>
+                
+            </div>
+        </div>
+    </div>
+    <div class="bottom_btns_wrap">
+        <a href="javascript:;" class="reject_order">拒单</a>
+        <a href="javascript:;" class="import">接单</a>
+    </div>
+    <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
+    <script type="text/javascript" src="plugin/zepto/touch.js"></script>
+    <script src="js/com.js"></script>
+    <script>
+        window.onload = function() {
+            loaded();
+        }
+        $('.reject_order').on('tap',function(){
+            var dialog = confirmDialog({
+                hasShadowBg:true,
+                title:'确认拒单',
+                txt:'拒绝该订单后，系统将不会再派该订单给您！',
+                btns:[{
+                        text:'拒单',
+                        callBack:function(){
+                            console.log('拒单');
+                        }
+                    },
+                    {
+                        text:'取消',
+                        callBack:function(){
+                            console.log('取消');
+                            dialog.destory();
+                        }
+                    }
+                ]
+            });
+            dialog.show();
+        });
+    </script>
+</body>
+</html>

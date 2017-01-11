@@ -26,21 +26,6 @@
         document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
     </script>
     <style>
-        /*头部导航*/
-        .top_tab{font-size:0.28rem;color: #333;position: relative;background-color: #fff;z-index:2;}
-        .top_tab:after{content: " ";position: absolute;left: 0;bottom: 0;width: 100%;height: 1px;border-bottom: 1px solid #e1e1e1;color: #e1e1e1;-webkit-transform-origin: 0 100%;transform-origin: 0 100%;-webkit-transform: scaleY(0.5);transform: scaleY(0.5);z-index: 1;}
-        .top_tab .swiper-slide{width: 20%;text-align: center;height: 0.8rem;}
-        .top_tab .top_tab_a{line-height: 0.8rem;color: #333;position:relative;}
-        .top_tab .top_tab_a .badge{background-color: #fff;position: absolute;display: block;height: 0.3rem;min-width: 0.3rem;border:1px solid #f31000;color: #f31000;line-height: 0.28rem;padding: 0 0.06rem;text-align: center;border-radius: 0.15rem;font-size: 0.2rem;font-style: normal;top: -0.12rem;right:0;transform: translateX(50%);-webkit-transform: translateX(50%);}
-        .top_tab .action_line{width:20%;height: 3px;position: absolute;bottom: 0;background-color: #ff6700;left:0;transition: left .4s ease;-webkit-transition: left .4s ease;}
-        .top_tab .top_tab_item{}
-        .top_tab .top_tab_item.on .top_tab_a{color: #ff6700;}
-        /*订单  列表*/
-        .cont_box{position: absolute;top:0.8rem;bottom: 0;left: 0;width: 100%;overflow: hidden;z-index: 1;}
-        .cont_box .c_panel{position: absolute;width: 100%;top: 0;left:100%;bottom: 0;background-color: #f6f6f6;transition: left .4s ease;-webkit-transition: left .4s ease;overflow: hidden;}
-        .cont_box .c_panel.active{left:0;}
-        .cont_box .c_panel>div{position: absolute;z-index: 1;-webkit-tap-highlight-color: rgba(0,0,0,0);width: 100%;-webkit-transform: translateZ(0);-moz-transform: translateZ(0);-ms-transform: translateZ(0);-o-transform: translateZ(0);transform: translateZ(0);-webkit-touch-callout: none;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;-webkit-text-size-adjust: none;-moz-text-size-adjust: none;-ms-text-size-adjust: none;-o-text-size-adjust: none;text-size-adjust: none;}
-
         .orders{font-size:0.26rem;color: #333;line-height: 1;}
         .orders .o_item{background-color: #fff;margin-bottom:0.2rem; }
         .orders .o_item img,.orders .o_item span,.orders .o_item i{display: inline-block;vertical-align: middle;}
@@ -107,7 +92,7 @@
             <div class="action_line"></div>
         </div>
     </div>
-    <div class="cont_box">
+    <div class="cont_box bottom_cont_box">
         <div class="c_panel c_panel_1 active">
             <div>
                 <div class="orders">
@@ -262,8 +247,8 @@
                     var actionLine = $('.top_tab .action_line');
                     actionLine.css('left',topTabSwiper.clickedIndex*20+'%');
                     /**/
-                    //$('.cont_box .c_panel').removeClass('active');
-                    $('.cont_box .c_panel').eq(topTabSwiper.clickedIndex).addClass('active').siblings().removeClass('active');
+                    //$('.bottom_cont_box .c_panel').removeClass('active');
+                    $('.bottom_cont_box .c_panel').eq(topTabSwiper.clickedIndex).addClass('active').siblings().removeClass('active');
                 }
             });
 
@@ -274,8 +259,6 @@
                 hasShadowBg:true,
                 title:'确认接单',
                 txt:'接单后1小时内和客户预约面签时间！如您不接此单，系统将在1小时后重新拍单。',
-                leftBtnText:'取消',
-                rightBtnText:'接单',
                 btns:[{
                         text:'取消',
                         callBack:function(){

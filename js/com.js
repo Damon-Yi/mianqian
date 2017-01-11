@@ -54,8 +54,6 @@ var confirmDialog = function(params){
         hasShadowBg:true,
         title:'test',
         txt:'test info',
-        leftBtnText:'left',
-        rightBtnText:'right',
         btns:[{
                 text:'',
                 callBack:function(){}
