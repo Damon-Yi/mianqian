@@ -63,16 +63,13 @@ input[type="button"]{padding:0;}
 .conform_dialog .c_cont:after{content: " ";position: absolute;left: 0;bottom:0;width: 100%;height: 1px;border-top: 1px solid #e1e1e1;color: #e1e1e1;-webkit-transform-origin: 0 100%;transform-origin: 0 100%;-webkit-transform: scaleY(0.5);transform: scaleY(0.5);}
 .conform_dialog .c_cont .c_title{font-size: 0.3rem;}
 .conform_dialog .c_cont .c_txt{text-align: left;margin-top:0.3rem;}
-.conform_dialog .c_btns{font-size: 0.3rem;overflow: auto;position: relative;}
-.conform_dialog .c_btns>a{color: #333;width:50%;height:0.8rem;line-height: 0.8rem;display: block;float: left;}
-.conform_dialog .c_btns .c_btn_left{position: relative;border-bottom-left-radius: 3px;}
-.conform_dialog .c_btns .c_btn_left:after{content: " ";position: absolute;right: 0;top: 0;width: 1px;height:100%;border-right: 1px solid #e1e1e1;color: #e1e1e1;-webkit-transform-origin: 0 100%;transform-origin: 0 100%;-webkit-transform: scaleX(0.5);transform: scaleX(0.5);}
-.conform_dialog .c_btns .c_btn_left:active{background-color: #ff6700;color: #fff;}
-.conform_dialog .c_btns .c_btn_left:active
-.conform_dialog .c_btns .c_btn_right{border-bottom-right-radius: 3px;}
-.conform_dialog .c_btns .c_btn_right:active{background-color: #ff4200;color: #fff;}
+.conform_dialog .c_btns{font-size: 0.3rem;position: relative;display: flex;-webkit-display: flex;}
+.conform_dialog .c_btns>a{color: #333;height:0.8rem;line-height: 0.8rem;display: block;float: left;flex:1;-webkit-flex:1;}
+.conform_dialog .c_btns>a:active{background-color: #ff6700;color: #fff;}
+.conform_dialog .c_btns>a:first-child{position: relative;border-bottom-left-radius: 3px;}
+.conform_dialog .c_btns>a:first-child:after{content:" ";position: absolute;right: 0;top: 0;width: 1px;height:100%;border-right: 1px solid #e1e1e1;color: #e1e1e1;-webkit-transform-origin: 0 100%;transform-origin: 0 100%;-webkit-transform: scaleX(0.5);transform: scaleX(0.5);}
+.conform_dialog .c_btns>a:last-child{border-bottom-right-radius: 3px;}
 
-        
 /* media */
 /* 横屏 */
 @media screen and (orientation:landscape){

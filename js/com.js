@@ -56,13 +56,11 @@ var confirmDialog = function(params){
         txt:'test info',
         leftBtnText:'left',
         rightBtnText:'right',
-        leftBtnCallBak:function(){
-            //me.destory();
-            console.log('click left btn');
-        },
-        rightBtnCallBak:function(){
-            console.log('click right btn');
-        }
+        btns:[{
+                text:'',
+                callBack:function(){}
+            }
+        ]
     }
     me.init = function(){
         me.layerContainer = $('<div class="layer_container"></div>');
@@ -70,22 +68,22 @@ var confirmDialog = function(params){
         me.layerBg = $('<div class="bg"></div>');
         me.dialog = $('<div class="conform_dialog layer_cont"><div class="c_cont"><p class="c_title">'+me.params.title+'</p><p class="c_txt">'+me.params.txt+'</p></div></div>');
         me.btnsWrap = $('<div class="c_btns"></div>');
-        me.leftBtn = $('<a class="c_btn_left" href="javascript:;">'+me.params.leftBtnText+'</a>');
-        me.rightBtn = $('<a class="c_btn_left" href="javascript:;">'+me.params.rightBtnText+'</a>');
-        me.dialog.append(me.btnsWrap.append(me.leftBtn).append(me.rightBtn));
+
+        for(var i=0;i<me.params.btns.length;i++){
+            var btn = $('<a href="javascript:;">'+me.params.btns[i].text+'</a>');
+            var callBack = me.params.btns[i].callBack;
+            btn.on('tap',{callBack:callBack},function(e){
+                e.data.callBack();
+            });
+            me.btnsWrap.append(btn);
+        }
+        me.dialog.append(me.btnsWrap);
         me.layerContainer.append(me.layerContWrap.append(me.dialog));
         $('body').append(me.layerContainer);
 
         if(me.params.hasShadowBg){
             me.layerContainer.prepend(me.layerBg);
         }
-
-        me.leftBtn.on('tap',function(){
-            me.params.leftBtnCallBak();
-        });
-        me.rightBtn.on('tap',function(){
-            me.params.rightBtnCallBak();
-        });
     }
     me.show = function(){
         me.init();
