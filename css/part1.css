@@ -74,9 +74,9 @@
 .one_px_border_b{width:100%;position: relative;}
 .one_px_border_b:after {content: " ";position: absolute;left: 0;bottom: 0;width: 100%;height: 1px;border-bottom: 1px solid #D9D9D9;color: #D9D9D9;-webkit-transform-origin: 0 100%;transform-origin: 0 100%;-webkit-transform: scaleY(0.5);transform: scaleY(0.5);}
 
-.radio-s1{width: 1.4rem;height: 0.44rem;line-height: 0.42rem;border-radius: 15px;background:#f2f2f2;}
-.radio-s1:not(:first-child){margin-left:0.2rem;}
-.radio-s1.on{background:#7b7b7b;}
+.radio-s1>div{width: 1.4rem;height: 0.44rem;line-height: 0.42rem;border-radius: 15px;background:#f2f2f2;color:#808080;}
+.radio-s1>div:not(:first-child){margin-left:0.2rem;}
+.radio-s1>div.on{background:#7b7b7b;color:#f6f6f6;}
 
 .radio-s2{min-width:1.2rem;height:0.44rem;border-radius: 15px;background:#fff;font-size: 0.24rem;color:#999;border:1px solid #e1e1e1;}
 .radio-s2:not(:first-child){margin-left:0.1rem;}
