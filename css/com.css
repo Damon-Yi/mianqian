@@ -34,7 +34,9 @@
 /*底部,操作*/
 .bottom_btns_wrap{width: 100%;position: absolute;bottom: 0;left: 0;height: 0.88rem;background-color:#fff;z-index:2;display: flex;-webkit-flex:flex;}
 .bottom_btns_wrap:before{content: " ";position: absolute;left: 0;top:0;width: 100%;height: 1px;border-bottom: 1px solid #e1e1e1;color: #e1e1e1;-webkit-transform-origin: 0 100%;transform-origin: 0 100%;-webkit-transform: scaleY(0.5) translateY(-100%);;transform: scaleY(0.5) translateY(-100%);z-index: 1;}
-.bottom_btns_wrap>a{flex:1;-webkit-flex:1;display: block;color: #333;text-align: center;line-height: 0.88rem;font-size: 0.3rem;}
+.bottom_btns_wrap>a{flex:1;-webkit-flex:1;display: block;color: #333;text-align: center;line-height: 0.88rem;font-size: 0.3rem;position: relative;}
+.bottom_btns_wrap>a:after{content:" ";position: absolute;right: 0;top: 0;width: 1px;height:100%;border-right: 1px solid #e1e1e1;color: #e1e1e1;-webkit-transform-origin: 0 100%;transform-origin: 0 100%;-webkit-transform: scaleX(0.5);transform: scaleX(0.5);}
+.bottom_btns_wrap>a:last-child:after{display: none;}
 .bottom_btns_wrap>a.import{background-color: #ff6700;color: #fff;}
 
 /*color*/
