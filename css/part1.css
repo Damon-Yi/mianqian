@@ -78,10 +78,10 @@
 .radio-s1>div:not(:first-child){margin-left:0.2rem;}
 .radio-s1>div.on{background:#7b7b7b;color:#f6f6f6;}
 
-.radio-s2{min-width:1.2rem;height:0.44rem;border-radius: 15px;background:#fff;font-size: 0.24rem;color:#999;border:1px solid #e1e1e1;}
-.radio-s2:not(:first-child){margin-left:0.1rem;}
-.radio-s2.mleft2{margin-left:0.2rem;}
-.radio-s2.on{background:#ff6700;color:#fff;border:1px solid #ff6700;}
+.radio-s2>div{min-width:1.2rem;height:0.44rem;border-radius: 15px;background:#fff;font-size: 0.24rem;color:#999;border:1px solid #e1e1e1;}
+.radio-s2>div:not(:first-child){margin-left:0.1rem;}
+.radio-s2>div.mleft2{margin-left:0.2rem;}
+.radio-s2>div.on{background:#ff6700;color:#fff;border:1px solid #ff6700;}
 
 .input-box{border:none;height: 100%;width: 100%;font-size: 0.26rem;font-family: "STXihei","Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;}
 
