@@ -67,7 +67,7 @@ input[type="button"]{padding:0;}
 .conform_dialog .c_btns>a{color: #333;height:0.8rem;line-height: 0.8rem;display: block;float: left;flex:1;-webkit-flex:1;position: relative;}
 .conform_dialog .c_btns>a:active{background-color: #ff6700;color: #fff;}
 .conform_dialog .c_btns>a:first-child{border-bottom-left-radius: 3px;}
-.conform_dialog .c_btns>a:after{content:" ";position: absolute;right: 0;top: 0;width: 1px;height:100%;border-right: 1px solid #e1e1e1;color: #e1e1e1;-webkit-transform-origin: 0 100%;transform-origin: 0 100%;-webkit-transform: scaleX(0.5);transform: scaleX(0.5);}
+.conform_dialog .c_btns>a:after{content:" ";position: absolute;right: 0;top: 0;width: 1px;height:100%;border-right: 1px solid #e1e1e1;color: #e1e1e1;-webkit-transform-origin: 0 100%;transform-origin: 0 100%;-webkit-transform: scaleX(0.5) translateX(100%);transform: scaleX(0.5) translateX(100%);}
 .conform_dialog .c_btns>a:last-child{border-bottom-right-radius: 3px;}
 .conform_dialog .c_btns>a:last-child:after{display: none;}
 
