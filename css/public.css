@@ -45,8 +45,9 @@ input[type="button"]{padding:0;}
 
 /*弹窗*/
 .layer_container{position: fixed;top: 0;left: 0;z-index: 100;display: table;height: 100%;width: 100%;}
-.layer_container .bg{position: absolute;top: 0;left: 0;right: 0;bottom:0;background: rgba(0,0,0,.6);}
-.layer_container .layer_cont_wrap{display: table-cell;text-align: center;vertical-align: middle;width: 100%;}
+.layer_container .bg{position: absolute;top: 0;left: 0;right: 0;bottom:0;background: rgba(0,0,0,.6);z-index: 1;}
+.layer_container .layer_cont_wrap{display: table-cell;text-align: center;vertical-align: middle;width: 100%;position: relative;
+    z-index: 2;}
 .layer_container .layer_cont{display:block;-webkit-animation: animLayer .4s ease-out;animation: animLayer .4s ease-out;}
 @-webkit-keyframes animLayer {
  from{-webkit-transform: scale(.05);transform: scale(.05);}
@@ -56,7 +57,22 @@ input[type="button"]{padding:0;}
   from{-webkit-transform: scale(.05);transform: scale(.05);}
   to{-webkit-transform: scale(1);transform: scale(1);}
 }
+/*确认弹窗*/
+.conform_dialog{font-size: 0.24rem;color: #333;text-align: center;width: 5.2rem;background-color: #fff;margin: 1rem auto;border-radius: 3px;}
+.conform_dialog .c_cont{padding: 0.4rem 0.24rem;position: relative;}
+.conform_dialog .c_cont:after{content: " ";position: absolute;left: 0;bottom:0;width: 100%;height: 1px;border-top: 1px solid #e1e1e1;color: #e1e1e1;-webkit-transform-origin: 0 100%;transform-origin: 0 100%;-webkit-transform: scaleY(0.5);transform: scaleY(0.5);}
+.conform_dialog .c_cont .c_title{font-size: 0.3rem;}
+.conform_dialog .c_cont .c_txt{text-align: left;margin-top:0.3rem;}
+.conform_dialog .c_btns{font-size: 0.3rem;overflow: auto;position: relative;}
+.conform_dialog .c_btns>a{color: #333;width:50%;height:0.8rem;line-height: 0.8rem;display: block;float: left;}
+.conform_dialog .c_btns .c_btn_left{position: relative;border-bottom-left-radius: 3px;}
+.conform_dialog .c_btns .c_btn_left:after{content: " ";position: absolute;right: 0;top: 0;width: 1px;height:100%;border-right: 1px solid #e1e1e1;color: #e1e1e1;-webkit-transform-origin: 0 100%;transform-origin: 0 100%;-webkit-transform: scaleX(0.5);transform: scaleX(0.5);}
+.conform_dialog .c_btns .c_btn_left:active{background-color: #ff6700;color: #fff;}
+.conform_dialog .c_btns .c_btn_left:active
+.conform_dialog .c_btns .c_btn_right{border-bottom-right-radius: 3px;}
+.conform_dialog .c_btns .c_btn_right:active{background-color: #ff4200;color: #fff;}
 
+        
 /* media */
 /* 横屏 */
 @media screen and (orientation:landscape){

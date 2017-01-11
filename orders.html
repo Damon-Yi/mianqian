@@ -84,20 +84,6 @@
         .orders .o_item .o_mid .o_commodity_info .o_c_right{float: right;}
         .orders .o_item .o_footer{text-align: right;padding: 0.15rem 0.2rem;}
 
-        /*确认弹窗*/
-        .conform_dialog{font-size: 0.24rem;color: #333;text-align: center;width: 5.2rem;background-color: #fff;margin: 1rem auto;border-radius: 3px;}
-        .conform_dialog .c_cont{padding: 0.4rem 0.24rem;position: relative;}
-        .conform_dialog .c_cont:after{content: " ";position: absolute;left: 0;bottom:0;width: 100%;height: 1px;border-top: 1px solid #e1e1e1;color: #e1e1e1;-webkit-transform-origin: 0 100%;transform-origin: 0 100%;-webkit-transform: scaleY(0.5);transform: scaleY(0.5);}
-        .conform_dialog .c_cont .c_title{font-size: 0.3rem;}
-        .conform_dialog .c_cont .c_txt{text-align: left;margin-top:0.3rem;}
-        .conform_dialog .c_btns{font-size: 0.3rem;overflow: auto;position: relative;}
-        .conform_dialog .c_btns>a{color: #333;width:50%;height:0.8rem;line-height: 0.8rem;display: block;float: left;}
-        .conform_dialog .c_btns .c_btn_left{position: relative;border-bottom-left-radius: 3px;}
-        .conform_dialog .c_btns .c_btn_left:after{content: " ";position: absolute;right: 0;top: 0;width: 1px;height:100%;border-right: 1px solid #e1e1e1;color: #e1e1e1;-webkit-transform-origin: 0 100%;transform-origin: 0 100%;-webkit-transform: scaleX(0.5);transform: scaleX(0.5);}
-        .conform_dialog .c_btns .c_btn_left:active{background-color: #ff6700;color: #fff;}
-        .conform_dialog .c_btns .c_btn_left:active
-        .conform_dialog .c_btns .c_btn_right{border-bottom-right-radius: 3px;}
-        .conform_dialog .c_btns .c_btn_right:active{background-color: #ff4200;color: #fff;}
     </style>
 </head>
 <body>
@@ -151,8 +137,8 @@
                             </div>
                         </div>
                         <div class="o_footer">
-                            <a class="mid_btn default_btn" href="javascript:;">取消订单</a>
-                            <a class="mid_btn impor_blank_btn" href="javascript:;">接单</a>
+                            <a class="mid_btn default_btn cancel_order" href="javascript:;">取消订单</a>
+                            <a class="mid_btn impor_blank_btn acc_order" href="javascript:;">接单</a>
                         </div>
                     </div>
                     <div class="o_item">
@@ -243,16 +229,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="conform_dialog">
-                    <div class="c_cont">
-                        <p class="c_title">确认接单</p>
-                        <p class="c_txt">接单后请在1小时内和客户预约面签时间！如您不接此单，系统将在1小时后重新派单。</p>
-                    </div>
-                    <div class="c_btns">
-                        <a class="c_btn_left" href="javascript:;">拒单</a>
-                        <a class="c_btn_right" href="javascript:;">取消</a>
-                    </div>
-                </div>
             </div>
         </div>
         <div class="c_panel">
@@ -294,6 +270,22 @@
 
             loaded();
         }
+        $('.acc_order').on('tap',function(){
+            var dialog = confirmDialog({
+                hasShadowBg:true,
+                title:'确认接单',
+                txt:'接单后1小时内和客户预约面签时间！如您不接此单，系统将在1小时后重新拍单。',
+                leftBtnText:'取消',
+                rightBtnText:'接单',
+                leftBtnCallBak:function(){
+                    dialog.destory();
+                },
+                rightBtnCallBak:function(){
+                    console.log('接单');
+                }
+            });
+            dialog.show();
+        });
     </script>
 </body>
 </html>

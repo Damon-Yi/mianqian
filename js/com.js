@@ -49,7 +49,52 @@ var myLayer = function(params){
 
 /*确认弹框*/
 var confirmDialog = function(params){
+    var me = {};
+    me.params = params?params:{
+        hasShadowBg:true,
+        title:'test',
+        txt:'test info',
+        leftBtnText:'left',
+        rightBtnText:'right',
+        leftBtnCallBak:function(){
+            //me.destory();
+            console.log('click left btn');
+        },
+        rightBtnCallBak:function(){
+            console.log('click right btn');
+        }
+    }
+    me.init = function(){
+        me.layerContainer = $('<div class="layer_container"></div>');
+        me.layerContWrap = $('<div class="layer_cont_wrap"></div>');
+        me.layerBg = $('<div class="bg"></div>');
+        me.dialog = $('<div class="conform_dialog layer_cont"><div class="c_cont"><p class="c_title">'+me.params.title+'</p><p class="c_txt">'+me.params.txt+'</p></div></div>');
+        me.btnsWrap = $('<div class="c_btns"></div>');
+        me.leftBtn = $('<a class="c_btn_left" href="javascript:;">'+me.params.leftBtnText+'</a>');
+        me.rightBtn = $('<a class="c_btn_left" href="javascript:;">'+me.params.rightBtnText+'</a>');
+        me.dialog.append(me.btnsWrap.append(me.leftBtn).append(me.rightBtn));
+        me.layerContainer.append(me.layerContWrap.append(me.dialog));
+        $('body').append(me.layerContainer);
 
+        if(me.params.hasShadowBg){
+            me.layerContainer.prepend(me.layerBg);
+        }
+
+        me.leftBtn.on('tap',function(){
+            me.params.leftBtnCallBak();
+        });
+        me.rightBtn.on('tap',function(){
+            me.params.rightBtnCallBak();
+        });
+    }
+    me.show = function(){
+        me.init();
+    }
+    me.destory = function(){
+        me.layerContainer.remove();
+    }
+
+    return me;
 }
 
 /*提示，弹窗*/
