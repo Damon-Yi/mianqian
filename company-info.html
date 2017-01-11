@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no" />
+    <link href="css/public.css" rel="stylesheet" type="text/css">
+    <link href="plugin/swiper/swiper.3.1.7.min.css" rel="stylesheet" type="text/css">
+    <link href="css/com.css" rel="stylesheet" type="text/css">
+    <link href="css/part1.css" rel="stylesheet" type="text/css">
+    <script src="js/public.js"></script>
+    <script type="text/javascript" src="plugin/iscroll/iscroll.js"></script>
+    <script type="text/javascript">
+        var mainScroll;
+        function loaded () {
+            mainScroll = new IScroll('#body_wrapper',{
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true,
+                click: true 
+            });
+        }
+        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+
+</head>
+<body onload="loaded()">
+    <article id="body_wrapper">
+        <div>
+
+            <!--单位信息-->
+            <div class="bg_white mb40">
+                <div class="t2 pd-lr-20 one_px_border_b">单位信息</div>
+                <div class="pd20 bi one_px_border_b">
+                    <div class="txt-left">单位名称<span class="red">*</span></div>
+                    <div class="txt-right impor_dark">深圳市买买提乐购有限服务有限公司</div>
+                </div>
+                <div class="pd20 bi one_px_border_b">
+                    <div class="txt-left">所属行业<span class="red">*</span></div>
+                    <div class="txt-right impor_dark limit">金融</div>
+                    <div class="right-arrow"><img class="full-size" src="images/right_arrow.png"></div>
+                </div>
+                <div class="pd20 bi one_px_border_b">
+                    <div class="txt-left">单位性质<span class="red">*</span></div>
+                    <div class="txt-right impor_dark limit">民营</div>
+                    <div class="right-arrow"><img class="full-size" src="images/right_arrow.png"></div>
+                </div>
+                <div class="pd20 bi one_px_border_b">
+                    <div class="txt-left">任职部门<span class="red">*</span></div>
+                    <div class="txt-right impor_dark">服务部</div>
+                </div>
+                <div class="pd20 bi">
+                    <div class="txt-left">&#12288;&#12288;职务<span class="red">*</span></div>
+                    <div class="txt-right impor_dark limit">XX</div>
+                    <div class="right-arrow"><img class="full-size" src="images/right_arrow.png"></div>
+                </div>
+                <div class="t2 pd-lr-20">单位地址</div>
+                <div class="pd20 bi one_px_border_b">
+                    <div class="txt-left">单位所在地区<span class="red">*</span></div>
+                    <div class="txt-right impor_dark limit">广东省深圳市福田区</div>
+                    <div class="right-arrow"><img class="full-size" src="images/right_arrow.png"></div>
+                </div>
+                <div class="pd20 bi one_px_border_b">
+                    <div class="txt-left">&#12288;&#12288;具体地址<span class="red">*</span></div>
+                    <div class="txt-right impor_dark limit">彩田路7018号</div>
+                </div>
+                <div class="pd-tb-30 pd-lr-20 one_px_border_b">
+                    <div class="txt-left">过去三年内换工作或开业的次数<span class="red">*</span></div>
+                    <div class="txt-right ml0">
+                        <div class="select-num bi mt20">
+                            <div class="vm"></div>
+                            <div class="com_grey vm">0</div>
+                            <div class="vm"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!--保存-->
+            <div class="one_px_border_t pd-tb-1 bg_white">
+                <a class="big_btn impor_fill_btn" href="javascript:;">保存</a>
+            </div>
+
+        </div>
+    </article>
+    <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
+    <!--<script type="text/javascript" src="plugin/zepto/touch.js"></script>-->
+    <script type="text/javascript" src="plugin/swiper/swiper.3.1.7.min.js"></script>
+    <script src="js/com.js"></script>
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            slidesPerView: 'auto',
+            slideToClickedSlide: true,
+
+        });
+
+        var selectNum = $('.select-num'),
+            nVal=+selectNum.children().eq(1).text();
+        selectNum.on('tap','div:first-child',function(e){
+            nVal--;
+            selectNum.children().eq(1).text(nVal);
+
+        })
+        .on('tap','div:last-child',function(){
+            nVal++;
+            selectNum.children().eq(1).text(nVal);
+        })
+
+
+    </script>
+</body>
+</html>
+
+
