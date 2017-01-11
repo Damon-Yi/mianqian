@@ -37,7 +37,7 @@
                 <div class="pd20 bi one_px_border_b">
                     <div class="txt-left">婚姻状况<span class="red">*</span></div>
                     <div class="txt-right com_grey">
-                        <div class="radio-s2 bi text-center">
+                        <div class="radio-js radio-s2 bi text-center">
                             <div class="on">已婚</div>
                             <div>未婚</div>
                             <div>离异</div>
@@ -81,7 +81,7 @@
                 <div class="pd20 bi one_px_border_b">
                     <div class="txt-left">&#12288;&#12288;亲属关系<span class="red">*</span></div>
                     <div class="txt-right com_grey">
-                        <div class="radio-s2 bi text-center">
+                        <div class="radio-js radio-s2 bi text-center">
                             <div class="on">已婚</div>
                             <div>未婚</div>
                             <div>离异</div>
@@ -96,7 +96,7 @@
                 <div class="pd-tb-30 pd-lr-20 one_px_border_b">
                     <div class="txt-left">亲属联系地址是否同户籍地址<span class="red">*</span></div>
                     <div class="txt-right ml0 impor_dark">
-                        <div class="radio-s2 bi mt20">
+                        <div class="radio-js radio-s2 bi mt20">
                             <div class="text-center on">是</div>
                             <div class="text-center mleft2">否</div>
                         </div>
@@ -120,7 +120,7 @@
         </div>
     </article>
     <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
-    <!--<script type="text/javascript" src="plugin/zepto/touch.js"></script>-->
+    <script type="text/javascript" src="plugin/zepto/touch.js"></script>
     <script type="text/javascript" src="plugin/swiper/swiper.3.1.7.min.js"></script>
     <script src="js/com.js"></script>
     <script>
@@ -133,9 +133,10 @@
         var selectNum = $('.select-num'),
             nVal=+selectNum.children().eq(1).text();
         selectNum.on('tap','div:first-child',function(e){
-            nVal--;
-            selectNum.children().eq(1).text(nVal);
-
+            if(nVal >0){
+                nVal--;
+                selectNum.children().eq(1).text(nVal);
+            }
         })
         .on('tap','div:last-child',function(){
             nVal++;
@@ -143,6 +144,12 @@
         })
 
 
+        var radioJs = $('.radio-js');
+        radioJs.on('tap','div',function(){
+            if(!$(this).hasClass('on')){
+                $(this).addClass('on').siblings().removeClass('on');
+            }
+        })
     </script>
 </body>
 </html>
