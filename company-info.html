@@ -30,53 +30,48 @@
 <body onload="loaded()">
     <article id="body_wrapper">
         <div>
-
             <!--单位信息-->
-            <div class="bg_white mb40">
-                <div class="t2 pd-lr-20 one_px_border_b">单位信息</div>
-                <div class="pd20 bi one_px_border_b">
-                    <div class="txt-left">单位名称<span class="red">*</span></div>
-                    <div class="txt-right impor_dark">深圳市买买提乐购有限服务有限公司</div>
-                </div>
-                <div class="pd20 bi one_px_border_b">
-                    <div class="txt-left">所属行业<span class="red">*</span></div>
-                    <div class="txt-right impor_dark limit">金融</div>
-                    <div class="right-arrow"><img class="full-size" src="images/right_arrow.png"></div>
-                </div>
-                <div class="pd20 bi one_px_border_b">
-                    <div class="txt-left">单位性质<span class="red">*</span></div>
-                    <div class="txt-right impor_dark limit">民营</div>
-                    <div class="right-arrow"><img class="full-size" src="images/right_arrow.png"></div>
-                </div>
-                <div class="pd20 bi one_px_border_b">
-                    <div class="txt-left">任职部门<span class="red">*</span></div>
-                    <div class="txt-right impor_dark">服务部</div>
-                </div>
-                <div class="pd20 bi">
-                    <div class="txt-left">&#12288;&#12288;职务<span class="red">*</span></div>
-                    <div class="txt-right impor_dark limit">XX</div>
-                    <div class="right-arrow"><img class="full-size" src="images/right_arrow.png"></div>
-                </div>
-                <div class="t2 pd-lr-20">单位地址</div>
-                <div class="pd20 bi one_px_border_b">
-                    <div class="txt-left">单位所在地区<span class="red">*</span></div>
-                    <div class="txt-right impor_dark limit">广东省深圳市福田区</div>
-                    <div class="right-arrow"><img class="full-size" src="images/right_arrow.png"></div>
-                </div>
-                <div class="pd20 bi one_px_border_b">
-                    <div class="txt-left">&#12288;&#12288;具体地址<span class="red">*</span></div>
-                    <div class="txt-right impor_dark limit">彩田路7018号</div>
-                </div>
-                <div class="pd-tb-30 pd-lr-20 one_px_border_b">
-                    <div class="txt-left">过去三年内换工作或开业的次数<span class="red">*</span></div>
-                    <div class="txt-right ml0">
-                        <div class="select-num bi mt20">
-                            <div class="vm"></div>
-                            <div class="com_grey vm">0</div>
-                            <div class="vm"></div>
+            <div>
+                <div class="bg_white mb40">
+                    <div class="mt20 pd20 bi one_px_border_b">
+                        <div class="txt-left">&#12288;&#12288;&#12288;邮寄地址<span class="red">*</span></div>
+                        <div class="txt-right">
+                            <div class="radio-js radio-s2 bi text-center">
+                                <div class="on">同公司地址</div>
+                                <div>同个人地址</div>
+                                <div>同户籍地址</div>
+                            </div>
                         </div>
                     </div>
+                    <div class="pd20 bi one_px_border_b">
+                        <div class="txt-left">&#12288;&#12288;&#12288;手机号码<span class="red">*</span></div>
+                        <div class="txt-right impor_dark">139XXXX</div>
+                    </div>
+                    <div class="pd-lr-20 bi one_px_border_b">
+                        <div class="txt-left h80 vm">&#12288;单位座机号码</div>
+                        <div class="txt-right vm"><input class="input-box impor_dark" type="number" placeholder="请输入座机号码"></div>
+                    </div>
+                    <div class="pd-lr-20 bi one_px_border_b">
+                        <div class="txt-left h80 vm">&#12288;&#12288;&#12288;&#12288;QQ号</div>
+                        <div class="txt-right vm"><input class="input-box impor_dark" type="number" placeholder="请输入QQ号"></div>
+                    </div>
+                    <div class="pd-lr-20 bi one_px_border_b">
+                        <div class="txt-left h80 vm">&#12288;&#12288;&#12288;&#12288;微信号</div>
+                        <div class="txt-right vm"><input class="input-box impor_dark" type="text" placeholder="请输入微信号"></div>
+                    </div>
+                    <div class="pd-lr-20 bi one_px_border_b">
+                        <div class="txt-left h80 vm">&#12288;&#12288;&#12288;电子邮箱</div>
+                        <div class="txt-right vm"><input class="input-box impor_dark" type="email" placeholder="请输入邮箱"></div>
+                    </div>
+                    <div class="pd20 bi">
+                        <div class="txt-left">住宅电话登记人</div>
+                        <div class="txt-right impor_dark">木子</div>
+                    </div>
+                </div>
 
+                <!--保存-->
+                <div class="one_px_border_t pd-tb-1 bg_white">
+                    <a class="big_btn impor_fill_btn" href="javascript:;">保存</a>
                 </div>
             </div>
 
@@ -109,6 +104,15 @@
             nVal++;
             selectNum.children().eq(1).text(nVal);
         })
+
+        $('.select-js').on('touchstart',function(){
+            $(this).parent().trigger('tap');
+        })
+        .on('change',function(){
+            $(this).siblings('.limit').text($(this).val())
+        })
+
+
 
 
     </script>

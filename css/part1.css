@@ -23,21 +23,7 @@
 .sub-nav .swiper-wrapper{text-align: center;line-height: 0.74rem;}
 .sub-nav .swiper-wrapper .swiper-slide{width:27%}
 .sub-nav .swiper-wrapper .swiper-slide.swiper-slide-active{color:#ff6700}
-.sub-nav .sub-line{
-    border-bottom: 3px solid #ff6700;
-    display: block;
-    margin-top: 0;
-    margin-left: auto;
-    margin-right: auto;
-    width: 0;
-    -webkit-transition: width 450ms ease-out;
-    -moz-transition: width 450ms ease-out;
-    -ms-transition: width 450ms ease-out;
-    transition: width 450ms ease-out;
-}
-.sub-nav .swiper-wrapper .swiper-slide.swiper-slide-active .sub-line{
-    width: 65%;
-}
+
 /*文本标题*/
 .t1{position: relative;font-size:0.3rem;margin-left: 0.2rem;margin-right:0.2rem;line-height: 0.4rem;}
 .t1:after{content: " ";position: absolute;left: 0;bottom: 0;width: 100%;height: 1px;border-bottom: 1px solid #D9D9D9;color: #D9D9D9;-webkit-transform-origin: 0 100%;transform-origin: 0 100%;-webkit-transform: scaleY(0.5);transform: scaleY(0.5);}
@@ -96,6 +82,9 @@
 /*右*/
 .select-num>div:last-child{border-top-right-radius:3px;border-bottom-right-radius:3px;position: relative;}
 .select-num>div:last-child:before{content: "";position: absolute;top:45%;left:30%;width: 40%;height: 2px;background: #999;}
-.select-num>div:last-child:after{content: "";position: absolute;top:45%;left:30%;width: 40%;height: 2px;background: #999;transform: rotate(90deg);}
+.select-num>div:last-child:after{content: "";position: absolute;top:45%;left:30%;width: 40%;height: 2px;background: #999;transform: rotate(90deg);-webkit-transform: rotate(90deg);}
 
+.select-cs{position: relative;}
+.select-cs:active{background: #f6f6f6;}
+.select-js{position: absolute;top:0;left:0;width:100%;height:100%;opacity: 0;}
 /*冯恺 eof*/
