@@ -12,194 +12,546 @@
     <script src="js/public.js"></script>
     <script type="text/javascript" src="plugin/iscroll/iscroll.js"></script>
     <script type="text/javascript">
-        var mainScroll;
         function loaded () {
-            mainScroll = new IScroll('#body_wrapper',{
-                scrollbars: true,
-                mouseWheel: true,
-                interactiveScrollbars: true,
-                shrinkScrollbars: 'scale',
-                fadeScrollbars: true,
-                click: true 
-            });
+            for(var i=1;i<=8;i++){
+                new IScroll('.c_panel_'+i,{
+                    scrollbars: true,
+                    mouseWheel: true,
+                    interactiveScrollbars: true,
+                    shrinkScrollbars: 'scale',
+                    fadeScrollbars: true,
+                    click: true
+                });
+            }
+
         }
         document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
     </script>
+    <style>
+        .top_tab{overflow: hidden;}
+        .top_tab .swiper-slide{width: 25%;}
+        .top_tab .action_line{width: 25%;}
+    </style>
 </head>
-<body onload="loaded()">
-    <article id="body_wrapper">
-        <div>
-            <div class="sub-nav bg_white">
-                <div class="swiper-container">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">订单信息<i class="sub-line"></i></div>
-                        <div class="swiper-slide">个人信息<i class="sub-line"></i></div>
-                        <div class="swiper-slide">家庭信息<i class="sub-line"></i></div>
-                        <div class="swiper-slide">单位信息<i class="sub-line"></i></div>
-                        <div class="swiper-slide">联系方式<i class="sub-line"></i></div>
-                        <div class="swiper-slide">还款信息<i class="sub-line"></i></div>
-                        <div class="swiper-slide">其它信息<i class="sub-line"></i></div>
-                        <div class="swiper-slide">协审<i class="sub-line"></i></div>
-                    </div>
-                </div>
+<body>
+    <!--内容导航-->
+    <div class="top_tab">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="top_tab_item on"><a class="top_tab_a" href="javascript:;">订单信息</a></div>
             </div>
-
-            <div>
-                <div class="pd20 err-txt red">申请被退回，[家庭信息]部分有错误！请及时更改！如已更改，请忽略此条信息！</div>
+            <div class="swiper-slide">
+                <div class="top_tab_item"><a class="top_tab_a" href="javascript:;">个人信息</a></div>
             </div>
-            <!--商品信息-->
-            <div class="mt20 bg_white">
-                <div class="t1 pd-tb-20">商品信息</div>
-                <div class="mt20 pd20 bi">
-                    <div class="txt-left">渠道信息</div>
-                    <div class="txt-right com_grey">京东商城</div>
-                </div>
-                <div class="pd20 bi">
-                    <div class="txt-left">是否代购</div>
-                    <div class="txt-right com_grey">是</div>
-                </div>
-                <div class="pd20 bi">
-                    <div class="txt-left">商品描述</div>
-                    <div class="txt-right com_grey">Apple iPone 6s Plus(A1699) 64G 玫瑰金色 移动联通电信4G上门</div>
-                </div>
-                <div class="pd20 bi">
-                    <div class="txt-left">商口金额</div>
-                    <div class="txt-right com_grey">1800.00</div>
-                </div>
-                <div class="pd20 bi">
-                    <div class="txt-left">商品总额</div>
-                    <div class="txt-right com_grey">5000.00</div>
-                </div>
-                <div class="pd20 bi">
-                    <div class="txt-left">备注信息</div>
-                    <div class="txt-right com_grey">无</div>
-                </div>
+            <div class="swiper-slide">
+                <div class="top_tab_item"><a class="top_tab_a" href="javascript:;">家庭信息</a></div>
             </div>
-
-            <!--分期方案-->
-            <div class="mt20 bg_white">
-                <div class="t1 pd-tb-20">分期方案</div>
-                <div class="pd20 bi">
-                    <div class="txt-left">首付比例</div>
-                    <div class="txt-right com_grey">10%</div>
-                </div>
-                <div class="pd20 bi">
-                    <div class="txt-left">首付金额</div>
-                    <div class="txt-right com_grey">300.00</div>
-                </div>
-                <div class="pd20 bi">
-                    <div class="txt-left">分期金额</div>
-                    <div class="txt-right com_grey">300.00</div>
-                </div>
-                <div class="pd20 bi">
-                    <div class="txt-left">分期数</div>
-                    <div class="txt-right com_grey">6期</div>
-                </div>
-                <div class="pd20 bi">
-                    <div class="txt-left">还款信息</div>
-                    <div class="txt-right com_grey">238.00元/期<br><div class="font24">(含每期分期服务费23.00)</div></div>
-                </div>
+            <div class="swiper-slide">
+                <div class="top_tab_item"><a class="top_tab_a" href="javascript:;">单位信息</a></div>
             </div>
-
-            <!--还款计划-->
-            <div class="mt20 bg_white">
-                <div class="t1 pd-tb-20">还款计划<div class="tit-ico"><img class="full-size vm" src="images/warn.png"></div></div>
-                <div class="pd20 bi">
-                    <div class="txt-left">&#12288;首期还款</div>
-                    <div class="txt-right com_grey ml3">300.00<br><div class="font24">(含服务费40元)</div></div>
-                    <div class="txt-right com_grey vm ml3">2016-08-20</div>
-                </div>
-                <div class="pd20 bi">
-                    <div class="txt-left">2至5期还款</div>
-                    <div class="txt-right com_grey ml3">300.00<br><div class="font24">(含服务费40元)</div></div>
-                    <div class="txt-right com_grey vm ml3">每月19日</div>
-                </div>
-                <div class="pd20 bi">
-                    <div class="txt-left">&#12288;尾期还款</div>
-                    <div class="txt-right com_grey ml3">300.00<br><div class="font24">(含服务费40元)</div></div>
-                    <div class="txt-right com_grey vm ml3">2017-08-19</div>
-                </div>
+            <div class="swiper-slide">
+                <div class="top_tab_item"><a class="top_tab_a" href="javascript:;">联系方式</a></div>
             </div>
-
-            <!--收货信息-->
-            <div class="mt20 mb40 bg_white">
-                <div class="t1 pd-tb-20">收货信息</div>
-                <div class="pd20 bi">
-                    <div class="txt-left">客户姓名</div>
-                    <div class="txt-right com_grey">刘乐</div>
-                </div>
-                <div class="pd20 bi">
-                    <div class="txt-left">联系电话</div>
-                    <div class="txt-right com_grey">189XXXXXXXX</div>
-                </div>
-                <div class="pd20 bi">
-                    <div class="txt-left">收货地址</div>
-                    <div class="txt-right com_grey">广东省深圳市福田区梅林街道彩田路1889号新浩e都A9楼</div>
-                </div>
-                <div class="t2 pd-lr-20">补充订单</div>
-                <div class="pd20 bi one_px_border_b">
-                    <div class="txt-left">商品品类<span class="red">*</span></div>
-                    <div class="txt-right impor_dark limit">XXXXX</div>
-                    <div class="right-arrow"><img class="full-size" src="images/right_arrow.png"></div>
-                </div>
-                <div class="pd20 bi one_px_border_b">
-                    <div class="txt-left">商品类型<span class="red">*</span></div>
-                    <div class="txt-right impor_dark limit">XXXXX</div>
-                    <div class="right-arrow"><img class="full-size" src="images/right_arrow.png"></div>
-                </div>
-                <div class="pd-lr-20 bi one_px_border_b">
-                    <div class="txt-left h80 vm">商品品牌<span class="red">*</span></div>
-                    <div class="txt-right vm"><input class="input-box impor_dark" type="text" placeholder="请输入商品品牌"></div>
-                </div>
-                <div class="pd-lr-20 bi">
-                    <div class="txt-left h80 vm">商品型号<span class="red">*</span></div>
-                    <div class="txt-right vm"><input class="input-box impor_dark" type="text" placeholder="请输入商品型号"></div>
-                </div>
-                <div class="t2 pd-lr-20">增值服务</div>
-                <div class="pd-lr-20 bi">
-                    <div class="txt-left h80 com_dark vm">是否投保<span class="com_grey">*</span>&#12288;</div>
-                    <div class="txt-right vm">
-                        <div class="radio-js radio-s1 bi text-center">
-                            <div class="on">是</div>
-                            <div>否</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="pd-lr-20 bi">
-                    <div class="txt-left h80 com_dark vm">是否随心还<span class="com_grey">*</span></div>
-                    <div class="txt-right vm">
-                        <div class="radio-js radio-s1 bi text-center">
-                            <div class="on">是</div>
-                            <div>否</div>
-                        </div>
-                    </div>
-                </div>
+            <div class="swiper-slide">
+                <div class="top_tab_item"><a class="top_tab_a" href="javascript:;">还款信息</a></div>
             </div>
-
-            <!--保存-->
-            <div class="one_px_border_t pd-tb-1 bg_white">
-                <a class="big_btn impor_fill_btn" href="javascript:;">保存</a>
+            <div class="swiper-slide">
+                <div class="top_tab_item"><a class="top_tab_a" href="javascript:;">其它信息</a></div>
             </div>
-
+            <div class="swiper-slide">
+                <div class="top_tab_item"><a class="top_tab_a" href="javascript:;">协审</a></div>
+            </div>
+            <div class="action_line"></div>
         </div>
-    </article>
+    </div>
+
+    <div class="cont_box bottom_cont_box">
+        <!--订单信息-->
+        <div class="c_panel c_panel_1 active">
+            <div>
+                <!--错误提示-->
+                <div>
+                    <div class="pd20 err-txt red">申请被退回，[家庭信息]部分有错误！请及时更改！如已更改，请忽略此条信息！</div>
+                </div>
+                <!--商品信息-->
+                <div class="mt20 bg_white">
+                    <div class="t1 pd-tb-20">商品信息</div>
+                    <div class="mt20 pd20 fbox">
+                        <div class="txt-left">渠道信息</div>
+                        <div class="txt-right com_grey">京东商城</div>
+                    </div>
+                    <div class="pd20 fbox">
+                        <div class="txt-left">是否代购</div>
+                        <div class="txt-right com_grey">是</div>
+                    </div>
+                    <div class="pd20 fbox">
+                        <div class="txt-left">商品描述</div>
+                        <div class="txt-right com_grey">Apple iPone 6s Plus(A1699) 64G 玫瑰金色 移动联通电信4G上门</div>
+                    </div>
+                    <div class="pd20 fbox">
+                        <div class="txt-left">商品金额</div>
+                        <div class="txt-right com_grey">1800.00</div>
+                    </div>
+                    <div class="pd20 fbox">
+                        <div class="txt-left">商品总额</div>
+                        <div class="txt-right com_grey">5000.00</div>
+                    </div>
+                    <div class="pd20 fbox">
+                        <div class="txt-left">备注信息</div>
+                        <div class="txt-right com_grey">无</div>
+                    </div>
+                </div>
+
+                <!--分期方案-->
+                <div class="mt20 bg_white">
+                    <div class="t1 pd-tb-20">分期方案</div>
+                    <div class="pd20 fbox">
+                        <div class="txt-left">首付比例</div>
+                        <div class="txt-right com_grey">10%</div>
+                    </div>
+                    <div class="pd20 fbox">
+                        <div class="txt-left">首付金额</div>
+                        <div class="txt-right com_grey">300.00</div>
+                    </div>
+                    <div class="pd20 fbox">
+                        <div class="txt-left">分期金额</div>
+                        <div class="txt-right com_grey">300.00</div>
+                    </div>
+                    <div class="pd20 fbox">
+                        <div class="txt-left">分期数</div>
+                        <div class="txt-right com_grey">6期</div>
+                    </div>
+                    <div class="pd20 fbox">
+                        <div class="txt-left">还款信息</div>
+                        <div class="txt-right com_grey">238.00元/期<br><div class="font24">(含每期分期服务费23.00)</div></div>
+                    </div>
+                </div>
+
+                <!--还款计划-->
+                <div class="mt20 bg_white">
+                    <div class="t1 pd-tb-20">还款计划<div class="tit-ico"><img class="full-size vm" src="images/warn.png"></div></div>
+                    <div class="pd20 fbox">
+                        <div class="txt-left">&#12288;首期还款</div>
+                        <div class="txt-right com_grey ml3">300.00<br><div class="font24">(含服务费40元)</div></div>
+                        <div class="txt-right com_grey vm ml3">2016-08-20</div>
+                    </div>
+                    <div class="pd20 fbox">
+                        <div class="txt-left">2至5期还款</div>
+                        <div class="txt-right com_grey ml3">300.00<br><div class="font24">(含服务费40元)</div></div>
+                        <div class="txt-right com_grey vm ml3">每月19日</div>
+                    </div>
+                    <div class="pd20 fbox">
+                        <div class="txt-left">&#12288;尾期还款</div>
+                        <div class="txt-right com_grey ml3">300.00<br><div class="font24">(含服务费40元)</div></div>
+                        <div class="txt-right com_grey vm ml3">2017-08-19</div>
+                    </div>
+                </div>
+
+                <!--收货信息-->
+                <div class="mt20 mb40 bg_white">
+                    <div class="t1 pd-tb-20">收货信息</div>
+                    <div class="pd20 fbox">
+                        <div class="txt-left">客户姓名</div>
+                        <div class="txt-right com_grey">刘乐</div>
+                    </div>
+                    <div class="pd20 fbox">
+                        <div class="txt-left">联系电话</div>
+                        <div class="txt-right com_grey">189XXXXXXXX</div>
+                    </div>
+                    <div class="pd20 fbox">
+                        <div class="txt-left">收货地址</div>
+                        <div class="txt-right com_grey">广东省深圳市福田区梅林街道彩田路1889号新浩e都A9楼</div>
+                    </div>
+                    <div class="t2 pd-lr-20">补充订单</div>
+                    <div class="pd20 fbox one_px_border_b">
+                        <div class="txt-left">商品品类<span class="red">*</span></div>
+                        <div class="txt-right impor_dark">XXXXX</div>
+                        <div class="right-arrow"><img class="full-size" src="images/right_arrow.png"></div>
+                    </div>
+                    <div class="pd20 fbox one_px_border_b">
+                        <div class="txt-left">商品类型<span class="red">*</span></div>
+                        <div class="txt-right impor_dark">XXXXX</div>
+                        <div class="right-arrow"><img class="full-size" src="images/right_arrow.png"></div>
+                    </div>
+                    <div class="pd-lr-20 bi one_px_border_b">
+                        <div class="txt-left h80 vm">商品品牌<span class="red">*</span></div>
+                        <div class="txt-right vm"><input class="input-box impor_dark" type="text" placeholder="请输入商品品牌"></div>
+                    </div>
+                    <div class="pd-lr-20 bi">
+                        <div class="txt-left h80 vm">商品型号<span class="red">*</span></div>
+                        <div class="txt-right vm"><input class="input-box impor_dark" type="text" placeholder="请输入商品型号"></div>
+                    </div>
+                    <div class="t2 pd-lr-20">增值服务</div>
+                    <div class="pd-lr-20 bi">
+                        <div class="txt-left h80 com_dark vm">是否投保<span class="com_grey">*</span>&#12288;</div>
+                        <div class="txt-right vm">
+                            <div class="radio-js radio-s1 bi text-center">
+                                <div class="on">是</div>
+                                <div>否</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pd-lr-20 bi">
+                        <div class="txt-left h80 com_dark vm">是否随心还<span class="com_grey">*</span></div>
+                        <div class="txt-right vm">
+                            <div class="radio-js radio-s1 bi text-center">
+                                <div class="on">是</div>
+                                <div>否</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--保存-->
+                <div class="one_px_border_t pd-tb-1 bg_white">
+                    <a class="big_btn impor_fill_btn" href="javascript:;">保存</a>
+                </div>
+
+            </div>
+        </div>
+        <!--个人信息-->
+        <div class="c_panel c_panel_2">
+            <div>
+                <!--身份信息-->
+                <div class="bg_white mb40">
+                    <div class="t2 pd-lr-20 one_px_border_b">身份信息</div>
+                    <div class="pd20 fbox one_px_border_b">
+                        <div class="txt-left">客户姓名<span class="red">*</span></div>
+                        <div class="txt-right com_grey">刘乐</div>
+                    </div>
+                    <div class="pd20 fbox one_px_border_b">
+                        <div class="txt-left">身份证号<span class="red">*</span></div>
+                        <div class="txt-right com_grey">12345544333333434</div>
+                    </div>
+                    <div class="pd20 fbox one_px_border_b">
+                        <div class="txt-left">签发机关<span class="red">*</span></div>
+                        <div class="txt-right impor_dark">深圳市福田机关</div>
+                    </div>
+                    <div class="pd20 fbox one_px_border_b">
+                        <div class="txt-left">到期日期<span class="red">*</span></div>
+                        <div class="txt-right impor_dark">2026-05-31</div>
+                    </div>
+                    <div class="pd20 bi">
+                        <div class="txt-left">参考代码<span class="red">*</span></div>
+                        <div class="txt-right com_grey">
+                            <div class="radio-s2 bi text-center">
+                                <div class="on">1</div>
+                                <div>2</div>
+                                <div>3</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="t2 pd-lr-20">户籍地址</div>
+                    <div class="pd20 fbox one_px_border_b">
+                        <div class="txt-left">所在地区<span class="red">*</span></div>
+                        <div class="txt-right impor_dark">广东省深圳市福田区</div>
+                        <div class="right-arrow"><img class="full-size" src="images/right_arrow.png"></div>
+                    </div>
+                    <div class="pd20 fbox">
+                        <div class="txt-left">具体地址<span class="red">*</span></div>
+                        <div class="txt-right impor_dark">彩田路7018号</div>
+                    </div>
+                    <div class="t2 pd-lr-20">现居住地址</div>
+                    <div class="pd-tb-30 pd-lr-20 one_px_border_b">
+                        <div class="txt-left">现居住地址是否同户籍地址<span class="red">*</span></div>
+                        <div class="txt-right ml0 impor_dark">
+                            <div class="radio-s2 bi mt20">
+                                <div class="text-center on">是</div>
+                                <div class="text-center">否</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pd20 fbox one_px_border_b">
+                        <div class="txt-left">所在地区<span class="red">*</span></div>
+                        <div class="txt-right impor_dark">广东省深圳市福田区</div>
+                        <div class="right-arrow"><img class="full-size" src="images/right_arrow.png"></div>
+                    </div>
+                    <div class="pd20 fbox">
+                        <div class="txt-left">具体地址<span class="red">*</span></div>
+                        <div class="txt-right impor_dark">彩田路7018号</div>
+                    </div>
+                </div>
+
+                <!--保存-->
+                <div class="one_px_border_t pd-tb-1 bg_white">
+                    <a class="big_btn impor_fill_btn" href="javascript:;">保存</a>
+                </div>
+
+            </div>
+        </div>
+        <!--家庭信息-->
+        <div class="c_panel c_panel_3">
+            <div>
+                <!--家庭-->
+                <div class="bg_white">
+                    <div class="t2 pd-lr-20 one_px_border_b">家庭</div>
+                    <div class="pd20 bi one_px_border_b">
+                        <div class="txt-left">婚姻状况<span class="red">*</span></div>
+                        <div class="txt-right com_grey">
+                            <div class="radio-js radio-s2 bi text-center">
+                                <div class="on">已婚</div>
+                                <div>未婚</div>
+                                <div>离异</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pd-lr-20 bi one_px_border_b">
+                        <div class="txt-left h80 vm">子女数目<span class="red">*</span></div>
+                        <div class="txt-right vm">
+                            <div class="select-num bi">
+                                <div class="vm"></div>
+                                <div class="com_grey vm">0</div>
+                                <div class="vm"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pd20 fbox">
+                        <div class="txt-left">住房类型<span class="red">*</span></div>
+                        <div class="txt-right impor_dark">自有房</div>
+                        <div class="right-arrow"><img class="full-size" src="images/right_arrow.png"></div>
+                    </div>
+                </div>
+                <div class="bg_white mt20 mb40">
+                    <div class="pd20 fbox one_px_border_b">
+                        <div class="txt-left">&#12288;每月生活总支出<span class="red">*</span></div>
+                        <div class="txt-right impor_dark">3000</div>
+                    </div>
+                    <div class="pd20 fbox one_px_border_b">
+                        <div class="txt-left">&#12288;个人税后月收入<span class="red">*</span></div>
+                        <div class="txt-right impor_dark">3000</div>
+                    </div>
+                    <div class="pd20 fbox">
+                        <div class="txt-left">现有银行贷款余额<span class="o0">*</span></div>
+                        <div class="txt-right impor_dark">3000</div>
+                    </div>
+                    <div class="t2 pd-lr-20">亲属</div>
+                    <div class="pd20 fbox one_px_border_b">
+                        <div class="txt-left">&#12288;&#12288;亲属性名<span class="red">*</span></div>
+                        <div class="txt-right com_grey">后羿</div>
+                    </div>
+                    <div class="pd20 bi one_px_border_b">
+                        <div class="txt-left">&#12288;&#12288;亲属关系<span class="red">*</span></div>
+                        <div class="txt-right com_grey">
+                            <div class="radio-js radio-s2 bi text-center">
+                                <div class="on">已婚</div>
+                                <div>未婚</div>
+                                <div>离异</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pd20 fbox one_px_border_b">
+                        <div class="txt-left">亲属联系电话<span class="red">*</span></div>
+                        <div class="txt-right impor_dark limit">137XXXXXXXX</div>
+                        <div class="right-arrow"><img class="full-size" src="images/right_arrow.png"></div>
+                    </div>
+                    <div class="pd-tb-30 pd-lr-20 one_px_border_b">
+                        <div class="txt-left">亲属联系地址是否同户籍地址<span class="red">*</span></div>
+                        <div class="txt-right ml0 impor_dark">
+                            <div class="radio-js radio-s2 bi mt20">
+                                <div class="text-center on">是</div>
+                                <div class="text-center mleft2">否</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pd20 fbox one_px_border_b">
+                        <div class="txt-left">亲属联系地址<span class="red">*</span></div>
+                        <div class="txt-right impor_dark">广东省深圳市福田区</div>
+                    </div>
+                    <div class="pd20 fbox">
+                        <div class="txt-left">&#12288;&#12288;具体地址<span class="red">*</span></div>
+                        <div class="txt-right impor_dark">彩田路7018号</div>
+                    </div>
+                </div>
+
+                <!--保存-->
+                <div class="one_px_border_t pd-tb-1 bg_white">
+                    <a class="big_btn impor_fill_btn" href="javascript:;">保存</a>
+                </div>
+
+            </div>
+        </div>
+        <!--单位信息-->
+        <div class="c_panel c_panel_4">
+            <div>
+                <!--单位信息-->
+                <div class="bg_white mb40">
+                    <div class="t2 pd-lr-20 one_px_border_b">单位信息</div>
+                    <div class="pd20 fbox one_px_border_b">
+                        <div class="txt-left">单位名称<span class="red">*</span></div>
+                        <div class="txt-right impor_dark">深圳市买买提乐购有限服务有限公司</div>
+                    </div>
+                    <div class="pd20 fbox one_px_border_b select-cs">
+                        <div class="txt-left">所属行业<span class="red">*</span></div>
+                        <div class="txt-right impor_dark">金融</div>
+                        <div class="right-arrow"><img class="full-size" src="images/right_arrow.png"></div>
+                        <select class="select-js" name="">
+                            <option value="金融" selected>金融</option>
+                            <option value="金融2">金融2</option>
+                            <option value="金融3">金融3</option>
+                        </select>
+                    </div>
+
+                    <div class="pd20 fbox one_px_border_b">
+                        <div class="txt-left">单位性质<span class="red">*</span></div>
+                        <div class="txt-right impor_dark">民营</div>
+                        <div class="right-arrow"><img class="full-size" src="images/right_arrow.png"></div>
+                    </div>
+                    <div class="pd20 fbox one_px_border_b">
+                        <div class="txt-left">任职部门<span class="red">*</span></div>
+                        <div class="txt-right impor_dark">服务部</div>
+                    </div>
+                    <div class="pd20 fbox">
+                        <div class="txt-left">&#12288;&#12288;职务<span class="red">*</span></div>
+                        <div class="txt-right impor_dark">XX</div>
+                        <div class="right-arrow"><img class="full-size" src="images/right_arrow.png"></div>
+                    </div>
+                    <div class="t2 pd-lr-20">单位地址</div>
+                    <div class="pd20 fbox one_px_border_b">
+                        <div class="txt-left">单位所在地区<span class="red">*</span></div>
+                        <div class="txt-right impor_dark">广东省深圳市福田区</div>
+                        <div class="right-arrow"><img class="full-size" src="images/right_arrow.png"></div>
+                    </div>
+                    <div class="pd20 fbox one_px_border_b">
+                        <div class="txt-left">&#12288;&#12288;具体地址<span class="red">*</span></div>
+                        <div class="txt-right impor_dark">彩田路7018号</div>
+                    </div>
+                    <div class="pd-tb-30 pd-lr-20 one_px_border_b">
+                        <div class="txt-left">过去三年内换工作或开业的次数<span class="red">*</span></div>
+                        <div class="txt-right ml0">
+                            <div class="select-num bi mt20">
+                                <div class="vm"></div>
+                                <div class="com_grey vm">0</div>
+                                <div class="vm"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!--保存-->
+                <div class="one_px_border_t pd-tb-1 bg_white">
+                    <a class="big_btn impor_fill_btn" href="javascript:;">保存</a>
+                </div>
+
+            </div>
+        </div>
+        <!--联系方式-->
+        <div class="c_panel c_panel_5">
+            <div>
+                <div class="bg_white mb40">
+                    <div class="mt20 pd20 bi one_px_border_b">
+                        <div class="txt-left">&#12288;&#12288;&#12288;邮寄地址<span class="red">*</span></div>
+                        <div class="txt-right">
+                            <div class="radio-js radio-s2 bi text-center">
+                                <div class="on">同公司地址</div>
+                                <div>同个人地址</div>
+                                <div>同户籍地址</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pd20 fbox one_px_border_b">
+                        <div class="txt-left">&#12288;&#12288;&#12288;手机号码<span class="red">*</span></div>
+                        <div class="txt-right impor_dark">139XXXX</div>
+                    </div>
+                    <div class="pd-lr-20 bi one_px_border_b">
+                        <div class="txt-left h80 vm">&#12288;单位座机号码</div>
+                        <div class="txt-right vm"><input class="input-box impor_dark" type="number" placeholder="请输入座机号码"></div>
+                    </div>
+                    <div class="pd-lr-20 bi one_px_border_b">
+                        <div class="txt-left h80 vm">&#12288;&#12288;&#12288;&#12288;QQ号</div>
+                        <div class="txt-right vm"><input class="input-box impor_dark" type="number" placeholder="请输入QQ号"></div>
+                    </div>
+                    <div class="pd-lr-20 bi one_px_border_b">
+                        <div class="txt-left h80 vm">&#12288;&#12288;&#12288;&#12288;微信号</div>
+                        <div class="txt-right vm"><input class="input-box impor_dark" type="text" placeholder="请输入微信号"></div>
+                    </div>
+                    <div class="pd-lr-20 bi one_px_border_b">
+                        <div class="txt-left h80 vm">&#12288;&#12288;&#12288;电子邮箱</div>
+                        <div class="txt-right vm"><input class="input-box impor_dark" type="email" placeholder="请输入邮箱"></div>
+                    </div>
+                    <div class="pd20 bi">
+                        <div class="txt-left">住宅电话登记人</div>
+                        <div class="txt-right impor_dark">木子</div>
+                    </div>
+                </div>
+
+                <!--保存-->
+                <div class="one_px_border_t pd-tb-1 bg_white">
+                    <a class="big_btn impor_fill_btn" href="javascript:;">保存</a>
+                </div>
+            </div>
+        </div>
+        <div class="c_panel c_panel_6">
+            5
+        </div>
+        <div class="c_panel c_panel_7">
+            5
+        </div>
+        <div class="c_panel c_panel_8">
+            5
+        </div>
+    </div>
+
     <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
-    <script type="text/javascript" src="plugin/zepto/touch.js"></script>
+    <!--<script type="text/javascript" src="plugin/zepto/touch.js"></script>-->
     <script type="text/javascript" src="plugin/swiper/swiper.3.1.7.min.js"></script>
     <script src="js/com.js"></script>
     <script>
-        var swiper = new Swiper('.swiper-container', {
+        window.onload = function() {
+            /*头部导航*/
+            var topTabSwiper = new Swiper('.top_tab',{
+                freeMode : false,
+                slidesPerView : 'auto',
+                onTap: function(swiper){
+                    /*文字颜色*/
+                    $('.top_tab .top_tab_item').removeClass('on');
+                    var topTabItem = $(topTabSwiper.clickedSlide).find('.top_tab_item');
+                    topTabItem.addClass('on');
+                    /**/
+                    var actionLine = $('.top_tab .action_line');
+                    actionLine.css('left',topTabSwiper.clickedIndex*25+'%');
+                    /**/
+                    //$('.bottom_cont_box .c_panel').removeClass('active');
+                    $('.bottom_cont_box .c_panel').eq(topTabSwiper.clickedIndex).addClass('active').siblings().removeClass('active');
+                }
+            });
+
+            loaded();
+        }
+        /*var swiper = new Swiper('.swiper-container', {
             slidesPerView: 'auto',
             slideToClickedSlide: true,
 
-        });
-
+        });*/
+//        radioJs
         var radioJs = $('.radio-js');
         radioJs.on('tap','div',function(){
             if(!$(this).hasClass('on')){
                 $(this).addClass('on').siblings().removeClass('on');
             }
         })
+
+        $('.select-js').on('touchstart',function(){
+                    $(this).parent().trigger('tap');
+                })
+                .on('change',function(){
+                    $(this).siblings('.limit').text($(this).val())
+                })
+
+        //selectNum
+
+        /*$('.select-num').on('click','div:first-child',function(e){
+            var nVal=+$(this).children().eq(1).text();
+            if(nVal >0){
+                nVal--;
+                $(this).children().eq(1).text(nVal);
+            }
+        })
+        .on('click','div:last-child',function(){
+            var nVal=+$(this).children().eq(1).text();
+            nVal++;
+            $(this).children().eq(1).text(nVal);
+        })*/
     </script>
 </body>
 </html>
