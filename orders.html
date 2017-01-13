@@ -8,22 +8,92 @@
     <link href="css/public.css" rel="stylesheet" type="text/css">
     <link href="css/com.css" rel="stylesheet" type="text/css">
     <link href="plugin/swiper/swiper.3.1.7.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="plugin/iscroll/iscroll.css">
     <script src="js/public.js"></script>
     <script type="text/javascript" src="plugin/swiper/swiper.3.1.7.min.js"></script>
     <script type="text/javascript" src="plugin/iscroll/iscroll.js"></script>
     <script type="text/javascript">
         var mainScroll;
         function loaded () {
-            mainScroll = new IScroll('.c_panel_1',{
+            initScroll('c_panel_1');
+            document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+        }
+
+        function initScroll(str){
+            var downIcon,upIcon,scrollerPullDown,scrollerPullUp,pullUpMsg,upLoading,downLoading,pullDownMsg; 
+            downIcon = $("."+str+" .down-icon");
+            pullDownMsg = $("."+str+" .pull-down-msg");
+            scrollerPullDown = $("."+str+" .scroller-pullDown");
+            scrollerPullUp = $("."+str+" .scroller-pullUp");
+            upLoading = $("."+str+" .scroller-pullUp .loading");
+            downLoading = $("."+str+" .scroller-pullDown .loading");
+            upIcon = $("."+str+" .up-icon");
+            pullUpMsg = $("."+str+" .pull-up-msg");
+
+            var tuwenScroller = new IScroll('.'+str, {
+                probeType: 3,
                 scrollbars: true,
                 mouseWheel: true,
                 interactiveScrollbars: true,
                 shrinkScrollbars: 'scale',
-                fadeScrollbars: true,
-                click: true 
+                fadeScrollbars: true
+            });
+            tuwenScroller.on("scroll",function(){
+                var y = this.y,
+                    maxY = this.maxScrollY - y,
+                    downHasClass = downIcon.hasClass("reverse_icon"),
+                    upHasClass = upIcon.hasClass("reverse_icon");
+                
+                if(y >= 40){
+                    !downHasClass && downIcon.addClass("reverse_icon") && pullDownMsg.text('松手开始更新');
+                    return "";
+                }else if(y < 40 && y > 0){
+                    downHasClass && downIcon.removeClass("reverse_icon") && pullDownMsg.text('下拉刷新');
+                    return "";
+                }
+                
+                if(maxY >= 40){
+                    !upHasClass && upIcon.addClass("reverse_icon") && pullUpMsg.text('松手开始更新');
+                    return "";
+                }else if(maxY < 40 && maxY >=0){
+                    upHasClass && upIcon.removeClass("reverse_icon") && pullUpMsg.text('上拉查看更多');
+                    return "";
+                }
+            });
+            tuwenScroller.on("slideUp",function(){
+                if(this.maxScrollY - this.y > 40){
+                    //alert("slideUp");
+                    upIcon.css('display','none');
+                    pullUpMsg.css('display','none');
+                    upLoading.css('display','inline-block');
+                    setTimeout(function(){
+                        upIcon.css('display','inline-block');
+                        pullUpMsg.css('display','inline-block');
+                        upLoading.css('display','none'); 
+                        console.log('load more...');
+                        tuwenScroller.refresh();
+                    },3000);
+                    
+                }
+            });
+            tuwenScroller.on("slideDown",function(){
+                if(this.y > 40){
+                    //alert("slideDown");
+                    scrollerPullDown.css({'position':'relative','top':'0'});
+                    downIcon.css('display','none');
+                    pullDownMsg.css('display','none');
+                    downLoading.css('display','inline-block');
+                    setTimeout(function(){
+                        scrollerPullDown.css({'position':'absolute','top':'-0.7rem'});
+                        downIcon.css('display','inline-block');
+                        pullDownMsg.css('display','inline-block');
+                        downLoading.css('display','none'); 
+                        console.log('refresh');
+                        tuwenScroller.refresh();
+                    },3000);
+                }
             });
         }
-        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
     </script>
     <style>
         .orders{font-size:0.26rem;color: #333;line-height: 1;}
@@ -95,6 +165,11 @@
     <div class="cont_box bottom_cont_box">
         <div class="c_panel c_panel_1 active">
             <div>
+                <div class="scroller-pullDown">
+                    <span class="pull-down-icon down-icon"></span>
+                    <span class="pull-down-msg">下拉刷新</span>
+                    <span class="loading"></span>
+                </div>
                 <div class="orders">
                     <div class="o_item">
                         <div class="o_tips"><img src="images/warn.png" alt=""><span>订单已被审核退回，请重新提单！</span></div>
@@ -213,6 +288,11 @@
                             <a class="mid_btn impor_blank_btn" href="javascript:;">查看合同</a>
                         </div>
                     </div>
+                </div>
+                <div class="scroller-pullUp">
+                    <span class="pull-up-icon up-icon"></span>
+                    <span class="pull-up-msg">上拉查看更多</span>
+                    <span class="loading"></span>
                 </div>
             </div>
         </div>
