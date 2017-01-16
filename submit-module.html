@@ -618,30 +618,28 @@
     })
 
     //数字加减
-    function selectNum(el,addOrSubtraction){
-        $('.select-num').on('tap',el,function(e){
+    /*function selectNum(el,addOrSubtraction){
+        $('.select-num').on('click',el,function(e){
             var obj={};
             obj.nVal=+$(this).parent().children().eq(1).text();
             switch (addOrSubtraction){
-                case subtraction:
+                case 'subtraction':
                     if(obj.nVal>0){
                         obj.nVal--;
                     }
                     break;
-
-                case add:
+                case 'add':
                     obj.nVal++;
                     break;
             }
-            obj.nVal--;
             $(this).parent().children().eq(1).text(obj.nVal);
             delete obj.nVal;
         })
     }
     selectNum('div:first-child','subtraction');
-    selectNum('div:first-child','add');
+    selectNum('div:first-child','add');*/
 
-    /*$('.select-num').on('tap','div:first-child',function(e){
+    $('.select-num').on('tap','div:first-child',function(e){
      var obj={};
      try{
      obj.nVal=+$(this).parent().children().eq(1).text();
@@ -660,7 +658,7 @@
      $(this).parent().children().eq(1).text(obj.nVal);
      delete obj.nVal;
      }catch (e){}
-     })*/
+     })
 </script>
 </body>
 </html>
