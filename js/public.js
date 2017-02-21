@@ -15,6 +15,6 @@ new function (){
 
 /*******/
 Config = {
-	url:'http://10.80.2.144:8095/',
-	testJsonpUrl:'http://10.80.2.144:8082/js/test.js'
+	url:'http://10.80.2.32:8095/',
+	testJsonpUrl:'http://10.80.2.32:8082/js/test.js'
 }
