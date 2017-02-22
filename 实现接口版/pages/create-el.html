@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <link href="../resources/css/public.css" rel="stylesheet" type="text/css">
+    <link href="../resources/plugin/swiper/swiper.3.1.7.min.css" rel="stylesheet" type="text/css">
+    <link href="../resources/plugin/LArea/LArea.css" rel="stylesheet" type="text/css">
+    <link href="../resources/css/com.css" rel="stylesheet" type="text/css">
+    <link href="../resources/css/part1.css" rel="stylesheet" type="text/css">
+    <script src="../resources/js/public.js"></script>
+    <style>
+        .top_tab {
+            overflow: hidden;
+        }
+
+        body {
+            height: 100%;
+            background: #eef0f1;
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrap">
+    <div class="sub-nav">
+        <div class="sub-topbg"></div>
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+            </div>
+            <!-- Add Pagination -->
+            <div class="nav-pagination">
+            </div>
+        </div>
+        <!-- Add Arrows -->
+        <div class="nav-arrows fbox cen">
+            <div class="nav-button-prev"></div>
+            <div class="flex1"></div>
+            <div class="nav-button-next"></div>
+        </div>
+
+    </div>
+    <div class="main-wrap pd-lr-20">
+        <!--错误提示-->
+        <!--<div>
+            <div class="pd-tb-20 err-txt one_px_border_b">申请被退回，[家庭信息]部分有错误！请及时更改！如已更改，请忽略此条信息！</div>
+        </div>-->
+        <!--商品信息-->
+        <div class="step active">
+        </div>
+
+
+    </div>
+    <div class="footer-wrap">
+        <div class="group1">
+            <a class="b-btn" id="save-btn" href="javascript:;">保存</a>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="../resources/plugin/zepto/zepto.js"></script>
+<script type="text/javascript" src="../resources/plugin/zepto/touch.js"></script>
+<script type="text/javascript" src="../resources/plugin/swiper/swiper.3.1.7.min.js"></script>
+<script type="text/javascript" src="../resources/plugin/LArea/LArea.js"></script>
+<script type="text/javascript" src="../resources/plugin/LArea/LAreaData1.js"></script>
+<script src="../resources/js/com.js"></script>
+<script>
+    var elParser = window.elParser || {};
+    elParser = {
+        init: function () {
+            this.getBody();
+            this.topSwiper();
+            this.pageInteraction();
+        },
+        lib: {
+            title: function (l, hasImg, url) {
+                if (hasImg) {
+                    return '<div class="t1 pd-tb-20">' + l + '<div class="tit-ico"><img class="full-size vm" src="' + url + '"></div></div>';
+                } else {
+                    return '<div class="t1 pd-tb-20">' + l + '</div>';
+                }
+            },
+            label: function (l, r) {
+                return '<div class="pd-tb-20 fbox one_px_border_b"><div class="txt-left">' + l + '</div><div class="txt-right com_grey">' + r + '</div></div>';
+            },
+            text: function (l, p, id, must, regex) {
+                var arr = [];
+                arr.push('<div class="pd-tb-20 fbox cen one_px_border_b"><div class="txt-left">');
+                arr.push(l);
+                !must || arr.push('<span class="red">*</span>');
+                arr.push('</div><div class="txt-right"><input class="input-box impor_dark" type="text" id="' + id + '" placeholder="' + p + '" onblur="' + regex + '.test(this.value) || console.log(\'格式错误\')"></div></div>');
+                return arr.join('');
+            },
+            number: function (l, p, id, must, regex) {
+                var arr = [];
+                arr.push('<div class="pd-tb-20 fbox cen one_px_border_b"><div class="txt-left">');
+                arr.push(l);
+                !must || arr.push('<span class="red">*</span>');
+                arr.push('</div><div class="txt-right"><input class="input-box impor_dark" type="number" id="' + id + '" placeholder="' + p + '" onblur="' + regex + '.test(this.value) || console.log(\'格式错误\')"></div></div>');
+                return arr.join('');
+            },
+            password: function (l, p, id, must, regex) {
+                var arr = [];
+                arr.push('<div class="pd-tb-20 fbox cen one_px_border_b"><div class="txt-left">');
+                arr.push(l);
+                !must || arr.push('<span class="red">*</span>');
+                arr.push('</div><div class="txt-right"><input class="input-box impor_dark" type="password" id="' + id + '" placeholder="' + p + '" onblur="' + regex + '.test(this.value) || console.log(\'格式错误\')"></div></div>');
+                return arr.join('');
+            },
+            email: function (l, p, id, must, regex) {
+                var arr = [];
+                arr.push('<div class="pd-tb-20 fbox cen one_px_border_b"><div class="txt-left">');
+                arr.push(l);
+                !must || arr.push('<span class="red">*</span>');
+                arr.push('</div><div class="txt-right"><input class="input-box impor_dark" type="email" id="' + id + '" placeholder="' + p + '" onblur="' + regex + '.test(this.value) || console.log(\'格式错误\')"></div></div>');
+                return arr.join('');
+            },
+            date: function (l, p, id, must, regex) {
+                var arr = [];
+                arr.push('<div class="pd-tb-20 fbox cen one_px_border_b"><div class="txt-left">');
+                arr.push(l);
+                !must || arr.push('<span class="red">*</span>');
+                arr.push('</div><div class="txt-right"><input class="input-box impor_dark select-cs" type="date" id="' + id + '" placeholder="' + p + '" onblur="' + regex + '.test(this.value) || console.log(\'格式错误\')"></div></div>');
+                return arr.join('');
+            },
+            colText3: function (l, m, r) {
+                return '<div class="pd-tb-20 fbox one_px_border_b"><div class="txt-left">' + l + '</div><div class="txt-right com_grey ml3">' + m + '</div><div class="txt-right com_grey vm ml3">' + r + '</div></div>';
+            },
+            select: function (l, id, must) {
+                var arr = [];
+                arr.push('<div class="pd-tb-20 fbox cen one_px_border_b"><div class="txt-left">');
+                arr.push(l);
+                !must || arr.push('<span class="red">*</span>');
+                arr.push('</div><select class="txt-right select-cs impor_dark" id="' + id + '"><option value="商品品类1">商品品类1</option><option value="商品品类2">商品品类2</option><option value="商品品类3">商品品类3</option></select></div>');
+                return arr.join('');
+            },
+            yesOrNo: function (l, id, must) {
+                var arr = [];
+                arr.push('<div class="pd-tb-20 fbox cen"><div class="txt-left com_dark">');
+                arr.push(l);
+                !must || arr.push('<span class="red">*</span>');
+                arr.push('</div><div class="txt-right"><div class="radio-s2 fbox cen text-center" id="' + id + '"><div data-val="1">是</div><div class="mleft2 on" data-val="2">否</div></div></div></div>');
+                return arr.join('');
+            },
+            yesOrNoUpDown: function (l, id, must) {
+                var arr = [];
+                arr.push('<div class="pd-tb-20 one_px_border_b"><div class="txt-left">');
+                arr.push(l);
+                !must || arr.push('<span class="red">*</span>');
+                arr.push('</div><div class="txt-right ml0 impor_dark"><div class="radio-s2 bi mt20" id="' + id + '"><div class="text-center on">是</div><div class="text-center mleft2">否</div></div></div></div>');
+                return arr.join('');
+            },
+            moreOfOne: function (l, id, must) {
+                var arr = [];
+                arr.push('<div class="pd-tb-20 fbox cen one_px_border_b"><div class="txt-left">');
+                arr.push(l);
+                !must || arr.push('<span class="red">*</span>');
+                arr.push('</div><div class="txt-right com_grey"><div class="radio-s2 fbox text-center" id="' + id + '"><div class="on">已婚</div><div>未婚</div><div>离异</div></div></div></div>');
+                return arr.join('');
+            },
+            moreOfOneUpDown: function (l, id, must) {
+                var arr = [];
+                arr.push('<div class="pd-tb-20 one_px_border_b"><div class="txt-left">');
+                arr.push(l);
+                !must || arr.push('<span class="red">*</span>');
+                arr.push('</div><div class="txt-right ml0 impor_dark"><div class="radio-s2 bi mt20" id="' + id + '"><div class="text-center on">知道</div><div class="text-center mleft2">不知道</div><div class="text-center mleft2">不确定</div></div></div></div>');
+                return arr.join('');
+            },
+            numberSelect: function (l, id, must) {
+                var arr = [];
+                arr.push('<div class="pd-tb-20 fbox cen one_px_border_b"><div class="txt-left">');
+                arr.push(l);
+                !must || arr.push('<span class="red">*</span>');
+                arr.push('</div><div class="txt-right"><div class="select-num fbox cen" id="' + id + '"><div class=""></div><div class="com_grey">0</div><div class=""></div></div></div></div>');
+                return arr.join('');
+            },
+            earaUpDown: function (tYype, l,id, must) {
+                var arr = [];
+                arr.push('<div class="pd-tb-20">');
+                if (tYype == 1) {
+                    arr.push('<div class="t1 no-bl pd-tb-20">');
+                } else if (tYype == 2) {
+                    arr.push('<div class="txt-left mb10">');
+                }
+                arr.push(l);
+                !must || arr.push('<span class="red">*</span>');
+                arr.push('</div><textarea class="full-size impor_dark bc-e1" id="'+id+'" rows="5"></textarea></div>');
+                return arr.join('');
+            },
+            otherE1: function (l, id, must) {
+                var arr = [];
+                arr.push('<div class="pd-tb-20"><div class="txt-left">');
+                arr.push(l);
+                !must || arr.push('<span class="red">*</span>');
+                arr.push('</div><div class="txt-right ml0 impor_dark diff-val" id="' + id + '"><div class="fbox cen mb20 mt20 icon-s1 on"><i class=""></i><div class="ml2">可验证：</div><div class="radio-s3 fbox cen"><div class="text-center on">支付宝</div><div class="text-center">微信</div><div class="text-center">其它</div></div></div><div class="fbox cen icon-s1"><i class=""></i><div class="ml2">无法验证</div></div></div></div>');
+                return arr.join('');
+            },
+            space: function (type) {
+                if(type==1){
+
+                }else if(type==2){
+                    return '<div class="down_space"></div>'
+                }
+            },
+            imgCol1: function (l,id) {
+                var arr = [];
+                arr.push('<div class="pd-t20 fbox one_px_border_b"><div class="flex1 mapbox big text-center"><div class="tablev" id="'+id+'"><div><img class="w08" src="../resources/images/icon_picture_default@3x.png"><div>');
+                arr.push(l);
+                arr.push('</div></div><div class="close-btn"><i class="close"></i></div><div class="info_img"><img src="http://img.redocn.com/sheying/20160613/taoshuxiaheying_6472839.jpg" alt=""></div></div></div></div>');
+                return arr.join('');
+            },
+            imgCol2:function(l,id,isSecond){
+                var l = l;
+                var arr = [];
+                arr.push('<div class="pd-t20 fbox" id="'+id+'"><div class="flex1 mapbox text-center"><div class="tablev"><div><img class="w08" src="../resources/images/icon_picture_default@3x.png"><div>');
+                arr.push(l[0]);
+                arr.push('</div></div><div class="close-btn"><i class="close"></i></div><div class="info_img"><img src="http://img.redocn.com/sheying/20160613/taoshuxiaheying_6472839.jpg" alt=""></div></div></div>');
+                if(isSecond){
+                    arr.push('<div class="flex1 mapbox text-center ml2"><div class="tablev"><div><img class="w08" src="../resources/images/icon_picture_default@3x.png"><div>');
+                    arr.push(l[1]);
+                    arr.push('</div></div><div class="close-btn"><i class="close"></i></div><div class="info_img"><img src="http://img.redocn.com/sheying/20160613/taoshuxiaheying_6472839.jpg" alt=""></div></div></div></div>');
+                }
+                return arr.join('');
+            },
+            otherE2:function(l,id){
+                var arr = [];
+                arr.push('<div class="pd-t20" id="'+id+'"><div class="txt-left">');
+                arr.push(l);
+                arr.push('</div><div class="txt-right ml0 impor_dark"><div class="radio-s4 fbox wrap mt20"><div class="fbox cen icon-s1 on"><i></i><div class="ml1">社保卡/医保卡</div></div><div class="fbox cen icon-s1"><i></i><div class="ml1">户口本</div></div><div class="fbox cen icon-s1"><i></i><div class="ml1">驾驶证</div></div><div class="fbox cen icon-s1"><i></i><div class="ml1">工卡</div></div><div class="fbox cen icon-s1"><i></i><div class="ml1">银行储蓄卡</div></div></div></div><div class="pd-t20 fbox"><div class="flex1 mapbox text-center"><div class="tablev"><div><img class="w08" src="../resources/images/icon_picture_default@3x.png"><div>现场合影照片</div></div><div class="close-btn"><i class="close"></i></div><div class="info_img"><img src="http://img.redocn.com/sheying/20160613/taoshuxiaheying_6472839.jpg" alt=""></div></div></div><div class="flex1 mapbox text-center ml2"><div class="tablev"><div><img class="w08" src="../resources/images/icon_picture_default@3x.png"><div>现场背景照片</div></div><div class="close-btn"><i class="close"></i></div><div class="info_img"><img src="http://img.redocn.com/sheying/20160613/taoshuxiaheying_6472839.jpg" alt=""></div></div></div></div></div>');
+                return arr.join('');
+            }
+        },
+        getBody:function(){
+            $.get('eltest.json',function(data, status, xhr){
+                console.log(xhr)
+            })
+
+
+
+        },
+        topSwiper:function(){
+            var tit = ['标题1','标题2','标题3','标题4','标题5'];
+            var arr =[];
+            arr.push('<div class="swiper-slide on"><div class="slide-item">'+tit[0]+'</div><div class="action-line"></div></div>');
+            for(var i =1;i<tit.length;i++){
+                arr.push('<div class="swiper-slide"><div class="slide-item">'+tit[i]+'</div><div class="action-line"></div></div>');
+            }
+            $('.sub-nav .swiper-wrapper').append(arr.join(''));
+            var topTabSwiper = new Swiper('.sub-nav .swiper-container', {
+                slidesPerView: 4,
+                onTap: function (swiper) {
+                    $(topTabSwiper.clickedSlide).addClass('on').siblings().removeClass('on');
+                    $('.nav-pagination div').eq(topTabSwiper.clickedIndex).addClass('on').siblings().removeClass('on');
+                    $('.step').eq(topTabSwiper.clickedIndex).addClass('active').siblings().removeClass('active');
+                },
+                onInit: function (swiper) {
+                    // 初始化小圆点
+                    var n = $('.swiper-wrapper').children().length - 1, navPagination = $('.nav-pagination'), arr = [];
+                    arr.push('<div class="on"></div>');
+                    for (var i = 0; i < n; i++) {
+                        arr.push('<div></div>');
+                    }
+                    navPagination.append(arr.join(''));
+                    // 左右箭头事件
+                    $('.nav-arrows').on('tap', '.nav-button-prev', function () {
+                                topTabSwiper.slidePrev();
+                                var slideOn = $('.swiper-wrapper .swiper-slide.on');
+                                if (slideOn.index() != 0) {
+                                    slideOn.removeClass('on').prev().addClass('on');
+                                    navPagination.children().filter('.on').removeClass('on').prev().addClass('on');
+                                    $('.step.active').removeClass('active').prev().addClass('active');
+                                }
+                            })
+                            .on('tap', '.nav-button-next', function () {
+                                topTabSwiper.slideNext();
+                                var slideOn = $('.swiper-wrapper .swiper-slide.on');
+                                if ((slideOn.index() + 1) != $('.swiper-wrapper .swiper-slide').length) {
+                                    slideOn.removeClass('on').next().addClass('on');
+                                    navPagination.children().filter('.on').removeClass('on').next().addClass('on');
+                                    $('.step.active').removeClass('active').next().addClass('active');
+                                }
+                            })
+                }
+            });
+        },
+        pageInteraction:function(){
+            //页面交互
+            //单选
+            $('.radio-s1>div,.radio-s2>div,.radio-s3>div,.radio-s4>div').on('tap', function () {
+                if (!$(this).hasClass('on')) {
+                    $(this).addClass('on').siblings().removeClass('on');
+                }
+            })
+            $('.diff-val>*').on('tap', function (e) {
+                $(this).addClass('on');
+                $(this).siblings().removeClass('on');
+                $(this).siblings().find('.radio-s3').children().removeClass('on');
+            })
+
+            //数字加减
+            $('.select-num').on('tap', 'div:first-child', function (e) {
+                        var obj = {};
+                        try {
+                            obj.nVal = +$(this).parent().children().eq(1).text();
+                            if (obj.nVal > 0) {
+                                obj.nVal--;
+                                $(this).parent().children().eq(1).text(obj.nVal);
+                                delete obj.nVal;
+                            }
+                        } catch (e) {
+                        }
+                    })
+            .on('tap', 'div:last-child', function (e) {
+                var obj = {};
+                try {
+                    obj.nVal = +$(this).parent().children().eq(1).text();
+                    obj.nVal++;
+                    $(this).parent().children().eq(1).text(obj.nVal);
+                    delete obj.nVal;
+                } catch (e) {
+                }
+            })
+        },
+    }
+
+
+    $(function(){
+        $('.step.active').append(elParser.lib.title('手机号1', true, '../resources/images/icon_exclamation@3x.png'));
+        $('.step.active').append(elParser.lib.label('这是左右', '这是右边'));
+        $('.step.active').append(elParser.lib.text('手机号1', '文本类型', '', false, /^\d$/));
+        $('.step.active').append(elParser.lib.number('手机号1', '数字类型', '', true, /^\d$/));
+        $('.step.active').append(elParser.lib.password('手机号1', '密码类型', '', true, /^\d$/));
+        $('.step.active').append(elParser.lib.email('手机号1', 'email类型', '', true, /^\d$/));
+        $('.step.active').append(elParser.lib.date('手机号1', '数字类型', '', true, /^\d$/));
+        $('.step.active').append(elParser.lib.colText3('手机号1手机', '300<br><div class="font24">(含服务费40元)</div>', '2016-08-20'));
+        $('.step.active').append(elParser.lib.select('手机号1手机', 'id1', true));
+        $('.step.active').append(elParser.lib.yesOrNo('手机号1手机', 'sdf', true));
+        $('.step.active').append(elParser.lib.yesOrNoUpDown('手机号1手机手机号1手机手机号1手机手机号1手机手机号1手机', 'ssdfdf', true));
+        $('.step.active').append(elParser.lib.moreOfOne('手机号1手', 'sdfsdf', true));
+        $('.step.active').append(elParser.lib.moreOfOneUpDown('是否明确知道企业在当地存在<span class="small">(地址位置、人员规模)</span>', 'sdf', true));
+        $('.step.active').append(elParser.lib.numberSelect('子女数目', 'sdf', true));
+        $('.step.active').append(elParser.lib.earaUpDown(1, '异常备注<span class="small">(限500个汉字)</span>', 'sdf', true));
+        $('.step.active').append(elParser.lib.otherE1('申请人电话号码验证方式', 'sdf', true));
+        $('.step.active').append(elParser.lib.space(1));
+        $('.step.active').append(elParser.lib.imgCol1('现场合影照片', 'sdf'));
+        $('.step.active').append(elParser.lib.imgCol2(['现场合影照片1','现场合影照片2'],'asldf',true));
+        $('.step.active').append(elParser.lib.space(2));
+        $('.step.active').append(elParser.lib.otherE2('请在下方所有选项中选择一项','aslfgdf'));
+        $('.step.active').append(elParser.lib.imgCol2(['现场合影照片1','现场合影照片2'],'asldf',false));
+        $('.step.active').append(elParser.lib.space(2));
+        elParser.init()
+    })
+
+</script>
+
+</body>
+</html>

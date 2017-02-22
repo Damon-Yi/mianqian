@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>工作区域</title>
+		<meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+		<meta name="format-detection" content="telephone=no" />
+		<link href="../../resources/css/public.css" rel="stylesheet" type="text/css">
+        <link href="../../resources/css/com.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="../../resources/plugin/iscroll/iscroll.css">
+        <script src="../../resources/js/public.js"></script>
+        <script type="text/javascript" src="../../resources/plugin/iscroll/iscroll.js"></script>
+        <script type="text/javascript">
+	        var mainScroll;
+	        function loaded () {
+	            mainScroll = new IScroll('#body_wrapper',{
+	                scrollbars: true,
+	                mouseWheel: true,
+	                interactiveScrollbars: true,
+	                shrinkScrollbars: 'scale',
+	                fadeScrollbars: true,
+	                click: true 
+	            });
+	        }
+            document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+        </script>
+        <style>
+        	.cont_box{background:#F6F6F6}
+        	.setarticle{margin-top:0.2rem;}
+        	.setarticle .region{position:relative;}
+        	.region_model{font-size:0.28rem;color:#333333;padding:0 0.2rem;margin-bottom:0.4rem;background:#FFFFFF;}
+        	.region_list{padding:0.27rem 0.25rem;background:#FFFFFF;}
+        	.region_list p{font-size:0.28rem;}
+        	.region_list .region_list_time{font-size:0.26rem;color:#999999;padding:0.2rem 0;}
+        	.region_list .region_list_tent{color:#999999;font-size:0.26rem;text-align: right}
+        	.region_list .region_list_tent .compile{display: inline-block;margin-right: 0.5rem;}
+        	.region_list .region_list_tent .delete{display: inline-block;margin-right: 0.5rem;}
+        </style>
+	</head>
+	<body onload="loaded()">
+		<article id="body_wrapper" class="setarticle">
+			<div>
+				<div class="region">
+					<div class="region_model">
+						<div class="region_list">
+							<p>京基100大厦</p>
+							<div class="region_list_time">广东省深圳市罗湖区深南东路</div>
+							<div class="region_list_tent">
+								<span class="compile">编辑</span>
+								<span class="delete">删除</span>
+							</div>
+						</div>
+					</div>
+					<div class="one_px_border_t pd-tb-1 bg_white">
+                       <a class="big_btn impor_fill_btn" href="javascript:;">新增工作区域</a>
+                    </div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript" src="../../resources/plugin/zepto/zepto.js"></script>
+	</body>
+</html>

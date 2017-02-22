@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>订单</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no" />
+    <link href="../../resources/css/public.css" rel="stylesheet" type="text/css">
+    <link href="../../resources/css/com.css" rel="stylesheet" type="text/css">
+    <link href="../../resources/plugin/swiper/swiper.3.1.7.min.css" rel="stylesheet" type="text/css">
+    <script src="../../resources/js/public.js"></script>
+    <script type="text/javascript" src="../../resources/plugin/swiper/swiper.3.1.7.min.js"></script>
+    <script type="text/javascript" src="../../resources/plugin/iscroll/iscroll.js"></script>
+    <style>
+        .cont_box{background-color: #fff;}
+        
+        .search_box{line-height: 1;font-size: 14px;background-color: #f0eff5;padding: 8px 10px;display: flex;box-sizing: border-box;color: #999;}
+        .search_box i{width: 16px;height: 16px;display: inline-block;vertical-align: middle;}
+        .search_box .search_icon{background: url(data:image/.png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAMAAADXqc3KAAAAV1BMVEUAAAClpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaXlA9nvAAAAHHRSTlMA8NsH01OKb6mTMiQWD/fmy7MfuWVbSDoqwJt45U9huAAAAL5JREFUKM91j9mWgyAQRG0EBPclmu3+/3fOhCGMGNMvVYd7iq4uwnTVHVD+WuRTQT95p+E+757LCb0F11rYhSZs8rXQvP0Fu4s3qDJ+1Otsn6F6B7a8iRr+dOGj4i2ouAOoWYNiD6CNS/AH0EQg0wFcMUEdZQ6ezLG3ycGg4oEyZJELazr1kZUdk/e4lNmAOhGLrAHVjmGEWyJGQC2jgO86Tf9PSvPQopbnq+iLNMXZdAo5J+0vmb8RXZyT0f4A9QUKgwsdJqwAAAAASUVORK5CYII=) no-repeat center center;background-size: contain;}
+        .search_box .clear_icon{background: url(data:image/.png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAMAAADXqc3KAAAASFBMVEUAAADJycnJycnJycnJycnJycnJycnJycnJycnJycnJycnJycny8vLNzc339/fg4OD////8/Pzt7e3p6enZ2dnT09PR0dHk5ORfBy7IAAAAC3RSTlMAHr+pd/NYcU7y5BBgJzoAAACiSURBVCjPfZLZFsQQDIZR2pkJ1Zqh7/+mw0msXb4L5HeyiDCCS/EG+AjJWQufoDA1Vy/omLO+wMCC+kzm6MPhgpQH8zqPinVYQXFwq0nbb7PZReLBaB1Xv38BkUzQKUTNrBoIwVTaMMqhYzxCMSjYbQ/V6i98tdpQtg1VkvshOZVLWqjl5gfq8YG5JUfoW3LbxLu2P3/U+Wufh6GOjwJQdXz+9/EUaTU2h5kAAAAASUVORK5CYII=) no-repeat center center;background-size: contain;}
+        .search_box .s_input_wrap{flex: 1;background-color: #fff;border-radius: 3px;position: relative;height: 28px;transition: all ease .4s;}
+        .search_box .s_input_wrap .search_inner{display: flex;position: relative;}
+        .search_box .s_input_wrap .search_inner .search_icon{margin: 6px;}
+        .search_box .s_input_wrap .search_inner .search_input{border:none;flex: 1;height: 28px;padding: 4px 20px 4px 0;border-radius: 3px;font-size: 14px;}
+        .search_box .s_input_wrap .search_inner .clear_icon{position: absolute;right: 4px;top:50%;margin-top: -8px;}
+        .search_box .s_input_wrap .search_outter{position: absolute;background-color: #fff;width: 100%;    top: 0px;right: 0px;bottom: 0px;left: 0px;text-align: center;border-radius: 3px;}
+        .search_box .s_input_wrap .search_outter_txt{display: inline-block;vertical-align: middle;line-height: 28px;}
+        .search_box .cancel_btn{line-height: 28px;padding: 0 4px 0 8px;color: #ff6700;display: none;}
+        .search_box_focusing{}
+        .search_box_focusing .cancel_btn{display: block;}
+        .search_box_focusing .search_outter{display: none;}
+    </style>
+</head>
+<body>
+    <div class="cont_box">
+        <div>
+            <div class="search_box">
+                <div class="s_input_wrap">
+                    <div class="search_inner">
+                        <i class="search_icon"></i>
+                        <input type="search" class="search_input" id="search_input" placeholder="请输入客户名/手机号/订单号">
+                        <i class="clear_icon"></i>
+                    </div>
+                    <label for="search_input" class="search_outter">
+                        <i class="search_icon"></i>
+                        <span class="search_outter_txt">搜索</span>
+                    </label>   
+                </div>
+                <div class="cancel_btn">取消</div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="../../resources/plugin/zepto/zepto.js"></script>
+    <script type="text/javascript" src="../../resources/plugin/zepto/touch.js"></script>
+    <script src="../../resources/js/com.js"></script>
+    <script>
+        var mainScroll;
+        window.onload = function() {
+            mainScroll = new IScroll('.cont_box',{
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true,
+                click: true 
+            });
+            document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+        }
+        $('.search_box .search_outter').on('tap',function(){
+            $('.search_box').addClass('search_box_focusing');
+        });
+        $('.search_box .cancel_btn').on('tap',function(){
+            $('.search_box').removeClass('search_box_focusing');
+            $('.search_box .search_input').val('');
+            $('.search_box .search_input').blur();
+        });
+        $('.search_box .clear_icon').on('tap',function(){
+            $('.search_box .search_input').val('');
+        });
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>订单详情</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no" />
+    <link href="../resources/css/public.css" rel="stylesheet" type="text/css">
+    <link href="../resources/css/com.css" rel="stylesheet" type="text/css">
+    <link href="../resources/plugin/swiper/swiper.3.1.7.min.css" rel="stylesheet" type="text/css">
+    <script src="../resources/js/public.js"></script>
+    <script type="text/javascript" src="../resources/plugin/swiper/swiper.3.1.7.min.js"></script>
+    <script type="text/javascript" src="../resources/plugin/iscroll/iscroll.js"></script>
+    
+    <style>
+        .order_details{font-size: 0.24rem;color: #999;word-break: break-all;text-justify : auto; text-align:justify;}
+        .order_details .or_section{background-color: #fff;padding: 0 0.2rem;margin-bottom:0.2rem;}
+        .order_details .or_section .or_title{font-size: 0.28rem;padding-left:0.5rem;color: #333;height:0.8rem;line-height:0.8rem;position: relative;}
+        .order_details .or_section .or_title.up{background:url(../resources/images/icon_up_ward@3x.png) no-repeat right center;background-size:0.25rem 0.18rem;}
+        .order_details .or_section .or_title.down{background:url(../resources/images/icon_drop_down@3x.png) no-repeat right center;background-size:0.25rem 0.18rem;}
+        .order_details .or_section .or_title:before{content: " ";position: absolute;left: 0;top: 0.27rem;width: 0.06rem;height: 0.28rem; background: #9c0000;}
+        .order_details .or_section .or_info{display: block;}
+        .order_details .or_section .or_tr{display: flex;display:-webkit-flex;padding: 0.24rem 0;position: relative}
+        .order_details .or_section .or_tr:before{content: " ";position: absolute;left: 0;top:0;width: 100%;height: 1px;border-top: 1px solid #e1e1e1;color: #e1e1e1;-webkit-transform-origin: 0 100%;transform-origin: 0 100%;-webkit-transform: scaleY(0.5);transform: scaleY(0.5);}           
+        .order_details .or_section .or_tr .or_td_1{width: 1.3rem;color: #A9B2B9;font-size: 0.24rem;}
+        .order_details .or_section .or_tr .or_td_2{flex: 1;-webkit-flex:1;color: #323232;padding-right:0.2rem;font-size: 0.24rem;}
+        .order_details .or_section .or_tr .or_td_3{width: 0.8rem;text-align: right;padding-right: 0.2rem;}
+        .order_details .or_section .or_tr .or_td_3>img{width: 0.28rem;height: 0.28rem;}
+        .order_details .or_section .or_mark{font-size: 0.2rem;}
+        .interview{display:none;}
+    </style>
+</head>
+<body>
+    <div class="cont_box top_cont_box">
+        <div>
+            <div class="order_details">
+                <div class="or_section interview">
+                    <div class="or_title up">面签信息</div>
+                    <div class="or_info">
+                         <div class="or_tr">
+                            <div class="or_td_1">客户姓名</div>
+                            <div class="or_td_2 usname"></div>
+                         </div>
+                         <div class="or_tr">
+                            <div class="or_td_1">联系电话</div>
+                            <div class="or_td_2 tels"></div>
+                         </div>
+                         <div class="or_tr">
+                            <div class="or_td_1">面签地址</div>
+                            <div class="or_td_2 site"></div>
+                         </div>
+                         <div class="or_tr">
+                            <div class="or_td_1">面签状态</div>
+                            <div class="or_td_2 visit"></div>
+                         </div>
+                         <div class="or_tr">
+                            <div class="or_td_1">预约时间</div>
+                            <div class="or_td_2 makeTime"></div>
+                         </div>
+                    </div>
+                </div>
+                <div class="or_section">
+                    <div class="or_title up">商品信息</div>
+                    <div class="or_info">
+                         <div class="or_tr">
+                            <div class="or_td_1">渠道信息</div>
+                            <div class="or_td_2 channel"></div>
+                         </div>
+                         <div class="or_tr">
+                            <div class="or_td_1">是否代购</div>
+                            <div class="or_td_2 behalf"></div>
+                         </div>
+                         <div class="or_tr">
+                            <div class="or_td_1">商品描述</div>
+                            <div class="or_td_2 describe"></div>
+                         </div>
+                         <div class="or_tr">
+                            <div class="or_td_1">商品金额</div>
+                            <div class="or_td_2 money"></div>
+                         </div>
+                         <div class="or_tr">
+                            <div class="or_td_1">商品总额</div>
+                            <div class="or_td_2 rental"></div>
+                         </div>
+                         <div class="or_tr">
+                            <div class="or_td_1">备注信息</div>
+                            <div class="or_td_2 mess"></div>
+                         </div>
+                    </div>
+                </div>
+                <div class="or_section">
+                    <div class="or_title up">分期方案</div>
+                    <div class="or_info">
+                        <div class="or_tr">
+                            <div class="or_td_1">首付比例</div>
+                            <div class="or_td_2 ratio"></div>
+                        </div>
+                        <div class="or_tr">
+                            <div class="or_td_1">首付金额</div>
+                            <div class="or_td_2 payment"></div>
+                        </div>
+                        <div class="or_tr">
+                            <div class="or_td_1">分期金额</div>
+                            <div class="or_td_2 stages"></div>
+                        </div>
+                        <div class="or_tr">
+                            <div class="or_td_1">分期数</div>
+                            <div class="or_td_2 periods"></div>
+                        </div>
+                        <div class="or_tr">
+                            <div class="or_td_1">还款信息</div>
+                            <div class="or_td_2 refund">238.00元/期<span class="or_mark"></span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="or_section">
+                    <div class="or_title up">收货信息</div>
+                    <div class="or_info">
+                        <div class="or_tr">
+                            <div class="or_td_1">客户姓名</div>
+                            <div class="or_td_2 client"></div>
+                        </div>
+                        <div class="or_tr">
+                            <div class="or_td_1">联系电话</div>
+                            <div class="or_td_2 phone"></div>
+                        </div>
+                        <div class="or_tr">
+                            <div class="or_td_1">收货地址</div>
+                            <div class="or_td_2 address"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--<div class="bottom_box bottom_flex">
+        <a href="javascript:;" class="reject_order">拒单</a>
+        <a href="javascript:;" class="import acc_order">接单</a>
+    </div>-->
+    <!-- <div class="bottom_box bottom_big_btn_wrap">
+        <a class="big_btn impor_fill_btn" href="javascript:;">查看合同</a>
+    </div> -->
+    <script type="text/javascript" src="../resources/plugin/zepto/zepto.js"></script>
+    <script type="text/javascript" src="../resources/plugin/zepto/touch.js"></script>
+    <script src="../resources/js/com.js"></script>
+    <script>
+        var mainScroll,urlData;
+        window.onload = function() {
+            mainScroll = new IScroll('.cont_box',{
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true,
+                click: true 
+            });
+            document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+            urlData=getQueryStringArge();
+            orderDatel(urlData);
+        }
+        /*ajax请求*/
+        function orderDatel(ord){
+        	console.log(ord)
+         	$.ajax({
+		        type:"post",
+		        url:Config.url+"contract/orderInfo",
+		        contentType:"application/json",
+		        data:JSON.stringify({"userNo":"999999","orderNo":ord.order}),
+		        beforeSend:function(xhr, settings){
+		        },
+		        success:function(data, status, xhr){
+		            if(data.ask==0&&data.data){
+		            	var datas=data;
+		            	if(urlData&&urlData.statu>=40){
+		            		$.ajax({
+			            		type:"post",
+			            		url:Config.url+"orderInfo/getReservation",
+			            		contentType:"application/json",
+			            		data:JSON.stringify({"userNo":"999999","orderNo":ord.order}),
+			            		success:function(data,status,xhr){
+			            			datas.list=data.data;
+			            			showDatas(datas);
+			            		},
+			            		error:function(xhr, errorType, error){
+						            console.log(xhr);
+						        },
+			            	});
+		            	}else{
+		            		showDatas(datas);
+		            	}
+		            	
+		            }
+		        },
+		        error:function(xhr, errorType, error){
+		            console.log(xhr);
+		        },
+		        complete:function(xhr, status){
+		        }
+		    });
+        }
+        /*push数据*/
+        function showDatas(data){
+        	console.log(data);
+        	//面签消息
+        	if(urlData&&urlData.statu>=40){
+        		$(".interview").show();
+	        	$(".usname").text(data.data.customerName);//客户姓名
+	        	$(".tels").text(data.data.customerMobile);//联系电话
+	        	$(".site").text(data.list.address);//面签地址
+				$(".visit").text(data.list.status);//面签状态
+				$(".makeTime").text(formatDate(data.list.expectReservationTime));//预约时间
+				mainScroll.refresh();
+        	}
+        	//商品信息
+        	$(".channel").text(data.data.channel);//渠道信息
+        	$(".behalf").text(data.data.orderType==1?"代购":"电商");//是否代购
+        	$(".describe").text(data.data.goodsName);//商品描述
+        	$(".money").text(data.data.goodsMoney+"元");//商品金额
+        	$(".rental").text(data.data.goodsMoney+"元");//商品总额
+        	$(".mess").text(data.data.remarks);//备注信息
+        	//分期方案
+        	$(".ratio").text(data.data.paymentRate+"%");//首付比例
+        	$(".payment").text(data.data.firstPayment+"元");//首付金额
+        	$(".stages").text(data.data.stagesMoney+"元");//分期金额
+        	$(".periods").text(data.data.periods+"期");//分期数
+        	$(".refund").text();//还款信息
+        	$(".or_mark").text('(含服务费'+data.data.periodsFee+'元)');//服务费
+        	//收货信息
+        	$(".client").text(data.data.customerName);//客户信息
+        	$(".phone").text(data.data.customerMobile);//联系电话
+        	$(".address").text(data.data.goodsReceiverAddress);//收货地址
+        	
+        	mainScroll.refresh();
+        }
+        /*拒单*/
+        $('.reject_order').on('tap',function(){
+            var dialog = confirmDialog({
+            	type:2,
+                hasShadowBg:true,
+                title:'确认拒单',
+                txt:'拒绝该订单后，系统将不会再派该订单给您！',
+                txtClass:'',
+                btns:[{
+                        text:'取消',
+                        callBack:function(){
+                            console.log('取消');
+                            dialog.destory();
+                        }
+                    },
+                    {
+                        text:'拒单',
+                        callBack:function(){
+                            console.log('拒单');
+                            dialog.destory();
+                        }
+                    }
+                ]
+            });
+            dialog.show();
+        });
+        /*接单*/
+        $('.acc_order').on('tap',function(){
+            var dialog = confirmDialog({
+            	type:2,
+                hasShadowBg:true,
+                title:'确认接单',
+                txt:'接单后1小时内和客户预约面签时间！如您不接此单，系统将在1小时后重新拍单。',
+                txtClass:'',
+                btns:[{
+                        text:'接单',
+                        callBack:function(){
+                            console.log('接单');
+                            dialog.destory();
+                        }
+                    },
+                    {
+                        text:'取消',
+                        callBack:function(){
+                            console.log('取消');
+                            dialog.destory();
+                        }
+                    }
+                ]
+            });
+            dialog.show();
+        });
+        /*收展列表*/
+       $(".or_title").on('tap',function(){
+       		if($(this).hasClass("up")){
+				$(this).removeClass("up");
+				$(this).addClass("down");
+			}else if($(this).hasClass("down")){
+				$(this).removeClass("down");
+				$(this).addClass("up");
+			}
+			$(this).parent().find(".or_info").toggle();
+			mainScroll.refresh();
+       });
+    </script>
+</body>
+</html>

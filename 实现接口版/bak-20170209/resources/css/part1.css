@@ -1,0 +1,109 @@
+/*冯恺 bof*/
+/*公共*/
+.full-size{width:100%;}
+.text-center{text-align: center;}
+.text-right{text-align: right;}
+.small{font-size: 85%;}
+.mt20{margin-top:0.2rem;}
+.mb40{margin-bottom:0.4rem;}
+.mb30{margin-bottom:0.3rem;}
+.mb20{margin-bottom:0.2rem;}
+.mb10{margin-bottom:0.1rem;}
+
+.ml2{margin-left: 0.2rem;}
+.ml3{margin-left: 0.3rem;}
+.pd20{padding:0.2rem;}
+.pd-t30{padding-top:0.3rem;}
+.pd-tb-20{padding-top:0.2rem;padding-bottom:0.2rem;}
+.pd-tb-30{padding-top:0.3rem;padding-bottom:0.3rem;}
+.pd-tb-1{padding-top:1px;padding-bottom:1px;}
+.pd-lr-20{padding-left:0.2rem;padding-right:0.2rem;}
+
+.bg_white{background:#ffffff;}
+.red{color:red;}
+.bc-e1{border:1px solid #e1e1e1;}
+
+.o0{opacity: 0;}
+
+.sub-nav{font-size:0.28rem;border-bottom:1px solid #e1e1e1;}
+.sub-nav .swiper-container{}
+.sub-nav .swiper-wrapper{text-align: center;line-height: 0.74rem;}
+.sub-nav .swiper-wrapper .swiper-slide{width:27%}
+.sub-nav .swiper-wrapper .swiper-slide.swiper-slide-active{color:#ff6700}
+
+/*文本标题*/
+.t1{position: relative;font-size:0.3rem;margin-left: 0.2rem;margin-right:0.2rem;line-height: 0.4rem;}
+.t1:after{content: " ";position: absolute;left: 0;bottom: 0;width: 100%;height: 1px;border-bottom: 1px solid #D9D9D9;color: #D9D9D9;-webkit-transform-origin: 0 100%;transform-origin: 0 100%;-webkit-transform: scaleY(0.5);transform: scaleY(0.5);}
+.t1.no-bl:after{border:none;}
+
+/*文本次级标题*/
+.t2{font-size:0.28rem;height:0.62rem;line-height: 0.62rem;background: #f6f6f6;color:#808080;}
+
+/*警告信息*/
+.err-txt{font-size:0.24rem;background: #ffe5e6;}
+
+.bi{letter-spacing: -0.315em;line-height:0.4rem;}
+.bi>*{letter-spacing: normal;display: inline-block;}
+.txt-left{font-size:0.26rem;line-height: 0.4rem;vertical-align: top;}
+.txt-right{font-size:0.26rem;line-height: 0.4rem;vertical-align: top;/*max-width:4.4rem;*/margin-left:0.3rem;flex: 1;-webkit-flex: 1;}
+.txt-right.ml0{margin-left:0;}
+.txt-right.limit{white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 3.6rem;}
+.right-arrow{width:0.2rem;line-height: 0.4rem;}
+.right-arrow img{vertical-align: top;}
+
+.fbox{display: flex;display: -webkit-flex;align-items: center;-webkit-align-items: center;}
+.fbox.ais{align-items: flex-start;-webkit-align-items: flex-start;}
+
+.h80{height: 0.8rem;line-height: 0.8rem;}
+.h120{line-height: 120%;}
+.vm{vertical-align: middle;}
+.vt{vertical-align: top;}
+
+
+.font24{font-size:0.24rem;line-height: 0.36rem;}
+
+/*1px 上边框*/
+.one_px_border_t{width:100%;position: relative;}
+.one_px_border_t:before{content: " ";position: absolute;left: 0;top: 0;width: 100%;height: 1px;border-top: 1px solid #D9D9D9;color: #D9D9D9;-webkit-transform-origin: 0 0;transform-origin: 0 0;-webkit-transform: scaleY(0.5);transform: scaleY(0.5);}
+
+/*1px 下边框*/
+.one_px_border_b{width:100%;position: relative;}
+.one_px_border_b:after {content: " ";position: absolute;left: 0;bottom: 0;width: 100%;height: 1px;border-bottom: 1px solid #D9D9D9;color: #D9D9D9;-webkit-transform-origin: 0 100%;transform-origin: 0 100%;-webkit-transform: scaleY(0.5);transform: scaleY(0.5);}
+
+.radio-s1>div{width: 1.4rem;height: 0.44rem;line-height: 0.42rem;border-radius: 15px;background:#f2f2f2;color:#808080;}
+.radio-s1>div:not(:first-child){margin-left:0.2rem;}
+.radio-s1>div.on{background:#7b7b7b;color:#f6f6f6;}
+
+.radio-s2>div{min-width:1.2rem;height:0.44rem;border-radius: 15px;background:#fff;font-size: 0.24rem;color:#999;border:1px solid #e1e1e1;}
+.radio-s2>div:not(:first-child){margin-left:0.1rem;}
+.radio-s2>div.mleft2{margin-left:0.2rem;}
+.radio-s2>div.on{background:#ff6700;color:#fff;border:1px solid #ff6700;}
+
+.radio-s3>div{min-width:1.2rem;height:0.44rem;border-radius: 4px;background:#fff;font-size: 0.24rem;color:#999;border:1px solid #e1e1e1;}
+.radio-s3>div:not(:first-child){margin-left:0.1rem;}
+.radio-s3>div.mleft2{margin-left:0.2rem;}
+.radio-s3>div.on{color:#ff6700;border:1px solid #ff6700;}
+
+.input-box{border:none;height: 100%;width: 100%;font-size: 0.26rem;font-family: "STXihei","Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;line-height: 100%}
+
+.tit-ico{display:inline-block;width: 0.28rem;margin-left: 5px;}
+
+.select-num>div{width:0.68rem;height:0.52rem;line-height:0.52rem;text-align:center;background: #f5f5f5;margin-left:2px;}
+/*左*/
+.select-num>div:first-child{background: #fbfbfb;margin-left:0;border-top-left-radius:3px;border-bottom-left-radius:3px;position: relative;}
+.select-num>div:first-child:before{content: "";position: absolute;top:45%;left:30%;width: 40%;height: 2px;background: #cbcbcb}
+/*中*/
+.select-num>div:first-child+div{width:0.78rem;}
+/*右*/
+.select-num>div:last-child{border-top-right-radius:3px;border-bottom-right-radius:3px;position: relative;}
+.select-num>div:last-child:before{content: "";position: absolute;top:45%;left:30%;width: 40%;height: 2px;background: #999;}
+.select-num>div:last-child:after{content: "";position: absolute;top:45%;left:30%;width: 40%;height: 2px;background: #999;transform: rotate(90deg);-webkit-transform: rotate(90deg);}
+
+.select-cs{border:none;background: none;/*position: relative;left: -0.06rem;*/}
+.select-cs.txt-r{direction: rtl;}
+
+.icon-s1{width: 0.32rem;height: 0.32rem;background: url(../img/select.png) no-repeat center center;background-size: contain;}
+.icon-s1.on{background-image: url(../img/selected.png);}
+
+.maploc{position: fixed;width:100%;height:100%;z-index: 10}
+/*冯恺 eof*/

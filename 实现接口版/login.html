@@ -5,10 +5,10 @@
     <title>登录</title>
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=0">
     <meta name="format-detection" content="telephone=no" />
-    <link href="css/public.css" rel="stylesheet" type="text/css">
-    <link href="css/com.css" rel="stylesheet" type="text/css">
-    <script src="js/public.js"></script>
-    <script type="text/javascript" src="plugin/iscroll/iscroll.js"></script>
+    <link href="resources/css/public.css" rel="stylesheet" type="text/css">
+    <link href="resources/css/com.css" rel="stylesheet" type="text/css">
+    <script src="resources/js/public.js"></script>
+    <script type="text/javascript" src="resources/plugin/iscroll/iscroll.js"></script>
     <script type="text/javascript">
         var mainScroll;
         function loaded () {
@@ -27,19 +27,26 @@
 <body onload="loaded()">
     <article id="body_wrapper">
         <div>
-            <div class="user_icon_wrap">
-                <img src="/images/defaul@140.png" alt="">
+            <div class="user_icons">
+                <img src="resources/images/login_bg@3x.png" alt="">
             </div>
-            <div class="input_wrap">
-                <div><input class="user_acc" type="text" placeholder="请输入账号"></div>
-                <div><input class="user_psd" type="password" placeholder="请输入密码"></div>
+            <div class="input_wrap_module">
+                <div class="boxs">
+                	<i class="us_icon"><img src="resources/images/login_num@3x.png"/></i>
+                	<input class="user_acc" type="text" placeholder="请输入账号">
+                </div>
+                <div class="boxs">
+                	<i class="us_icon"><img src="resources/images/login_pw@3x.png"/></i>
+                	<input class="user_psd" type="password" placeholder="请输入密码">
+                </div>
             </div>
             <a class="big_btn disabled_btn login" href="javascript:;">登录</a>
+            <div class="forget_wrap"><a class="forget" href="pages/forget_psw.html">忘记密码？</a></div>
         </div>
     </article>
-    <script type="text/javascript" src="plugin/zepto/zepto.js"></script>
-    <script type="text/javascript" src="plugin/zepto/touch.js"></script>
-    <script src="js/com.js"></script>
+    <script type="text/javascript" src="resources/plugin/zepto/zepto.js"></script>
+    <script type="text/javascript" src="resources/plugin/zepto/touch.js"></script>
+    <script src="resources/js/com.js"></script>
     <!-- <script src="plugin/jquery/jquery-1.11.0.js"></script> -->
     <script>
         /*加载动画*/
@@ -70,45 +77,27 @@
                         tips('请填写密码','tips_center',1000);
                         return false;
                     }
-                    /*跨域请求*/
+
+                    /*请求*/
                     $.ajax({
-                        type:"get",
-                        url:Config.testJsonpUrl,
-                        dataType:"jsonp",
-                        jsonp:'',
-                        jsonpCallback:'fun',
-                        data:'',
+                        type:"post",
+                        url:Config.url+"user/login",
+                        dataType:"json",
+                        data:{'saNo':$user_acc.val(),'passWord':$user_psd.val(),'deviceId':'123456'},
                         beforeSend:function(xhr, settings){
                             loader.show();
                             $(_that).addClass('disabled');
                         },
                         success:function(data, status, xhr){
-                            console.log(data);
+                        	console.log(data);
+                            if(data.ask==0){
+                                location.href="pages/orders.html"
+                            }else{
+                            	tips(data.errorMessage,'tips_center',1000);
+                            }
                         },
                         error:function(xhr, errorType, error){
-                        },
-                        complete:function(xhr, status){
-                            setTimeout(function(){
-                                loader.hide();
-                                $(_that).removeClass('disabled');
-                            },500);
-                        }
-                    });
-                    $.ajax({
-                        type:"get",
-                        url:Config.testJsonpUrl,
-                        dataType:"jsonp",
-                        jsonp:'',
-                        jsonpCallback:'fun',
-                        data:'',
-                        beforeSend:function(xhr, settings){
-                            loader.show();
-                            $(_that).addClass('disabled');
-                        },
-                        success:function(data, status, xhr){
-                            console.log(data);
-                        },
-                        error:function(xhr, errorType, error){
+                            console.log(xhr);
                         },
                         complete:function(xhr, status){
                             setTimeout(function(){

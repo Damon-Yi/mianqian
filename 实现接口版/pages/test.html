@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <link href="../resources/css/public.css" rel="stylesheet" type="text/css">
+    <link href="../resources/plugin/swiper/swiper.3.1.7.min.css" rel="stylesheet" type="text/css">
+    <link href="../resources/plugin/LArea/LArea.css" rel="stylesheet" type="text/css">
+    <link href="../resources/css/com.css" rel="stylesheet" type="text/css">
+    <link href="../resources/css/part1.css" rel="stylesheet" type="text/css">
+    <script src="../resources/js/public.js"></script>
+    <style>
+        .top_tab {
+            overflow: hidden;
+        }
+
+        body {
+            height: 100%;
+            background: #eef0f1;
+        }
+    </style>
+</head>
+<body>
+<div class="t1 pd-tb-20">手机号1
+    <div class="tit-ico"><img class="full-size vm" src="../resources/images/icon_exclamation@3x.png"></div>
+</div>
+<div class="pd-tb-20 fbox one_px_border_b">
+    <div class="txt-left">这是左右</div>
+    <div class="txt-right com_grey">这是右边</div>
+</div>
+<div class="pd-tb-20 fbox cen one_px_border_b">
+    <div class="txt-left">手机号1</div>
+    <div class="txt-right"><input class="input-box impor_dark" type="text" id="" placeholder="文本类型"
+                                  onblur="/^\d$/.test(this.value) || console.log('格式错误')"></div>
+</div>
+<div class="pd-tb-20 fbox cen one_px_border_b">
+    <div class="txt-left">手机号1<span class="red">*</span></div>
+    <div class="txt-right"><input class="input-box impor_dark" type="number" id="" placeholder="数字类型"
+                                  onblur="/^\d$/.test(this.value) || console.log('格式错误')"></div>
+</div>
+<div class="pd-tb-20 fbox cen one_px_border_b">
+    <div class="txt-left">手机号1<span class="red">*</span></div>
+    <div class="txt-right"><input class="input-box impor_dark" type="password" id="" placeholder="密码类型"
+                                  onblur="/^\d$/.test(this.value) || console.log('格式错误')"></div>
+</div>
+<div class="pd-tb-20 fbox cen one_px_border_b">
+    <div class="txt-left">手机号1<span class="red">*</span></div>
+    <div class="txt-right"><input class="input-box impor_dark" type="email" id="" placeholder="email类型"
+                                  onblur="/^\d$/.test(this.value) || console.log('格式错误')"></div>
+</div>
+<div class="pd-tb-20 fbox cen one_px_border_b">
+    <div class="txt-left">手机号1<span class="red">*</span></div>
+    <div class="txt-right"><input class="input-box impor_dark" type="date" id="" placeholder="数字类型"
+                                  onblur="/^\d$/.test(this.value) || console.log('格式错误')"></div>
+</div>
+<div class="pd-tb-20 fbox one_px_border_b">
+    <div class="txt-left">手机号1手机</div>
+    <div class="txt-right com_grey ml3">300<br>
+        <div class="font24">(含服务费40元)</div>
+    </div>
+    <div class="txt-right com_grey vm ml3">2016-08-20</div>
+</div>
+<div class="pd-tb-20 fbox cen one_px_border_b">
+    <div class="txt-left">手机号1手机<span class="red">*</span></div>
+    <select class="txt-right select-cs impor_dark" id="id1">
+        <option value="商品品类1">商品品类1</option>
+        <option value="商品品类2">商品品类2</option>
+        <option value="商品品类3">商品品类3</option>
+    </select></div>
+<div class="pd-tb-20 fbox cen">
+    <div class="txt-left com_dark">手机号1手机<span class="red">*</span></div>
+    <div class="txt-right">
+        <div class="radio-s2 fbox cen text-center" id="sdf">
+            <div data-val="1" class="on">是</div>
+            <div class="mleft2" data-val="2">否</div>
+        </div>
+    </div>
+</div>
+<div class="pd-tb-20 one_px_border_b">
+    <div class="txt-left">手机号1手机手机号1手机手机号1手机手机号1手机手机号1手机<span class="red">*</span></div>
+    <div class="txt-right ml0 impor_dark">
+        <div class="radio-s2 bi mt20" id="ssdfdf">
+            <div class="text-center on">是</div>
+            <div class="text-center mleft2">否</div>
+        </div>
+    </div>
+</div>
+<div class="pd-tb-20 fbox cen one_px_border_b">
+    <div class="txt-left">手机号1手<span class="red">*</span></div>
+    <div class="txt-right com_grey">
+        <div class="radio-s2 fbox text-center" id="sdfsdf">
+            <div class="on">已婚</div>
+            <div>未婚</div>
+            <div>离异</div>
+        </div>
+    </div>
+</div>
+<div class="pd-tb-20 one_px_border_b">
+    <div class="txt-left">是否明确知道企业在当地存在<span class="small">(地址位置、人员规模)</span><span class="red">*</span></div>
+    <div class="txt-right ml0 impor_dark">
+        <div class="radio-s2 bi mt20" id="sdf">
+            <div class="text-center on">知道</div>
+            <div class="text-center mleft2">不知道</div>
+            <div class="text-center mleft2">不确定</div>
+        </div>
+    </div>
+</div>
+<div class="pd-tb-20 fbox cen one_px_border_b">
+    <div class="txt-left">子女数目<span class="red">*</span></div>
+    <div class="txt-right">
+        <div class="select-num fbox cen" id="sdf">
+            <div class=""></div>
+            <div class="com_grey">0</div>
+            <div class=""></div>
+        </div>
+    </div>
+</div>
+<div class="pd-tb-20">
+    <div class="t1 no-bl pd-tb-20">异常备注<span class="small">(限500个汉字)</span><span class="red">*</span></div>
+    <textarea class="full-size impor_dark bc-e1" id="sdf" rows="5"></textarea></div>
+<div class="pd-tb-20">
+    <div class="txt-left">申请人电话号码验证方式<span class="red">*</span></div>
+    <div class="txt-right ml0 impor_dark diff-val" id="sdf">
+        <div class="fbox cen mb20 mt20 icon-s1"><i class=""></i>
+            <div class="ml2">可验证：</div>
+            <div class="radio-s3 fbox cen">
+                <div class="text-center">支付宝</div>
+                <div class="text-center">微信</div>
+                <div class="text-center">其它</div>
+            </div>
+        </div>
+        <div class="fbox cen icon-s1 on"><i class=""></i>
+            <div class="ml2">无法验证</div>
+        </div>
+    </div>
+</div>
+<div class="pd-t20 fbox one_px_border_b">
+    <div class="flex1 mapbox big text-center">
+        <div class="tablev" id="sdf">
+            <div><img class="w08" src="../resources/images/icon_picture_default@3x.png">
+                <div>现场合影照片</div>
+            </div>
+            <div class="close-btn"><i class="close"></i></div>
+            <div class="info_img"><img
+                    src="http://bqjrtest1.oss-cn-shanghai.aliyuncs.com/order_data/1000000000817129/1.jpg?Expires=4640904584&amp;OSSAccessKeyId=LTAI5NkT3gXAD36M&amp;Signature=eGLq%2FkHLC8q2CQA3CPW1q95rWj8%3D"
+                    alt=""></div>
+        </div>
+    </div>
+</div>
+<div class="pd-t20 fbox" id="asldf">
+    <div class="flex1 mapbox text-center">
+        <div class="tablev">
+            <div><img class="w08" src="../resources/images/icon_picture_default@3x.png">
+                <div>现场合影照片1</div>
+            </div>
+            <div class="close-btn"><i class="close"></i></div>
+            <div class="info_img"><img
+                    src="http://bqjrtest1.oss-cn-shanghai.aliyuncs.com/order_data/1000000000817129/1.jpg?Expires=4640904584&amp;OSSAccessKeyId=LTAI5NkT3gXAD36M&amp;Signature=eGLq%2FkHLC8q2CQA3CPW1q95rWj8%3D"
+                    alt=""></div>
+        </div>
+    </div>
+    <div class="flex1 mapbox text-center ml2">
+        <div class="tablev">
+            <div><img class="w08" src="../resources/images/icon_picture_default@3x.png">
+                <div>现场合影照片2</div>
+            </div>
+            <div class="close-btn"><i class="close"></i></div>
+            <div class="info_img"><img
+                    src="http://bqjrtest1.oss-cn-shanghai.aliyuncs.com/order_data/1000000000817129/1.jpg?Expires=4640904584&amp;OSSAccessKeyId=LTAI5NkT3gXAD36M&amp;Signature=eGLq%2FkHLC8q2CQA3CPW1q95rWj8%3D"
+                    alt=""></div>
+        </div>
+    </div>
+</div>
+<div class="down_space"></div>
+<div class="pd-t20" id="aslfgdf">
+    <div class="txt-left">请在下方所有选项中选择一项</div>
+    <div class="txt-right ml0 impor_dark">
+        <div class="radio-s4 fbox wrap mt20">
+            <div class="fbox cen icon-s1 on"><i></i>
+                <div class="ml1">社保卡/医保卡</div>
+            </div>
+            <div class="fbox cen icon-s1"><i></i>
+                <div class="ml1">户口本</div>
+            </div>
+            <div class="fbox cen icon-s1"><i></i>
+                <div class="ml1">驾驶证</div>
+            </div>
+            <div class="fbox cen icon-s1"><i></i>
+                <div class="ml1">工卡</div>
+            </div>
+            <div class="fbox cen icon-s1"><i></i>
+                <div class="ml1">银行储蓄卡</div>
+            </div>
+        </div>
+    </div>
+    <div class="pd-t20 fbox">
+        <div class="flex1 mapbox text-center">
+            <div class="tablev">
+                <div><img class="w08" src="../resources/images/icon_picture_default@3x.png">
+                    <div>现场合影照片</div>
+                </div>
+                <div class="close-btn"><i class="close"></i></div>
+                <div class="info_img"><img
+                        src="http://bqjrtest1.oss-cn-shanghai.aliyuncs.com/order_data/1000000000817129/1.jpg?Expires=4640904584&amp;OSSAccessKeyId=LTAI5NkT3gXAD36M&amp;Signature=eGLq%2FkHLC8q2CQA3CPW1q95rWj8%3D"
+                        alt=""></div>
+            </div>
+        </div>
+        <div class="flex1 mapbox text-center ml2">
+            <div class="tablev">
+                <div><img class="w08" src="../resources/images/icon_picture_default@3x.png">
+                    <div>现场背景照片</div>
+                </div>
+                <div class="close-btn"><i class="close"></i></div>
+                <div class="info_img"><img
+                        src="http://bqjrtest1.oss-cn-shanghai.aliyuncs.com/order_data/1000000000817129/1.jpg?Expires=4640904584&amp;OSSAccessKeyId=LTAI5NkT3gXAD36M&amp;Signature=eGLq%2FkHLC8q2CQA3CPW1q95rWj8%3D"
+                        alt=""></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="pd-t20 fbox" id="asldf">
+    <div class="flex1 mapbox text-center">
+        <div class="tablev">
+            <div><img class="w08" src="../resources/images/icon_picture_default@3x.png">
+                <div>现场合影照片1</div>
+            </div>
+            <div class="close-btn"><i class="close"></i></div>
+            <div class="info_img"><img
+                    src="http://bqjrtest1.oss-cn-shanghai.aliyuncs.com/order_data/1000000000817129/1.jpg?Expires=4640904584&amp;OSSAccessKeyId=LTAI5NkT3gXAD36M&amp;Signature=eGLq%2FkHLC8q2CQA3CPW1q95rWj8%3D"
+                    alt=""></div>
+        </div>
+    </div>
+</div>
+<div class="down_space"></div>
+</body>
+</html>

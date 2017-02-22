@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>订单</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no" />
+    <link href="../resources/css/public.css" rel="stylesheet" type="text/css">
+    <link href="../resources/css/com.css" rel="stylesheet" type="text/css">
+    <link href="../resources/plugin/swiper/swiper.3.1.7.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="../resources/plugin/iscroll/iscroll.css">
+    <script src="../resources/js/public.js"></script>
+    <script type="text/javascript" src="../resources/plugin/swiper/swiper.3.1.7.min.js"></script>
+    <script type="text/javascript" src="../resources/plugin/iscroll/iscroll.js"></script>
+    <style>
+        body{background-color: #dcdcdc;}
+        .orders{font-size:0.26rem;color: #333;line-height: 1;padding:0.2rem}
+        .orders_detal{width:100%;height:100%;margin-bottom:0.2rem;}
+        .orders .o_item{background:#FFFFFF url(../resources/images/bg_bot.png) repeat-x center bottom;background-size:0.45rem;padding-bottom:0.2rem; border-top:5px solid #db2442;border-top-left-radius:0.2em;border-top-right-radius:0.2em;}
+        .orders .o_item img,.orders .o_item span,.orders .o_item i{display: inline-block;vertical-align: middle;}
+        .orders .o_item i{font-style: normal;font-size:0.2rem; }
+        .orders .o_tips{font-size: 0.24rem;color: #e32121;background-color: #FFFFFF;position:relative;display:inline-block;border-radius:0.2rem;margin-bottom: 0.15rem;padding:0.1rem 0.2rem;}
+        .orders .o_tips>img{width: 0.28rem;height: 0.28rem;margin-right:0.1rem;}
+        .orders .o_tips>span{line-height: 0.5rem;}
+        .orders .o_tips:before{content:" ";position: absolute;width:0;height:0;left:0.1rem;bottom:-0.25rem;border-top:0.24rem solid #FFFFFF;border-right:0.24rem solid transparent;border-bottom:0.12rem solid transparent;}
+        .orders .o_item .o_header{position: relative;height: 0.8rem;margin:0 0.2rem;}
+        .orders .o_item .o_header:after{content: " ";position: absolute;left: 0;bottom: 0;width: 100%;height: 1px;border-bottom: 1px solid #e1e1e1;color: #e1e1e1;-webkit-transform-origin: 0 100%;transform-origin: 0 100%;-webkit-transform: scaleY(0.5);transform: scaleY(0.5);}
+        .orders .o_item .o_header .o_header_radius:before{content:" ";position: absolute;left:-0.35rem;bottom: -0.13rem;width:0.26rem;height:0.26rem;background:#dcdcdc;border-radius:50%;}
+        .orders .o_item .o_header .o_header_radius:after{content:" ";position: absolute;right:-0.35rem;bottom: -0.13rem;width:0.26rem;height:0.26rem;background:#dcdcdc;border-radius:50%;}
+        .orders .o_item .o_header .o_h_left{float: left;}
+        .orders .o_item .o_header .o_logo{width: 0.32rem;height: 0.32rem;}
+        .orders .o_item .o_header .o_com{line-height: 0.8rem;margin: 0 0.06rem;}
+        .orders .o_item .o_header .o_dec{height: 0.24rem;width: 0.24rem;background-color: #e00000;color: #fff;border-radius: 2px;font-size: 0.2rem;line-height: 0.24rem;text-align: center;font-style: normal;}
+        .orders .o_item .o_header .o_h_right{color: #999;font-size: 0.25rem;float: right}
+        .orders .o_item .o_header .o_h_right label{font-size:0.25rem;color: #A9B2B9;;}
+        .orders .o_item .o_header .o_time{margin-right: 0.1rem;color:#323232;}
+        .orders .o_item .o_header .o_status{color: #ff6700;font-size: 0.28rem;line-height: 0.8rem;margin-left: 0.1rem;}
+        .orders .o_item .o_mid{position: relative;}
+        .orders .o_item .o_mid:after{content: " ";position: absolute;left: 0;bottom: 0;width: 100%;height: 0;color: #e1e1e1;-webkit-transform-origin: 0 100%;transform-origin: 0 100%;-webkit-transform: scaleY(0.5);transform: scaleY(0.5);}
+        .orders .o_item .o_mid .o_user_info{position: relative;}
+        .orders .o_item .o_mid .o_user_info:after{content: " ";position: absolute;left: 0;bottom: 0;width: 100%;height: 0;color: #e1e1e1;-webkit-transform-origin: 0 100%;transform-origin: 0 100%;-webkit-transform: scaleY(0.5);transform: scaleY(0.5);}
+        .orders .o_item .o_mid .o_user_info>div{padding:0.3rem 0;overflow: auto;border-bottom:1px solid #eef0f1;margin:0 0.2rem;}
+        .orders .o_item .o_mid .o_user_info img{width: 0.32rem;height: 0.32rem;}
+        .orders .o_item .o_mid .o_user_info .o_main{}
+        .orders .o_item .o_mid .o_user_info .o_main label{font-size:0.25rem;color:#A9B2B9}
+        .orders .o_item .o_mid .o_user_info .o_u_left{float: left;}
+        .orders .o_item .o_mid .o_user_info .o_name{font-size:0.25rem;color:#323232;}
+        .orders .o_item .o_mid .o_user_info .o_u_icon{margin-right:0.08rem; }
+        .orders .o_item .o_mid .o_user_info .o_u_right{float: right;}
+        .orders .o_item .o_mid .o_user_info .o_phone{font-size:0.25rem;color:#323232;}
+        .orders .o_item .o_mid .o_user_info .o_addr{display: flex;display: -webkit-flex;}
+        .orders .o_item .o_mid .o_user_info .o_addr label{font-size:0.25rem;color:#A9B2B9}
+        .orders .o_item .o_mid .o_user_info .o_a_txt{flex:1;-webkit-flex:1;font-size:0.25rem;color:#323232;}
+        .orders .o_item .o_mid .o_user_info .o_a_icon{margin-right:0.08rem;}
+        .orders .o_item .o_mid .o_user_info .o_t_icon{margin-right:0.08rem;}
+        .orders .o_item .o_mid .o_user_info .o_appo{color: #323232;}
+        .orders .o_item .o_mid .o_user_info .o_appo label{font-size:0.25rem;color:#A9B2B9}
+        .orders .o_item .o_mid .o_commodity_info{padding: 0.06rem 0.2rem;}
+        .orders .o_item .o_mid .o_user_info .o_c_describe{display: flex;display: -webkit-flex;}
+        .orders .o_item .o_mid .o_user_info .o_c_describe label,.orders .o_item .o_mid .o_user_info .o_c_cost label{font-size:0.25rem;color:#A9B2B9}
+        .orders .o_item .o_mid .o_user_info .o_c_describe .o_c_text{flex:1;-webkit-flex:1;font-size:0.25rem;color:#323232;line-height: 1.2;}
+        .orders .o_item .o_mid .o_user_info .o_c_left{float: left;}
+        .orders .o_item .o_mid .o_user_info .o_c_right{float: right;}
+        .orders .o_item .o_footer{text-align: right;padding: 0.15rem 0.2rem;}
+    </style>
+</head>
+<body>
+    <div class="top_tab">
+        <div class="swiper-wrapper">
+        	<div class="swiper-slide">
+                <div class="top_tab_item on"><a class="top_tab_a" href="javascript:;" data-type="" data-page="1">全部</a></div>
+            </div>
+            <div class="swiper-slide">
+                <div class="top_tab_item "><a class="top_tab_a" href="javascript:;" data-type="10" data-page="1">待接单</a></div>
+            </div>
+            <div class="swiper-slide">
+                <div class="top_tab_item"><a class="top_tab_a" href="javascript:;" data-type="30" data-page="1">待预约</a></div>
+            </div>
+            <div class="swiper-slide">
+                <div class="top_tab_item"><a class="top_tab_a" href="javascript:;" data-type="40" data-page="1">待提单</a></div>
+            </div>
+            <div class="swiper-slide">
+                <div class="top_tab_item"><a class="top_tab_a" href="javascript:;" data-type="50" data-page="1">已完成</a></div>
+            </div>
+            
+            <div class="action_line"></div>
+        </div>
+    </div>
+    <div class="cont_box bottom_cont_box">
+        <div class="c_panel c_panel_0 active">
+            <div>
+                <div class="orders"></div>
+                <div class="no_data">
+                    <img src="../resources/images/setting_head_default@3x.png" alt="">
+                    <p>~暂无数据~</p>
+                </div>
+            </div>
+        </div>
+        <div class="c_panel c_panel_1">
+           <div>
+                <div class="orders"></div>
+                <div class="no_data">
+                    <img src="../resources/images/setting_head_default@3x.png" alt="">
+                    <p>~暂无数据~</p>
+                </div>
+            </div>
+        </div>
+        <div class="c_panel c_panel_2">
+            <div>
+                <div class="orders"></div>
+                <div class="no_data">
+                    <img src="../resources/images/setting_head_default@3x.png" alt="">
+                    <p>~暂无数据~</p>
+                </div>
+            </div>
+        </div>
+        <div class="c_panel c_panel_3">
+           <div>
+                <div class="orders"></div>
+                <div class="no_data">
+                    <img src="../resources/images/setting_head_default@3x.png" alt="">
+                    <p>~暂无数据~</p>
+                </div>
+            </div>
+        </div>
+        <div class="c_panel c_panel_4">
+            <div>
+                <div class="orders"></div>
+                <div class="no_data">
+                    <img src="../resources/images/setting_head_default@3x.png" alt="">
+                    <p>~暂无数据~</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="../resources/plugin/zepto/zepto.js"></script>
+    <script type="text/javascript" src="../resources/plugin/zepto/touch.js"></script>
+    <script src="../resources/js/com.js"></script>
+    <script>
+        var iSrollers = [];
+        window.onload = function() {
+            /*头部导航*/
+            var topTabSwiper = new Swiper('.top_tab',{
+                freeMode : true,
+                slidesPerView : 'auto',
+                onTap: function(swiper){
+                    /*文字颜色*///
+                    $('.top_tab .top_tab_item').removeClass('on');
+                    var topTabItem = $(topTabSwiper.clickedSlide).find('.top_tab_item>a'); 
+                    var type=topTabItem.attr("data-type");
+                    var _index=$(topTabSwiper.clickedSlide).index();
+
+                    var ordersWrap = $(iSrollers[_index].scroller).find(".orders");
+                    getData(type,1,ordersWrap,iSrollers[_index].pullDownEnd);
+
+                    topTabItem.addClass('on');   
+                    /**/
+                    var actionLine = $('.top_tab .action_line');
+                    actionLine.css('left',topTabSwiper.clickedIndex*20+'%');
+                    /**/
+                    //$('.bottom_cont_box .c_panel').removeClass('active');
+                    $('.bottom_cont_box .c_panel').eq(topTabSwiper.clickedIndex).addClass('active').siblings().removeClass('active');
+                }
+            });
+
+            setOrderCounter();
+
+            initiScrolls();
+
+        }
+        function initiScrolls(){
+            $('.c_panel').each(function(){
+                var index =  $(this).index();
+                var topTapA = $(".top_tab .swiper-slide").eq(index).find('.top_tab_a'),
+                    type= topTapA.attr("data-type"),
+                    pageN=topTapA.attr("data-page");
+
+                var iSrollerObj = initiScroll({
+                    className:'c_panel_'+index,
+                    pagenation:true,
+                    pullUpCallBak:function(){//上拉
+                        setTimeout(function(){
+                            var topTapA = $(".top_tab .swiper-slide").eq(index).find('.top_tab_a'),
+                                pageN=topTapA.attr("data-page");
+                            var ordersWrap = $(iSrollerObj.iSroller.scroller).find(".orders");
+                            getData(type,parseInt(pageN)+1,ordersWrap,function(){
+                                iSrollerObj.iSroller.pullUpEnd();
+                                topTapA.attr("data-page",parseInt(pageN)+1);
+                            });
+                        },800);
+                    },
+                    pullDownCallBak:function(){//下拉
+                        setTimeout(function(){
+                            var topTapA = $(".top_tab .swiper-slide").eq(index).find('.top_tab_a'),
+                                pageN=topTapA.attr("data-page");
+                            var ordersWrap = $(iSrollerObj.iSroller.scroller).find(".orders");
+                            ordersWrap.empty();
+                            getData(type,1,ordersWrap,function(){
+                                iSrollerObj.iSroller.pullDownEnd();
+                                topTapA.attr("data-page",'1');
+                            });
+                        },600);
+                    }
+                });
+                    
+                iSrollers.push(iSrollerObj.iSroller);
+                var ordersWrap = $(iSrollerObj.iSroller.scroller).find(".orders");
+                if(index == 0){
+                    getData(type,pageN,ordersWrap,function(){
+                        iSrollerObj.iSroller.pullDownEnd();
+                    });//请求数据
+                }
+            });
+            document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+        }
+        function refreshCurrPanel(obj){
+            var panel = obj.parents('.c_panel.active');
+            if (panel[0]) {
+                console.log(panel.index());
+                var ordersWrap = panel.find(".orders"),
+                    topTapA = $(".top_tab .swiper-slide").eq(panel.index()).find('.top_tab_a'),
+                    type= topTapA.attr("data-type");
+                ordersWrap.empty();
+                getData(type,1,ordersWrap,iSrollers[panel.index()].pullDownEnd);
+            }
+        }
+        function setOrderCounter(){
+            $.ajax({
+                type:"post",
+                url:Config.url+"orderInfo/getOrderStatusCount",
+                //contentType:"application/json",
+                data:{"userToken":"123456","userNo":"999999"},
+                beforeSend:function(xhr, settings){
+                },
+                success:function(data, status, xhr){
+                    if(data.ask==0&&data.data.length>0){
+                        var allCount = 0;
+                        for(var i=0;i<data.data.length;i++){
+                            if(data.data[i].orderCount>0){
+                                allCount += parseInt(data.data[i].orderCount);
+                                var tmpCount = parseInt(data.data[i].orderCount)>99?'99+':data.data[i].orderCount;
+                                var badge = $('<i class="badge">'+tmpCount+'</i>'),
+                                    badgeWrap = $('.top_tab_a[data-type="'+data.data[i].visaStatus+'"]');
+                                badgeWrap.append(badge);
+                            }
+                        }
+                        if(allCount>0){
+                            var tmpAllCount = allCount>99?'99+':allCount;
+                            var badgeAll = $('<i class="badge">'+tmpAllCount+'</i>'),
+                                badgeAllWrap = $('.top_tab_a[data-type=""]');
+                            badgeAllWrap.append(badgeAll);
+                        }
+                    }
+                },
+                error:function(xhr, errorType, error){
+                    console.log(xhr);
+                },
+                complete:function(xhr, status){
+                }
+            });
+        }
+        /*ajax获取列表数据*/
+        function getData(type,pageN,ordersWrap,callBack){
+            console.log(pageN);
+		    $.ajax({
+		        type:"post",
+		        url:Config.url+"orderInfo/list",
+		        contentType:"application/json",
+		        data:JSON.stringify({"userNo":"999999","orderStatus":type,"pageNum":pageN,"pageSize":2}),
+		        beforeSend:function(xhr, settings){
+		        },
+		        success:function(data, status, xhr){
+                    console.log(data);
+		            if(data.ask==0&&data.data.length>0){
+                        ordersWrap.addClass('hasDate');
+                        if(pageN==1){
+                            ordersWrap.empty();
+                        }
+		            	for(var i=0;i<data.data.length;i++){
+		            		ordersWrap.append(template(data.data[i]));
+		            	}
+		            }
+		        },
+		        error:function(xhr, errorType, error){
+		            console.log(xhr);
+		        },
+		        complete:function(xhr, status){
+                    callBack();
+		        }
+		    });
+        }
+        /*生成列表模板    '<div class="o_tips"><img src="../resources/images/backs.png" alt=""><span>订单已被审核退回，请重新提单！</span></div>'+*/
+        function template(list){
+        	var viobj=visaStatus(list.visaStatus);
+        	var html =$('<div class="orders_detal" data-statu="'+list.visaStatus+'" data-order="'+list.orderNo+'">'+
+	                    '<div class="o_item">'+
+	                        '<div class="o_header">'+
+	                        	'<div class="o_header_radius">'+
+		                            '<div class="o_h_left"><img class="o_logo" src="../resources/img/JD.png" alt=""><span class="o_com">'+list.channel+'</span><i class="o_dec">代</i></div>'+
+		                            '<div class="o_h_right"><label>倒计时：</label><span class="o_time">59分</span>|<span class="o_status">'+viobj.status+'</span></div>'+
+	                        	'</div>'+
+	                        '</div>	'+
+	                        '<div class="o_mid">'+
+	                            '<div class="o_user_info">'+
+	                                '<div class="o_main">'+
+	                                    '<div class="o_u_left"><label>姓名：</label><span class="o_name">'+list.customerName+'</span></div>'+
+	                                    '<div class="o_u_right"><label>电话：</label><span class="o_phone">'+list.customerMobile+'</span></div>'+
+	                                '</div>'+
+	                                '<div class="o_addr">'+
+	                                    '<label>地址：</label><span class="o_a_txt">'+list.goodsReceiverAddress+'</span>'+
+	                                '</div>'+
+	                                '<div class="o_appo">'+
+	                                	'<label>时间：</label><span>'+formatDate(list.createTime)+'</span>'+
+	                                '</div>'+
+	                                '<div class="o_c_describe">'+
+	                                	'<label>详情：</label><span class="o_c_text">'+list.goodsName+'</span>'+
+	                                '</div>'+
+	                                '<div class="o_c_cost">'+
+	                                    '<div class="o_c_left"><label>商品金额：</label><span><i>￥</i>'+list.goodsMoney+'</span></div>'+
+	                                    '<div class="o_c_right"><label>分期金额：</label><span><i>￥</i>'+list.stagesMoney+'</span></div>'+
+	                                '</div>'+
+	                            '</div>'+
+	                        '</div>'+
+	                        '<div class="o_footer">'+
+	                        
+	                        '</div>'+
+	                    '</div>'+
+	                '</div> ');
+            var btnsWrap = html.find('.o_footer');
+            for(var i=0;i<viobj.btns.length;i++){
+                btnsWrap.append(viobj.btns[i]);
+            }
+            return html;
+        }
+        /*查看详情页*/
+        $(".c_panel").on("tap",".orders_detal",function(){
+        	var Order=$(this).attr("data-order");
+        	var Statu=$(this).attr("data-statu");
+        	location.href="order_details.html?order="+Order+"&statu="+Statu;
+        });
+        /*订单状态*/
+		function visaStatus(status){
+			switch(status){
+				case 20:
+					return  {status:"待派单",btns:generateButs(status)};
+				break;
+				case 10:
+					return  {status:"待接单",btns:generateButs(status)};
+				break;
+				case 30:
+					return  {status:"待预约",btns:generateButs(status)};
+				break;
+				case 40:
+					return  {status:"待提单",btns:generateButs(status)};
+				break;
+				case 50:
+					return  {status:"已完成",btns:generateButs(status)};
+				break;
+				case 60:
+					return  {status:"已取消",btns:generateButs(status)};
+				break;
+			}
+		}
+		/*订单状态按钮*/
+		function generateButs(status){
+            var btns=[];
+            var str = {
+                rec:['refuse','cancel','recive'],//10  待接单
+                subscribe:['turn','cancel','subscr'],  //30 待预约
+                lading:['improve','cancel','ladoder'],  //40 待提单
+                complete:['examine']  //50 已完成
+            }
+			if(status==10){
+                for(var i = 0;i<str.rec.length;i++){
+                    btns.push(generateBut(str.rec[i]));
+                }
+			}
+			if(status==30){
+                for(var i = 0;i<str.subscribe.length;i++){
+                    btns.push(generateBut(str.subscribe[i]));
+                }
+			}
+			if(status==40){
+                for(var i = 0;i<str.lading.length;i++){
+                    btns.push(generateBut(str.lading[i]));
+                }
+			}
+			if(status==50){
+                for(var i = 0;i<str.complete.length;i++){
+                    btns.push(generateBut(str.complete[i]));
+                }
+			}
+            return btns;
+		}
+		/*订单 接单、取消、预约按钮*/
+		function generateBut(type){
+            var btn;
+            if(type=='cancel'){//取消订单
+                btn = $('<a class="mid_btn default_btn cancel_order" href="javascript:;">取消订单</a>');
+                btn.on('tap',function(e){
+                	e.stopPropagation();
+                    var orders=$(this).parents(".orders_detal").attr("data-order");
+                    location.href="order_cancel.html?order="+orders;
+                });
+            }
+            /*接单*/
+            if(type=='recive'){
+                btn = $('<a class="mid_btn impor_blank_btn acc_order" href="javascript:;">接单</a>');
+                btn.on('tap',function(e){
+                	e.stopPropagation();
+                    var orders=$(this).parents(".orders_detal").attr("data-order");
+                	var dialog = confirmDialog({
+		                type:2,
+		                hasShadowBg:true,
+		                title:'确认接单',
+		                txt:'接单后1小时内和客户预约面签时间！如您不接此单，系统将在1小时后重新拍单。',
+		                btns:[{
+		                        text:'接单',
+		                        callBack:function(){
+		                            $.ajax({
+					            		type:"post",
+					            		url:Config.url+"orderInfo/receiveOrder",
+					            		contentType:"application/json",
+					            		data:JSON.stringify({"userNo":"999999","orderNo":orders}),
+					            		success:function(data,status,xhr){
+					            			dialog.destory();
+					            			refreshCurrPanel(btn);
+					            		},
+					            		error:function(xhr, errorType, error){
+								            console.log(xhr);
+								        },
+					            	});
+		                        }
+		                    },
+		                    {
+		                        text:'取消',
+		                        callBack:function(){
+		                        	dialog.destory();
+		                        }
+		                    }
+		                ]
+		            });
+		            dialog.show();
+                });
+            }
+            /*拒绝接单*/
+            if(type=='refuse'){
+            	btn = $('<a class="mid_btn impor_blank_btn acc_order" href="javascript:;">拒绝接单</a>');
+                btn.on('tap',function(e){
+                	e.stopPropagation();
+                	var orders=$(this).parents(".orders_detal").attr("data-order");
+                	var dialog = confirmDialog({
+		                type:2,
+		                hasShadowBg:true,
+		                title:'确认拒单',
+		                txt:'拒绝该订单后，系统将不再派该订单给您？',
+		                btns:[{
+		                        text:'拒单',
+		                        callBack:function(){
+		                            $.ajax({
+					            		type:"post",
+					            		url:Config.url+"orderInfo/rejectOrder",
+					            		contentType:"application/json",
+					            		data:JSON.stringify({"userNo":"999999","orderNo":orders}),
+					            		success:function(data,status,xhr){
+					            			dialog.destory();
+					            		},
+					            		error:function(xhr, errorType, error){
+								            console.log(xhr);
+								        },
+					            	});
+		                        }
+		                    },
+		                    {
+		                        text:'取消',
+		                        callBack:function(){
+		                        	dialog.destory();
+		                        }
+		                    }
+		                ]
+		            });
+		            dialog.show();
+                });
+            }
+            /*//转单*/
+            if(type=='turn'){
+            	btn = $('<a class="mid_btn impor_blank_btn acc_order" href="javascript:;">转单</a>');
+                btn.on('tap',function(e){
+                	e.stopPropagation();
+                    var orders=$(this).parents(".orders_detal").attr("data-order");
+                    var site=$(this).parents(".orders_detal").find(".o_a_txt").text();
+                    location.href="turn_order.html?order="+orders+"&site="+site;
+                });
+            }
+            /*//预约*/
+            if(type=='subscr'){
+            	btn = $('<a class="mid_btn impor_blank_btn acc_order" href="javascript:;">预约</a>');
+                btn.on('tap',function(e){
+                	e.stopPropagation();
+                    var orders=$(this).parents(".orders_detal").attr("data-order");
+                    var names=$(this).parents(".orders_detal").find(".o_name").text();
+                    var phones=$(this).parents(".orders_detal").find(".o_phone").text();
+                    var status=$(this).parents(".orders_detal").find(".o_status").text();
+                    var site=$(this).parents(".orders_detal").find(".o_a_txt").text();
+                    location.href="policy.html?order="+orders+"&name="+names+"&tel="+phones+"&status="+status+"&site="+site;
+                });
+            }
+            /*//改约*/
+            if(type=='improve'){
+            	btn = $('<a class="mid_btn impor_blank_btn acc_order" href="javascript:;">改约</a>');
+                btn.on('tap',function(e){
+                	e.stopPropagation();
+                    var orders=$(this).parents(".orders_detal").attr("data-order");
+                    var names=$(this).parents(".orders_detal").find(".o_name").text();
+                    var phones=$(this).parents(".orders_detal").find(".o_phone").text();
+                    var status=$(this).parents(".orders_detal").find(".o_status").text();
+                    var site=$(this).parents(".orders_detal").find(".o_a_txt").text();
+                    location.href="policy.html?order="+orders+"&name="+names+"&tel="+phones+"&status="+status+"&site="+site;
+                });
+            }
+            /*//查看合同*/
+            if(type=='examine'){
+            	btn = $('<a class="mid_btn impor_blank_btn acc_order" href="javascript:;">查看合同</a>');
+                btn.on('tap',function(e){
+                	e.stopPropagation();
+                	var orders=$(this).parents(".orders_detal").attr("data-order");
+                    location.href="contract-detail.html?order="+orders;
+                });
+            }
+            /*//提单*/
+            if(type=="ladoder"){
+            	btn = $('<a class="mid_btn impor_blank_btn acc_order" href="javascript:;">提单</a>');
+                btn.on('tap',function(e){
+                	e.stopPropagation();
+                    var orders=$(this).parents(".orders_detal").attr("data-order");
+                    location.href="submit-module.html?order="+orders;
+                });
+            }
+            return btn;
+		}
+    </script>
+</body>
+</html>

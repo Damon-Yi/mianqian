@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>订单</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no" />
+    <link href="../../resources/css/public.css" rel="stylesheet" type="text/css">
+    <link href="../../resources/css/com.css" rel="stylesheet" type="text/css">
+    <link href="../../resources/plugin/swiper/swiper.3.1.7.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="../../resources/plugin/iscroll/iscroll.css">
+    <script src="../../resources/js/public.js"></script>
+    <script type="text/javascript" src="../../resources/plugin/swiper/swiper.3.1.7.min.js"></script>
+    <script type="text/javascript" src="../../resources/plugin/iscroll/iscroll.js"></script>
+    <script type="text/javascript">
+        var mainScroll;
+        function loaded () {
+            initScroll('c_panel_1');
+            document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+        }
+
+        function initScroll(str){
+            var downIcon,upIcon,scrollerPullDown,scrollerPullUp,pullUpMsg,upLoading,downLoading,pullDownMsg; 
+            downIcon = $("."+str+" .down-icon");
+            pullDownMsg = $("."+str+" .pull-down-msg");
+            scrollerPullDown = $("."+str+" .scroller-pullDown");
+            scrollerPullUp = $("."+str+" .scroller-pullUp");
+            upLoading = $("."+str+" .scroller-pullUp .loading");
+            downLoading = $("."+str+" .scroller-pullDown .loading");
+            upIcon = $("."+str+" .up-icon");
+            pullUpMsg = $("."+str+" .pull-up-msg");
+
+            var tuwenScroller = new IScroll('.'+str, {
+                probeType: 3,
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true
+            });
+            tuwenScroller.on("scroll",function(){
+                var y = this.y,
+                    maxY = this.maxScrollY - y,
+                    downHasClass = downIcon.hasClass("reverse_icon"),
+                    upHasClass = upIcon.hasClass("reverse_icon");
+                
+                if(y >= 40){
+                    !downHasClass && downIcon.addClass("reverse_icon") && pullDownMsg.text('松手开始更新');
+                    return "";
+                }else if(y < 40 && y > 0){
+                    downHasClass && downIcon.removeClass("reverse_icon") && pullDownMsg.text('下拉刷新');
+                    return "";
+                }
+                
+                if(maxY >= 40){
+                    !upHasClass && upIcon.addClass("reverse_icon") && pullUpMsg.text('松手开始更新');
+                    return "";
+                }else if(maxY < 40 && maxY >=0){
+                    upHasClass && upIcon.removeClass("reverse_icon") && pullUpMsg.text('上拉查看更多');
+                    return "";
+                }
+            });
+            tuwenScroller.on("slideUp",function(){
+                if(this.maxScrollY - this.y > 40){
+                    //alert("slideUp");
+                    upIcon.css('display','none');
+                    pullUpMsg.css('display','none');
+                    upLoading.css('display','inline-block');
+                    setTimeout(function(){
+                        upIcon.css('display','inline-block');
+                        pullUpMsg.css('display','inline-block');
+                        upLoading.css('display','none'); 
+                        console.log('load more...');
+                        tuwenScroller.refresh();
+                    },3000);
+                    
+                }
+            });
+            tuwenScroller.on("slideDown",function(){
+                if(this.y > 40){
+                    //alert("slideDown");
+                    scrollerPullDown.css({'position':'relative','top':'0'});
+                    downIcon.css('display','none');
+                    pullDownMsg.css('display','none');
+                    downLoading.css('display','inline-block');
+                    setTimeout(function(){
+                        scrollerPullDown.css({'position':'absolute','top':'-0.7rem'});
+                        downIcon.css('display','inline-block');
+                        pullDownMsg.css('display','inline-block');
+                        downLoading.css('display','none'); 
+                        console.log('refresh');
+                        tuwenScroller.refresh();
+                    },3000);
+                }
+            });
+        }
+    </script>
+    <style>
+        .orders{font-size:0.26rem;color: #333;line-height: 1;}
+        .orders .o_item{background-color: #fff;margin-bottom:0.2rem; }
+        .orders .o_item img,.orders .o_item span,.orders .o_item i{display: inline-block;vertical-align: middle;}
+        .orders .o_item i{font-style: normal;font-size:0.2rem; }
+        .orders .o_item .o_tips{text-align: center;font-size: 0.24rem;color: #e32121;height: 0.6rem;background-color: #ffe5e6;}
+        .orders .o_item .o_tips>img{width: 0.28rem;height: 0.28rem;margin-right:0.1rem;}
+        .orders .o_item .o_tips>span{line-height: 0.6rem;}
+        .orders .o_item .o_header{position: relative;height: 0.8rem;padding:0 0.2rem;}
+        .orders .o_item .o_header:after{content: " ";position: absolute;left: 0;bottom: 0;width: 100%;height: 1px;border-bottom: 1px solid #e1e1e1;color: #e1e1e1;-webkit-transform-origin: 0 100%;transform-origin: 0 100%;-webkit-transform: scaleY(0.5);transform: scaleY(0.5);}
+        .orders .o_item .o_header .o_h_left{float: left;}
+        .orders .o_item .o_header .o_logo{width: 0.32rem;height: 0.32rem;}
+        .orders .o_item .o_header .o_com{line-height: 0.8rem;margin: 0 0.06rem;}
+        .orders .o_item .o_header .o_dec{height: 0.24rem;width: 0.24rem;background-color: #e00000;color: #fff;border-radius: 2px;font-size: 0.2rem;line-height: 0.24rem;text-align: center;font-style: normal;}
+        .orders .o_item .o_header .o_h_right{color: #999;font-size: 0.22rem;float: right}
+        .orders .o_item .o_header .o_time{margin-right: 0.1rem;}
+        .orders .o_item .o_header .o_status{color: #ff6700;font-size: 0.28rem;line-height: 0.8rem;margin-left: 0.1rem;}
+        .orders .o_item .o_mid{position: relative;}
+        .orders .o_item .o_mid:after{content: " ";position: absolute;left: 0;bottom: 0;width: 100%;height: 1px;border-bottom: 1px solid #e1e1e1;color: #e1e1e1;-webkit-transform-origin: 0 100%;transform-origin: 0 100%;-webkit-transform: scaleY(0.5);transform: scaleY(0.5);}
+        .orders .o_item .o_mid .o_user_info{position: relative;}
+        .orders .o_item .o_mid .o_user_info:after{content: " ";position: absolute;left: 0;bottom: 0;width: 100%;height: 1px;border-bottom: 1px solid #e1e1e1;color: #e1e1e1;-webkit-transform-origin: 0 100%;transform-origin: 0 100%;-webkit-transform: scaleY(0.5);transform: scaleY(0.5);}
+        .orders .o_item .o_mid .o_user_info>div{padding:0.2rem;overflow: auto;}
+        .orders .o_item .o_mid .o_user_info img{width: 0.32rem;height: 0.32rem;}
+        .orders .o_item .o_mid .o_user_info .o_main{}
+        .orders .o_item .o_mid .o_user_info .o_u_left{float: left;}
+        .orders .o_item .o_mid .o_user_info .o_name{}
+        .orders .o_item .o_mid .o_user_info .o_u_icon{margin-right:0.08rem; }
+        .orders .o_item .o_mid .o_user_info .o_u_right{float: right;}
+        .orders .o_item .o_mid .o_user_info .o_p_icon{}
+        .orders .o_item .o_mid .o_user_info .o_phone{}
+        .orders .o_item .o_mid .o_user_info .o_addr{display: flex;display: -webkit-flex;padding: 0.06rem 0.2rem;}
+        .orders .o_item .o_mid .o_user_info .o_a_txt{flex:1;-webkit-flex:1;}
+        .orders .o_item .o_mid .o_user_info .o_a_icon{margin-right:0.08rem;}
+        .orders .o_item .o_mid .o_user_info .o_t_icon{margin-right:0.08rem;}
+        .orders .o_item .o_mid .o_user_info .o_appo{color: #999;padding: 0.08rem 0.2rem 0.2rem;}
+        .orders .o_item .o_mid .o_commodity_info{padding: 0 0.2rem;}
+        .orders .o_item .o_mid .o_commodity_info>div{padding: 0.26rem 0;position: relative;overflow: auto;}
+        .orders .o_item .o_mid .o_commodity_info>div:after{content: " ";position: absolute;left: 0;bottom: 0;width: 100%;height: 1px;border-bottom: 1px solid #e1e1e1;color: #e1e1e1;-webkit-transform-origin: 0 100%;transform-origin: 0 100%;-webkit-transform: scaleY(0.5);transform: scaleY(0.5);}
+        .orders .o_item .o_mid .o_commodity_info>div:last-child:after{display: none;}
+        .orders .o_item .o_mid .o_commodity_info .o_c_describe{}
+        .orders .o_item .o_mid .o_commodity_info .o_c_left{float: left;}
+        .orders .o_item .o_mid .o_commodity_info .o_c_right{float: right;}
+        .orders .o_item .o_footer{text-align: right;padding: 0.15rem 0.2rem;}
+
+    </style>
+</head>
+<body>
+    <div class="top_tab">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="top_tab_item on"><a class="top_tab_a" href="javascript:;">全部<i class="badge">99+</i></a></div>
+            </div>
+            <div class="swiper-slide">
+                <div class="top_tab_item"><a class="top_tab_a" href="javascript:;">待接单<i class="badge">1</i></a></div>
+            </div>
+            <div class="swiper-slide">
+                <div class="top_tab_item"><a class="top_tab_a" href="javascript:;">待预约<i class="badge">55</i></a></div>
+            </div>
+            <div class="swiper-slide">
+                <div class="top_tab_item"><a class="top_tab_a" href="javascript:;">待替单</a></div>
+            </div>
+            <div class="swiper-slide">
+                <div class="top_tab_item"><a class="top_tab_a" href="javascript:;">已完成</a></div>
+            </div>
+            <div class="action_line"></div>
+        </div>
+    </div>
+    <div class="cont_box bottom_cont_box">
+        <div class="c_panel c_panel_1 active">
+            <div>
+                <div class="scroller-pullDown">
+                    <span class="pull-down-icon down-icon"></span>
+                    <span class="pull-down-msg">下拉刷新</span>
+                    <span class="loading"></span>
+                </div>
+                <div class="orders">
+                    <div class="o_item">
+                        <div class="o_tips"><img src="../../resources/img/warn.png" alt=""><span>订单已被审核退回，请重新提单！</span></div>
+                        <div class="o_header">
+                            <div class="o_h_left"><img class="o_logo" src="../../resources/img/JD.png" alt=""><span class="o_com">京东</span><i class="o_dec">代</i></div>
+                            <div class="o_h_right"><span>倒计时：</span><span class="o_time">59分</span>|<span class="o_status">待接单</span></div>
+                        </div>
+                        <div class="o_mid">
+                            <div class="o_user_info">
+                                <div class="o_main">
+                                    <div class="o_u_left"><img class="o_u_icon" src="../../resources/img/user.png" alt=""><span class="o_name">李刚</span></div>
+                                    <div class="o_u_right"><img class="o_p_icon" src="../../resources/img/phone.png" alt=""><span class="o_phone">18681533089</span></div>
+                                </div>
+                                <div class="o_addr">
+                                    <img class="o_a_icon" src="../../resources/img/position_1.png" alt=""><span class="o_a_txt">广东省深圳市福田区景田街道景田花园C栋14层1402号</span>
+                                </div>
+                                <div class="o_appo"><img class="o_t_icon" src="../../resources/img/time.png" alt=""><span>周末上午</span></div>
+                            </div>
+                            <div class="o_commodity_info">
+                                <div class="o_c_describe"><span>小米Note白色 移动联通双4G手机 双卡双待 附赠手机壳...</span></div>
+                                <div class="o_c_cost">
+                                    <div class="o_c_left"><span>商品总额：</span><span>5800<i>.00</i></span></div>
+                                    <div class="o_c_right"><span>分期金额：</span><span>4800<i>.00</i></span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="o_footer">
+                            <a class="mid_btn default_btn cancel_order" href="javascript:;">取消订单</a>
+                            <a class="mid_btn impor_blank_btn acc_order" href="javascript:;">接单</a>
+                        </div>
+                    </div>
+                    <div class="o_item">
+                        <div class="o_header">
+                            <div class="o_h_left"><img class="o_logo" src="../../resources/img/JD.png" alt=""><span class="o_com">京东</span><i class="o_dec">代</i></div>
+                            <div class="o_h_right"><span>倒计时：</span><span class="o_time">59分</span>|<span class="o_status">待预约</span></div>
+                        </div>
+                        <div class="o_mid">
+                            <div class="o_user_info">
+                                <div class="o_main">
+                                    <div class="o_u_left"><img class="o_u_icon" src="../../resources/img/user.png" alt=""><span class="o_name">李刚</span></div>
+                                    <div class="o_u_right"><img class="o_p_icon" src="../../resources/img/phone.png" alt=""><span class="o_phone">18681533089</span></div>
+                                </div>
+                                <div class="o_addr">
+                                    <img class="o_a_icon" src="../../resources/img/position_1.png" alt=""><span class="o_a_txt">广东省深圳市福田区景田街道景田花园C栋14层1402号</span>
+                                </div>
+                                <div class="o_appo"><img class="o_t_icon" src="../../resources/img/time.png" alt=""><span>周末上午</span></div>
+                            </div>
+                            <div class="o_commodity_info">
+                                <div class="o_c_describe"><span>小米Note白色 移动联通双4G手机 双卡双待 附赠手机壳...</span></div>
+                                <div class="o_c_cost">
+                                    <div class="o_c_left"><span>商品总额：</span><span>5800<i>.00</i></span></div>
+                                    <div class="o_c_right"><span>分期金额：</span><span>4800<i>.00</i></span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="o_footer">
+                            <a class="mid_btn default_btn" href="javascript:;">取消订单</a>
+                            <a class="mid_btn impor_blank_btn" href="javascript:;">已预约</a>
+                        </div>
+                    </div>
+                    <div class="o_item">
+                        <div class="o_header">
+                            <div class="o_h_left"><img class="o_logo" src="../../resources/img/JD.png" alt=""><span class="o_com">京东</span><i class="o_dec">代</i></div>
+                            <div class="o_h_right"><span>倒计时：</span><span class="o_time">59分</span>|<span class="o_status">待提单</span></div>
+                        </div>
+                        <div class="o_mid">
+                            <div class="o_user_info">
+                                <div class="o_main">
+                                    <div class="o_u_left"><img class="o_u_icon" src="../../resources/img/user.png" alt=""><span class="o_name">李刚</span></div>
+                                    <div class="o_u_right"><img class="o_p_icon" src="../../resources/img/phone.png" alt=""><span class="o_phone">18681533089</span></div>
+                                </div>
+                                <div class="o_addr">
+                                    <img class="o_a_icon" src="../../resources/img/position_1.png" alt=""><span class="o_a_txt">广东省深圳市福田区景田街道景田花园C栋14层1402号</span>
+                                </div>
+                                <div class="o_appo"><img class="o_t_icon" src="../../resources/img/time.png" alt=""><span>2016/4/22 9:00-10:00</span></div>
+                            </div>
+                            <div class="o_commodity_info">
+                                <div class="o_c_describe"><span>小米Note白色 移动联通双4G手机 双卡双待 附赠手机壳...</span></div>
+                                <div class="o_c_cost">
+                                    <div class="o_c_left"><span>商品总额：</span><span>5800<i>.00</i></span></div>
+                                    <div class="o_c_right"><span>分期金额：</span><span>4800<i>.00</i></span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="o_footer">
+                            <a class="mid_btn default_btn" href="javascript:;">取消订单</a>
+                            <a class="mid_btn default_btn" href="javascript:;">改约</a>
+                            <a class="mid_btn impor_blank_btn" href="javascript:;">提单</a>
+                        </div>
+                    </div>
+                    <div class="o_item">
+                        <div class="o_header">
+                            <div class="o_h_left"><img class="o_logo" src="../../resources/img/JD.png" alt=""><span class="o_com">京东</span><i class="o_dec">代</i></div>
+                            <div class="o_h_right"><span></span><span class="o_time"></span><span class="o_status">已完成</span></div>
+                        </div>
+                        <div class="o_mid">
+                            <div class="o_user_info">
+                                <div class="o_main">
+                                    <div class="o_u_left"><img class="o_u_icon" src="../../resources/img/user.png" alt=""><span class="o_name">李刚</span></div>
+                                    <div class="o_u_right"><img class="o_p_icon" src="../../resources/img/phone.png" alt=""><span class="o_phone">18681533089</span></div>
+                                </div>
+                                <div class="o_addr">
+                                    <img class="o_a_icon" src="../../resources/img/position_1.png" alt=""><span class="o_a_txt">广东省深圳市福田区景田街道景田花园C栋14层1402号</span>
+                                </div>
+                                <div class="o_appo"><img class="o_t_icon" src="../../resources/img/time.png" alt=""><span>2016/4/22 9:00-10:00</span></div>
+                            </div>
+                            <div class="o_commodity_info">
+                                <div class="o_c_describe"><span>小米Note白色 移动联通双4G手机 双卡双待 附赠手机壳...</span></div>
+                                <div class="o_c_cost">
+                                    <div class="o_c_left"><span>商品总额：</span><span>5800<i>.00</i></span></div>
+                                    <div class="o_c_right"><span>分期金额：</span><span>4800<i>.00</i></span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="o_footer">
+                            <a class="mid_btn impor_blank_btn" href="javascript:;">查看合同</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="scroller-pullUp">
+                    <span class="pull-up-icon up-icon"></span>
+                    <span class="pull-up-msg">上拉查看更多</span>
+                    <span class="loading"></span>
+                </div>
+            </div>
+        </div>
+        <div class="c_panel">
+            2
+        </div>
+        <div class="c_panel">
+            3
+        </div>
+        <div class="c_panel">
+            4
+        </div>
+        <div class="c_panel">
+            5
+        </div>
+    </div>
+    <script type="text/javascript" src="../../resources/plugin/zepto/zepto.js"></script>
+    <script type="text/javascript" src="../../resources/plugin/zepto/touch.js"></script>
+    <script src="../../resources/js/com.js"></script>
+    <script>
+        window.onload = function() {
+            /*头部导航*/
+            var topTabSwiper = new Swiper('.top_tab',{
+                freeMode : true,
+                slidesPerView : 'auto',
+                onTap: function(swiper){
+                    /*文字颜色*/
+                    $('.top_tab .top_tab_item').removeClass('on');
+                    var topTabItem = $(topTabSwiper.clickedSlide).find('.top_tab_item'); 
+                    topTabItem.addClass('on');   
+                    /**/
+                    var actionLine = $('.top_tab .action_line');
+                    actionLine.css('left',topTabSwiper.clickedIndex*20+'%');
+                    /**/
+                    //$('.bottom_cont_box .c_panel').removeClass('active');
+                    $('.bottom_cont_box .c_panel').eq(topTabSwiper.clickedIndex).addClass('active').siblings().removeClass('active');
+                }
+            });
+
+            loaded();
+        }
+        /*接单*/
+        $('.acc_order').on('tap',function(){
+            var dialog = confirmDialog({
+                hasShadowBg:true,
+                title:'确认接单',
+                txt:'接单后1小时内和客户预约面签时间！如您不接此单，系统将在1小时后重新拍单。',
+                btns:[{
+                        text:'取消',
+                        callBack:function(){
+                            console.log('取消');
+                            dialog.destory();
+                        }
+                    },
+                    {
+                        text:'接单',
+                        callBack:function(){
+                            console.log('接单');
+                        }
+                    }
+                ]
+            });
+            dialog.show();
+        });
+    </script>
+</body>
+</html>

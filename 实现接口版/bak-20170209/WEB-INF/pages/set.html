@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>设置</title>
+		<meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+		<meta name="format-detection" content="telephone=no" />
+		<link href="../../resources/css/public.css" rel="stylesheet" type="text/css">
+        <link href="../../resources/css/com.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="../../resources/plugin/iscroll/iscroll.css">
+        <script src="../../resources/js/public.js"></script>
+        <script type="text/javascript" src="../../resources/plugin/iscroll/iscroll.js"></script>
+        <script type="text/javascript">
+	        var mainScroll;
+	        function loaded () {
+	            mainScroll = new IScroll('#body_wrapper',{
+	                scrollbars: true,
+	                mouseWheel: true,
+	                interactiveScrollbars: true,
+	                shrinkScrollbars: 'scale',
+	                fadeScrollbars: true,
+	                click: true 
+	            });
+	        }
+            document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+        </script>
+        <style>
+        	.cont_box{background:#F6F6F6}
+        	.setarticle{margin-top:0.2rem;}
+        	.setarticle .set_model{position:relative;}
+        	.set_model_head{font-size:0.28rem;color:#333333;padding:0 0.2rem;margin-bottom:0.4rem;background:#FFFFFF;}
+        	.set_model_head .after_posi{position:relative;}
+        	.after_posi.right_icon{padding-right:0.4rem;background:url(../../resources/img/right_arrow.png) no-repeat center right;background-size:0.2rem}
+        	.after_posi .head_style{line-height:1rem;}
+        	.after_posi .model_head_comstyle{font-size:0.28rem;line-height:0.9rem;}
+        	.head_style.boer_afer:after,.model_head_comstyle.boer_afer:after{content: " ";position:absolute;left: 0;bottom: 0;width: 100%;height: 1px; border-bottom: 1px solid #e1e1e1; color: #e1e1e1; -webkit-transform-origin: 0 100%;transform-origin: 0 100%;-webkit-transform: scaleY(0.5);transform: scaleY(0.5);}                                  
+            .clearafter:after{content:"";display:block;height:0;clear:both; }
+            .head_style .head_name{padding:0.2rem 0;}
+            .head_style .head_img{width:1rem;height:1rem;padding:0.2rem 0;}
+            .head_style .head_img img{width: 100%;height:auto;}
+            .set_model_head .after_posi .model_f_left{float:left}
+            .set_model_head .after_posi .model_f_right{float:right;}
+        </style>
+	</head>
+	<body onload="loaded()">
+		<article id="body_wrapper" class="setarticle">
+			<div>
+				<div class="set_model">
+					<div class="set_model_head">
+						<div class="after_posi clearafter right_icon">
+							<div class="head_style boer_afer">
+								<div class="model_f_left head_name" >头像</div>
+								<div class="model_f_right head_img"><img src="../../resources/img/defaul@100.png" /></div>
+							</div>
+						</div>
+						<div class="after_posi clearafter">
+							<div class="model_head_comstyle boer_afer ">
+								<div class="model_f_left">账户名</div>
+								<div class="model_f_right">MMT001</div>
+							</div>
+						</div>
+						<div class="after_posi clearafter">
+							<div class="model_head_comstyle boer_afer ">
+								<div class="model_f_left">姓名</div>
+								<div class="model_f_right">李二蛋</div>
+							</div>
+						</div>
+						<div class="after_posi clearafter">
+							<div class="model_head_comstyle ">
+								<div class="model_f_left">手机号</div>
+								<div class="model_f_right">13054841944</div>
+							</div>
+						</div>
+					</div>
+					<div class="set_model_head">
+						<div class="after_posi clearafter">
+							<div class="model_head_comstyle boer_afer ">
+								<div class="model_f_left">工作城市</div>
+								<div class="model_f_right">深圳市</div>
+							</div>
+						</div>
+						<div class="after_posi clearafter">
+							<div class="model_head_comstyle boer_afer ">
+								<div class="model_f_left">工作区域</div>
+								<div class="model_f_right">福田区</div>
+							</div>
+						</div>
+						<div class="after_posi clearafter right_icon">
+							<div class="model_head_comstyle ">
+								<div class="model_f_left">工作状态</div>
+								<div class="model_f_right">可接单</div>
+							</div>
+						</div>
+					</div>
+					<div class="set_model_head">
+						<div class="after_posi clearafter right_icon">
+							<div class="model_head_comstyle ">
+								<div class="model_f_left">修改密码</div>
+								<div class="model_f_right">13054841944</div>
+							</div>
+						</div>
+					</div>
+					<div class="one_px_border_t pd-tb-1 bg_white">
+                       <a class="big_btn impor_fill_btn" href="javascript:;">退出登录</a>
+                    </div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript" src="../../resources/plugin/zepto/zepto.js"></script>
+	</body>
+</html>

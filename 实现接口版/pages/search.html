@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>搜索</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no" />
+    <link href="../resources/css/public.css" rel="stylesheet" type="text/css">
+    <link href="../resources/css/com.css" rel="stylesheet" type="text/css">
+    <link href="../resources/plugin/swiper/swiper.3.1.7.min.css" rel="stylesheet" type="text/css">
+    <script src="../resources/js/public.js"></script>
+    <script type="text/javascript" src="../resources/plugin/swiper/swiper.3.1.7.min.js"></script>
+    <script type="text/javascript" src="../resources/plugin/iscroll/iscroll.js"></script>
+    <style>
+        .cont_box{background-color: #fff;}
+
+        .search_panel{padding: 0.14rem 0.3rem 0.14rem 0.2rem;display: flex;background-color: #9c0000;font-size: 0.2rem;color: #333;}
+        .search_panel .s_back_btn{width:0.4rem;height:0.56rem;background: url('../resources/images/home_icon_back@3x.png') no-repeat center center;background-size: 0.22rem 0.34rem;margin-right:0.2rem;}
+        .search_panel .s_input_contain{flex: 1;display: flex;}
+        .search_panel .s_input_contain .s_input_wrap{flex: 1;background-color: #fff;border-top-left-radius: 3px;border-bottom-left-radius: 3px;position: relative;}
+        .search_panel .s_input_contain .s_input_wrap input.s_input{border-top-left-radius: 3px;border-bottom-left-radius: 3px;width: 100%;height: 0.56rem;border:none;font-size: 0.2rem;padding-left:0.16rem;padding-right:0.4rem;}
+        .search_panel .s_input_contain .s_input_wrap .s_clear_btn{width: 0.26rem;height: 0.26rem;background: url('../resources/images/icon_search_close@3x.png') no-repeat center center;background-size:100%;position: absolute;right:0.1rem;top: 0.15rem;display: none;}
+        .search_panel .s_input_contain .s_btn{width:1.04rem;text-align: center;line-height: 0.56rem;background-color: #f8f8f8;border-top-right-radius: 3px;border-bottom-right-radius: 3px;}
+        .search_panel .s_input_contain .s_btn:active{background-color: #e8e8e8;}
+        .search_panel.s_entering .s_input_contain .s_input_wrap .s_clear_btn{display: block;}
+    </style>
+</head>
+<body>
+    <div class="cont_box">
+        <div>
+            <div class="search_panel">
+                <div class="s_back_btn"></div>
+                <div class="s_input_contain">
+                    <div class="s_input_wrap">
+                        <input class="s_input" type="text" placeholder="请输入客户名/手机号/订单号">
+                        <div class="s_clear_btn"></div>
+                    </div>
+                    <div class="s_btn">搜索</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="../resources/plugin/zepto/zepto.js"></script>
+    <script type="text/javascript" src="../resources/plugin/zepto/touch.js"></script>
+    <script src="../resources/js/com.js"></script>
+    <script>
+        var mainScroll;
+        window.onload = function() {
+            mainScroll = new IScroll('.cont_box',{
+                scrollbars: true,
+                mouseWheel: true,
+                interactiveScrollbars: true,
+                shrinkScrollbars: 'scale',
+                fadeScrollbars: true,
+                click: true 
+            });
+            document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+        }
+        
+        $('.search_panel .s_input').on('input',function(){
+            if($(this).val().length==1){
+               $('.search_panel').addClass('s_entering'); 
+            }
+        });
+        $('.search_panel .s_clear_btn').on('tap',function(){
+            $('.search_panel .s_input').val('').blur();
+            $('.search_panel').removeClass('s_entering');
+        });
+        
+    </script>
+</body>
+</html>
